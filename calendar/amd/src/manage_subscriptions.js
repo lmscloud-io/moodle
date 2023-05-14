@@ -73,6 +73,7 @@ const createModal = (element, messageCode) => {
     return Modal.create({
         type: Modal.types.SAVE_CANCEL,
         title: getString('confirmation', 'admin'),
+        // Mdlcode assume-next-line: messageCode ['confirmsubscriptiondelete']
         body: getString(messageCode, 'calendar', subscriptionName),
         buttons: {
             save: getString('yes')

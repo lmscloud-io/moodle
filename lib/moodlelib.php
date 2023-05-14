@@ -1620,7 +1620,7 @@ function unset_all_config_for_plugin($plugin) {
  * All users are verified if they still have the necessary capability.
  *
  * @param string $value the value of the config setting.
- * @param string $capability the capability - must match the one passed to the admin_setting_users_with_capability constructor.
+ * @param string|array $capability {Mdlcode-variant-capability} the capability - must match the one passed to the admin_setting_users_with_capability constructor.
  * @param bool $includeadmins include administrators.
  * @return array of user objects.
  */
@@ -5115,6 +5115,7 @@ function delete_course($courseorid, $showfeedback = true) {
  */
 function remove_course_contents($courseid, $showfeedback = true, array $options = null) {
     global $CFG, $DB, $OUTPUT;
+    // Mdlcode assume: $modname pluginnames-mod
 
     require_once($CFG->libdir.'/badgeslib.php');
     require_once($CFG->libdir.'/completionlib.php');
@@ -5199,6 +5200,7 @@ function remove_course_contents($courseid, $showfeedback = true, array $options 
                         core_tag_tag::delete_instances("mod_{$modname}", null, context_module::instance($cm->id)->id);
                         core_tag_tag::remove_all_item_tags('core', 'course_modules', $cm->id);
                     }
+                    // Mdlcode callback: mod PN_delete_instance function_exists($moddelete)
                     if (function_exists($moddelete)) {
                         // This purges all module data in related tables, extra user prefs, settings, etc.
                         $moddelete($cm->modinstance);
@@ -5245,6 +5247,7 @@ function remove_course_contents($courseid, $showfeedback = true, array $options 
     foreach ($cms as $cm) {
         if (array_key_exists($cm->module, $allmodulesbyid)) {
             try {
+                // Mdlcode assume-next-line: $allmodulesbyid[$cm->module] pluginnames-mod
                 $DB->delete_records($allmodulesbyid[$cm->module], array('id' => $cm->instance));
             } catch (Exception $e) {
                 // Ignore weird or missing table problems.
@@ -5659,10 +5662,12 @@ function reset_course_userdata($data) {
             $modfile = $CFG->dirroot.'/mod/'. $modname.'/lib.php';
             $moddeleteuserdata = $modname.'_reset_userdata';   // Function to delete user data.
             if (file_exists($modfile)) {
+                // Mdlcode assume-next-line: $modname pluginnames-mod
                 if (!$DB->count_records($modname, array('course' => $data->courseid))) {
                     continue; // Skip mods with no instances.
                 }
                 include_once($modfile);
+                // Mdlcode callback: mod PN_reset_userdata function_exists($moddeleteuserdata)
                 if (function_exists($moddeleteuserdata)) {
                     $modstatus = $moddeleteuserdata($data);
                     if (is_array($modstatus)) {
@@ -5689,6 +5694,7 @@ function reset_course_userdata($data) {
     if (!empty($unsupportedmods)) {
         foreach ($unsupportedmods as $mod) {
             $status[] = array(
+                // Mdlcode assume-next-line: $mod->name pluginnames-mod.
                 'component' => get_string('modulenameplural', $mod->name),
                 'item' => '',
                 'error' => get_string('resetnotimplemented')
@@ -7350,8 +7356,8 @@ function get_string_manager($forcereload=false) {
  * For more information {@link lang_string}
  *
  * @category string
- * @param string $identifier The key identifier for the localized string
- * @param string $component The module where the key identifier is stored,
+ * @param string $identifier {Mdlcode-variant-string moodle} The key identifier for the localized string
+ * @param string $component {Mdlcode-variant-stringcomponent} The module where the key identifier is stored,
  *      usually expressed as the filename in the language pack without the
  *      .php on the end but can also be written as mod/forum or grade/export/xls.
  *      If none is specified then moodle.php is used.
@@ -7364,6 +7370,7 @@ function get_string_manager($forcereload=false) {
  */
 function get_string($identifier, $component = '', $a = null, $lazyload = false) {
     global $CFG;
+    // Mdlcode-disable cannot-parse-string
 
     // If the lazy load argument has been supplied return a lang_string object
     // instead.
@@ -7420,11 +7427,12 @@ function get_string($identifier, $component = '', $a = null, $lazyload = false) 
 /**
  * Converts an array of strings to their localized value.
  *
- * @param array $array An array of strings
- * @param string $component The language module that these strings can be found in.
+ * @param array $array {Mdlcode-variant-string moodle} An array of strings
+ * @param string $component {Mdlcode-variant-stringcomponent moodle} The language module that these strings can be found in.
  * @return stdClass translated strings.
  */
 function get_strings($array, $component = '') {
+    // Mdlcode-disable cannot-parse-string
     $string = new stdClass;
     foreach ($array as $item) {
         $string->$item = get_string($item, $component);
@@ -7452,11 +7460,12 @@ function get_strings($array, $component = '') {
  * </code>
  *
  * @category string
- * @param string $identifier The key identifier for the localized string
- * @param string $component The module where the key identifier is stored. If none is specified then moodle.php is used.
+ * @param string $identifier {Mdlcode-variant-string moodle} The key identifier for the localized string
+ * @param string $component {Mdlcode-variant-stringcomponent} The module where the key identifier is stored. If none is specified then moodle.php is used.
  * @param string|object|array $a An object, string or number that can be used within translation strings
  */
 function print_string($identifier, $component = '', $a = null) {
+    // Mdlcode-disable cannot-parse-string
     echo get_string($identifier, $component, $a);
 }
 
@@ -7788,6 +7797,7 @@ function get_plugin_list_with_function($plugintype, $function, $file = 'lib.php'
     global $CFG;
 
     // We don't include here as all plugin types files would be included.
+    // Mdlcode callback-next-line: ignore
     $plugins = get_plugins_with_function($function, $file, false);
 
     if (empty($plugins[$plugintype])) {
@@ -7808,6 +7818,7 @@ function get_plugin_list_with_function($plugintype, $function, $file = 'lib.php'
                 include_once($filepath);
 
                 // Now that the file is loaded, we must verify the function still exists.
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($functionname)) {
                     $pluginfunctions[$plugintype . '_' . $pluginname] = $functionname;
                 } else {
@@ -7885,6 +7896,7 @@ function get_plugins_with_function($function, $file = 'lib.php', $include = true
                 }
 
                 // Check if the function still exists in the file.
+                // Mdlcode callback-next-line: ignore
                 if ($include && !function_exists($function)) {
                     $dirty = true;
                     break 2;
@@ -7916,6 +7928,7 @@ function get_plugins_with_function($function, $file = 'lib.php', $include = true
             $fullfunction = $plugintype . '_' . $plugin . '_' . $function;
 
             $pluginfunction = false;
+            // Mdlcode callback-next-line: ignore
             if (function_exists($fullfunction)) {
                 // Function exists with standard name. Store, indexed by frankenstyle name of plugin.
                 $pluginfunction = $fullfunction;
@@ -7923,6 +7936,7 @@ function get_plugins_with_function($function, $file = 'lib.php', $include = true
             } else if ($plugintype === 'mod') {
                 // For modules, we also allow plugin without full frankenstyle but just starting with the module name.
                 $shortfunction = $plugin . '_' . $function;
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($shortfunction)) {
                     $pluginfunction = $shortfunction;
                 }
@@ -8035,6 +8049,7 @@ function get_list_of_plugins($directory='mod', $exclude='', $basedir='') {
  * @todo Decide about to deprecate and drop plugin_callback() - MDL-30743
  */
 function plugin_callback($type, $name, $feature, $action, $params = null, $default = null) {
+    // Mdlcode callback: ignore
     return component_callback($type . '_' . $name, $feature . '_' . $action, (array) $params, $default);
 }
 
@@ -8048,7 +8063,7 @@ function plugin_callback($type, $name, $feature, $action, $params = null, $defau
  * @return mixed
  */
 function component_callback($component, $function, array $params = array(), $default = null) {
-
+    // Mdlcode callback: ignore
     $functionname = component_callback_exists($component, $function);
 
     if ($params && (array_keys($params) !== range(0, count($params) - 1))) {
@@ -8108,6 +8123,7 @@ function component_callback_exists($component, $function) {
         require_once($dir.'/lib.php');
     }
 
+    // Mdlcode callback: ignore
     if (!function_exists($function) and function_exists($oldfunction)) {
         if ($type !== 'mod' and $type !== 'core') {
             debugging("Please use new function name $function instead of legacy $oldfunction", DEBUG_DEVELOPER);
@@ -8184,6 +8200,7 @@ function plugin_supports($type, $name, $feature, $default = null) {
         if (file_exists("$CFG->dirroot/mod/$name/lib.php")) {
             include_once("$CFG->dirroot/mod/$name/lib.php");
             $function = $component.'_supports';
+            // Mdlcode callback-next-line: ignore
             if (!function_exists($function)) {
                 // Legacy non-frankenstyle function name.
                 $function = $name.'_supports';
@@ -8201,6 +8218,7 @@ function plugin_supports($type, $name, $feature, $default = null) {
         }
     }
 
+    // Mdlcode callback-next-line: plugin PREFIX_supports function_exists($function)
     if ($function and function_exists($function)) {
         $supports = $function($feature);
         if (is_null($supports)) {
@@ -9301,6 +9319,7 @@ function address_in_subnet($addr, $subnetstr, $checkallzeros = false) {
 function mtrace($string, $eol="\n", $sleep=0) {
     global $CFG;
 
+    // Mdlcode callback: ignore
     if (isset($CFG->mtrace_wrapper) && function_exists($CFG->mtrace_wrapper)) {
         $fn = $CFG->mtrace_wrapper;
         $fn($string, $eol);
@@ -10724,8 +10743,8 @@ class lang_string {
      * This function should do as little processing as possible to ensure the best
      * performance for strings that won't be used.
      *
-     * @param string $identifier The strings identifier
-     * @param string $component The strings component
+     * @param string $identifier {Mdlcode-variant-string} The strings identifier
+     * @param string $component {Mdlcode-variant-stringcomponent} The strings component
      * @param stdClass|array|mixed $a Any arguments the string requires
      * @param string $lang The language to use when processing the string.
      * @throws coding_exception
@@ -10796,6 +10815,7 @@ class lang_string {
      */
     protected function get_string() {
         global $CFG;
+        // Mdlcode-disable cannot-parse-string
 
         // Check if we need to process the string.
         if ($this->string === null) {
@@ -10822,6 +10842,7 @@ class lang_string {
      * @return string
      */
     public function out($lang = null) {
+        // Mdlcode-disable cannot-parse-string
         if ($lang !== null && $lang != $this->lang && ($this->lang == null && $lang != current_language())) {
             if ($this->forcedstring) {
                 debugging('lang_string objects that have been used cannot be printed in another language. ('.$this->lang.' used)', DEBUG_DEVELOPER);
@@ -10849,6 +10870,7 @@ class lang_string {
      * @return self
      */
     public static function __set_state(array $array): self {
+        // Mdlcode-disable cannot-parse-string
         $tmp = new lang_string($array['identifier'], $array['component'], $array['a'], $array['lang']);
         $tmp->string = $array['string'];
         $tmp->forcedstring = $array['forcedstring'];

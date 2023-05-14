@@ -153,6 +153,7 @@ class cm_completion_details {
                 $details = $this->sort_completion_details($details);
             }
         } else {
+            // Mdlcode callback: mod PN_get_completion_state function_exists($this->cminfo->modname . '_get_completion_state')
             if (function_exists($this->cminfo->modname . '_get_completion_state')) {
                 // If the plugin does not have the custom completion implementation but implements the get_completion_state() callback,
                 // fallback to displaying the overall completion state of the activity.

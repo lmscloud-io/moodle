@@ -739,6 +739,7 @@ function user_convert_text_to_menu_items($text, $page) {
             // Check the validity of the identifier part of the string.
             if (clean_param($namebits[0], PARAM_STRINGID) !== '' && clean_param($namebits[1], PARAM_COMPONENT) !== '') {
                 // Treat this as a language string.
+                // Mdlcode-disable cannot-parse-string
                 $child->title = get_string($namebits[0], $namebits[1]);
                 $child->titleidentifier = implode(',', $namebits);
             }

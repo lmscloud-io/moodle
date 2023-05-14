@@ -2800,6 +2800,7 @@ function cron_execute_plugin_type($plugintype, $description = null) {
     global $DB;
 
     // Get list from plugin => function for all plugins.
+    // Mdlcode callback-next-line: *
     $plugins = get_plugin_list_with_function($plugintype, 'cron');
 
     // Modify list for backward compatibility (different files/names).
@@ -2888,6 +2889,7 @@ function cron_bc_hack_plugin_functions($plugintype, $plugins) {
             }
             include_once("$dir/cron.php");
             $cronfunction = $component . '_cron';
+            // Mdlcode callback-next-line: plugin PFN_cron
             if (function_exists($cronfunction)) {
                 $plugins[$component] = $cronfunction;
             } else {
@@ -2911,6 +2913,9 @@ function cron_bc_hack_plugin_functions($plugintype, $plugins) {
             include_once("$dir/lib.php");
             $cronfunction = str_replace('grade', 'grade_', $plugintype) . '_' .
                     $pluginname . '_cron';
+            // Mdlcode callback: gradereport grade_report_PN_cron function_exists($cronfunction)
+            // Mdlcode callback: gradeexport grade_export_PN_cron function_exists($cronfunction)
+            // Mdlcode callback: gradeimport grade_import_PN_cron function_exists($cronfunction)
             if (function_exists($cronfunction)) {
                 $plugins[$component] = $cronfunction;
             }
@@ -3677,9 +3682,9 @@ function get_array_of_activities(int $courseid, bool $usecache = false): array {
  *
  * @deprecated since Moodle 4.1
  * @todo MDL-74484 Final deprecation in Moodle 4.5.
- * @param string $errorcode The name of the language string containing the error message.
+ * @param string $errorcode {Mdlcode-variant-string error*} The name of the language string containing the error message.
  *      Normally this should be in the error.php lang file.
- * @param string $module The language file to get the error message from.
+ * @param string $module {Mdlcode-variant-stringcomponent} The language file to get the error message from.
  * @param string $link The url where the user will be prompted to continue.
  *      If no url is provided the user will be directed to the site index page.
  * @param object $a Extra words and phrases that might be required in the error string

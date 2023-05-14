@@ -641,6 +641,7 @@ class behat_core_generator extends behat_generator_base {
      * @return void
      */
     protected function process_permission_override($data) {
+        // Mdlcode-disable cannot-parse-capability
 
         // Will throw an exception if it does not exist.
         $context = $this->get_context($data['contextlevel'], $data['reference']);

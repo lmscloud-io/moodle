@@ -170,6 +170,7 @@ function add_moduleinfo($moduleinfo, $course, $mform = null) {
         $moduleinfo->intro = file_save_draft_area_files($introeditor['itemid'], $modcontext->id,
                                                       'mod_'.$moduleinfo->modulename, 'intro', 0,
                                                       array('subdirs'=>true), $introeditor['text']);
+        // Mdlcode assume-next-line: $moduleinfo->modulename pluginnames-mod
         $DB->set_field($moduleinfo->modulename, 'intro', $moduleinfo->intro, array('id'=>$moduleinfo->instance));
     }
 
@@ -535,6 +536,7 @@ function can_update_moduleinfo($cm) {
     $module = $DB->get_record('modules', array('id'=>$cm->module), '*', MUST_EXIST);
 
     // Check the moduleinfo exists.
+    // Mdlcode assume-next-line: $module->name pluginnames-mod
     $data = $DB->get_record($module->name, array('id'=>$cm->instance), '*', MUST_EXIST);
 
     // Check the course section exists.

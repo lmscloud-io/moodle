@@ -713,6 +713,7 @@ M.core_availability.List.prototype.clickAdd = function() {
     var ul = content.one('ul');
     var li, id, button, label;
     for (var type in M.core_availability.form.plugins) {
+        // Mdlcode assume: type pluginnames-availability
         // Plugins might decide not to display their add button.
         if (!M.core_availability.form.plugins[type].allowAdd) {
             continue;
@@ -835,6 +836,7 @@ M.core_availability.List.prototype.getValue = function() {
 M.core_availability.List.prototype.fillErrors = function(errors) {
     // List with no items is an error (except root).
     if (this.children.length === 0 && !this.root) {
+        // Mdlcode uses-next-line: string ['error_list_nochildren', 'availability']
         errors.push('availability:error_list_nochildren');
     }
     // Pass to children.
@@ -1029,6 +1031,7 @@ M.core_availability.Item.prototype.fillErrors = function(errors) {
         this.plugin.fillErrors(errors, this.pluginNode);
     } else {
         // Unknown plugin is an error
+        // Mdlcode uses-next-line: string ['item_unknowntype', 'core_availability']
         errors.push('core_availability:item_unknowntype');
     }
     // If any errors were added, add the marker to this item.
@@ -1042,6 +1045,7 @@ M.core_availability.Item.prototype.fillErrors = function(errors) {
         // If get_string can't find the string, it will return the string in this format.
         var undefinedString = '[[' + identifier + ',' + component + ']]';
         // Get the lang string.
+        // Mdlcode-disable-next-line cannot-parse-string
         errorString = M.util.get_string(identifier, component);
         if (errorString === undefinedString) {
             // Use a generic invalid input message when the error lang string cannot be loaded.
@@ -1064,6 +1068,7 @@ M.core_availability.Item.prototype.renumber = function(number) {
     // Update heading for item.
     var headingParams = {number: number};
     if (this.plugin) {
+        // Mdlcode assume: this.pluginType pluginnames-availability
         headingParams.type = M.util.get_string('title', 'availability_' + this.pluginType);
     } else {
         headingParams.type = '[' + this.pluginType + ']';

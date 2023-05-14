@@ -31,6 +31,7 @@ $instanceid = optional_param('id', 0, PARAM_INT);
 $return = optional_param('returnurl', 0, PARAM_LOCALURL);
 $course = $DB->get_record('course', array('id' => $courseid), '*', MUST_EXIST);
 $context = context_course::instance($course->id, MUST_EXIST);
+// Mdlcode assume-optional: $type pluginnames-enrol
 
 $plugin = enrol_get_plugin($type);
 if (!$plugin) {

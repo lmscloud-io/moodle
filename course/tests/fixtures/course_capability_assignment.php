@@ -24,7 +24,7 @@ class course_capability_assignment {
     /**
      * Assigns a capability to a role at the given context giving it permission.
      *
-     * @param string|array $capability The capability to assign.
+     * @param string|array $capability {Mdlcode-variant-capability} The capability to assign.
      * @param int $roleid The roleID to assign to.
      * @param int $contextid The contextID for where to make the assignment.
      * @return course_capability_assignment
@@ -36,7 +36,7 @@ class course_capability_assignment {
     /**
      * Assigns a capability to a role at the given context prohibiting it.
      *
-     * @param string|array $capability The capability to assign.
+     * @param string|array $capability {Mdlcode-variant-capability} The capability to assign.
      * @param int $roleid The roleID to assign to.
      * @param int $contextid The contextID for where to make the assignment.
      * @return course_capability_assignment
@@ -48,7 +48,7 @@ class course_capability_assignment {
     /**
      * Assigns a capability to a role at the given context preventing it.
      *
-     * @param string|array $capability The capability to assign.
+     * @param string|array $capability {Mdlcode-variant-capability} The capability to assign.
      * @param int $roleid The roleID to assign to.
      * @param int $contextid The contextID for where to make the assignment.
      * @return course_capability_assignment
@@ -60,7 +60,7 @@ class course_capability_assignment {
     /**
      * Creates a new course_capability_assignment object
      *
-     * @param string|array $capability The capability to assign.
+     * @param string|array $capability {Mdlcode-variant-capability} The capability to assign.
      * @param int $roleid The roleID to assign to.
      * @param int $contextid The contextID for where to make the assignment.
      * @param int $permission The permission to apply. One of CAP_ALLOW, CAP_PROHIBIT, CAP_PREVENT.
@@ -81,6 +81,7 @@ class course_capability_assignment {
      * @param int $permission One of CAP_ALLOW, CAP_PROHIBIT, CAP_PREVENT
      */
     public function assign($permission) {
+        // Mdlcode-disable cannot-parse-capability
         foreach ($this->capability as $capability) {
             assign_capability($capability, $permission, $this->roleid, $this->contextid, true);
         }
@@ -91,6 +92,7 @@ class course_capability_assignment {
      * Revokes the capability assignment.
      */
     public function revoke() {
+        // Mdlcode-disable cannot-parse-capability
         foreach ($this->capability as $capability) {
             unassign_capability($capability, $this->roleid, $this->contextid);
         }

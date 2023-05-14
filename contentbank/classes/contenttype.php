@@ -31,6 +31,7 @@ use stored_file;
 use Exception;
 use moodle_url;
 
+// Mdlcode assume: $this->get_plugin_name() pluginnames-contenttype
 /**
  * Content type manager class
  *

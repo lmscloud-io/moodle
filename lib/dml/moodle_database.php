@@ -886,7 +886,7 @@ abstract class moodle_database {
 
     /**
      * Normalizes sql query parameters and verifies parameters.
-     * @param string $sql The query or part of it.
+     * @param string $sql {Mdlcode-variant-dbselect} The query or part of it.
      * @param array $params The query parameters.
      * @return array (sql, params, type of params)
      */
@@ -1142,7 +1142,7 @@ abstract class moodle_database {
 
     /**
      * Return table indexes - everything lowercased.
-     * @param string $table The table we want to get indexes from.
+     * @param string $table {Mdlcode-variant-dbtable} The table we want to get indexes from.
      * @return array An associative array of indexes containing 'unique' flag and 'columns' being indexed
      */
     public abstract function get_indexes($table);
@@ -1150,7 +1150,7 @@ abstract class moodle_database {
     /**
      * Returns detailed information about columns in table. This information is cached internally.
      *
-     * @param string $table The table's name.
+     * @param string $table {Mdlcode-variant-dbtable} The table's name.
      * @param bool $usecache Flag to use internal cacheing. The default is true.
      * @return database_column_info[] of database_column_info objects indexed with column names
      */
@@ -1204,7 +1204,7 @@ abstract class moodle_database {
     /**
      * Resets the internal column details cache
      *
-     * @param array|null $tablenames an array of xmldb table names affected by this request.
+     * @param array|null $tablenames {Mdlcode-variant-dbtable} an array of xmldb table names affected by this request.
      * @return void
      */
     public function reset_caches($tablenames = null) {
@@ -1294,7 +1294,7 @@ abstract class moodle_database {
 
     /**
      * Do NOT use in code, this is for use by database_manager only!
-     * @param string|array $sql query or array of queries
+     * @param string|array $sql {Mdlcode-variant-dbselect} query or array of queries
      * @param array|null $tablenames an array of xmldb table names affected by this request.
      * @return bool true
      * @throws ddl_change_structure_exception A DDL specific exception is thrown for any errors.
@@ -1304,7 +1304,7 @@ abstract class moodle_database {
     /**
      * Executes a general sql query. Should be used only when no other method suitable.
      * Do NOT use this to make changes in db structure, use database_manager methods instead!
-     * @param string $sql query
+     * @param string $sql {Mdlcode-variant-dbselect} query
      * @param array $params query parameters
      * @return bool true
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -1336,7 +1336,7 @@ abstract class moodle_database {
      * The return value is a moodle_recordset
      * if the query succeeds. If an error occurs, false is returned.
      *
-     * @param string $table the table to query.
+     * @param string $table {Mdlcode-variant-dbtable} the table to query.
      * @param array $conditions optional array $fieldname=>requestedvalue with AND in between
      * @param string $sort an order to sort the results in (optional, a valid SQL ORDER BY parameter).
      * @param string $fields a comma separated list of fields to return (optional, by default all fields are returned).
@@ -1358,7 +1358,7 @@ abstract class moodle_database {
      *
      * Other arguments and the return type are like {@link function get_recordset}.
      *
-     * @param string $table the table to query.
+     * @param string $table {Mdlcode-variant-dbtable} the table to query.
      * @param string $field a field to check (optional).
      * @param array $values array of values the field must have
      * @param string $sort an order to sort the results in (optional, a valid SQL ORDER BY parameter).
@@ -1381,8 +1381,8 @@ abstract class moodle_database {
      *
      * Other arguments and the return type are like {@link function get_recordset}.
      *
-     * @param string $table the table to query.
-     * @param string $select A fragment of SQL to be used in a where clause in the SQL call.
+     * @param string $table {Mdlcode-variant-dbtable} the table to query.
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a where clause in the SQL call.
      * @param array $params array of sql parameters
      * @param string $sort an order to sort the results in (optional, a valid SQL ORDER BY parameter).
      * @param string $fields a comma separated list of fields to return (optional, by default all fields are returned).
@@ -1411,7 +1411,7 @@ abstract class moodle_database {
      *
      * The return type is like {@link function get_recordset}.
      *
-     * @param string $sql the SQL select query to execute.
+     * @param string $sql {Mdlcode-variant-dbselect} the SQL select query to execute.
      * @param array $params array of sql parameters
      * @param int $limitfrom return a subset of records, starting at this point (optional).
      * @param int $limitnum return a subset comprising this many records (optional, required if $limitfrom is set).
@@ -1426,7 +1426,7 @@ abstract class moodle_database {
      * This method works around potential memory problems and may improve performance,
      * this method may block access to table until the recordset is closed.
      *
-     * @param string $table Name of database table.
+     * @param string $table {Mdlcode-variant-dbtable} Name of database table.
      * @return moodle_recordset A moodle_recordset instance {@link function get_recordset}.
      * @throws dml_exception A DML specific exception is thrown for any errors.
      */
@@ -1443,7 +1443,7 @@ abstract class moodle_database {
      * column of the result set. The object associated with that key
      * has a member variable for each column of the results.
      *
-     * @param string $table the table to query.
+     * @param string $table {Mdlcode-variant-dbtable} the table to query.
      * @param array $conditions optional array $fieldname=>requestedvalue with AND in between
      * @param string $sort an order to sort the results in (optional, a valid SQL ORDER BY parameter).
      * @param string $fields a comma separated list of fields to return (optional, by default
@@ -1464,7 +1464,7 @@ abstract class moodle_database {
      *
      * Return value is like {@link function get_records}.
      *
-     * @param string $table The database table to be checked against.
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be checked against.
      * @param string $field The field to search
      * @param array $values An array of values
      * @param string $sort Sort order (as valid SQL sort parameter)
@@ -1486,8 +1486,8 @@ abstract class moodle_database {
      *
      * Return value is like {@link function get_records}.
      *
-     * @param string $table The table to query.
-     * @param string $select A fragment of SQL to be used in a where clause in the SQL call.
+     * @param string $table {Mdlcode-variant-dbtable} The table to query.
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a where clause in the SQL call.
      * @param array $params An array of sql parameters
      * @param string $sort An order to sort the results in (optional, a valid SQL ORDER BY parameter).
      * @param string $fields A comma separated list of fields to return
@@ -1513,7 +1513,7 @@ abstract class moodle_database {
      *
      * Return value is like {@link function get_records}.
      *
-     * @param string $sql the SQL select query to execute. The first column of this SELECT statement
+     * @param string $sql {Mdlcode-variant-dbselect} the SQL select query to execute. The first column of this SELECT statement
      *   must be a unique value (usually the 'id' field), as it will be used as the key of the
      *   returned array.
      * @param array $params array of sql parameters
@@ -1534,7 +1534,7 @@ abstract class moodle_database {
      * and whose values are the corresponding second fields.
      * False is returned if an error occurs.
      *
-     * @param string $table the table to query.
+     * @param string $table {Mdlcode-variant-dbtable} the table to query.
      * @param array $conditions optional array $fieldname=>requestedvalue with AND in between
      * @param string $sort an order to sort the results in (optional, a valid SQL ORDER BY parameter).
      * @param string $fields a comma separated list of fields to return - the number of fields should be 2!
@@ -1562,8 +1562,8 @@ abstract class moodle_database {
      * Arguments are like {@link function get_recordset_select}.
      * Return value is like {@link function get_records_menu}.
      *
-     * @param string $table The database table to be checked against.
-     * @param string $select A fragment of SQL to be used in a where clause in the SQL call.
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be checked against.
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a where clause in the SQL call.
      * @param array $params array of sql parameters
      * @param string $sort Sort order (optional) - a valid SQL order parameter
      * @param string $fields A comma separated list of fields to be returned from the chosen table - the number of fields should be 2!
@@ -1591,7 +1591,7 @@ abstract class moodle_database {
      * Arguments are like {@link function get_recordset_sql}.
      * Return value is like {@link function get_records_menu}.
      *
-     * @param string $sql The SQL string you wish to be executed.
+     * @param string $sql {Mdlcode-variant-dbselect} The SQL string you wish to be executed.
      * @param array $params array of sql parameters
      * @param int $limitfrom return a subset of records, starting at this point (optional).
      * @param int $limitnum return a subset comprising this many records (optional, required if $limitfrom is set).
@@ -1614,7 +1614,7 @@ abstract class moodle_database {
     /**
      * Get a single database record as an object where all the given conditions met.
      *
-     * @param string $table The table to select from.
+     * @param string $table {Mdlcode-variant-dbtable} The table to select from.
      * @param array $conditions optional array $fieldname=>requestedvalue with AND in between
      * @param string $fields A comma separated list of fields to be returned from the chosen table.
      * @param int $strictness IGNORE_MISSING means compatible mode, false returned if record not found, debug message if more found;
@@ -1633,8 +1633,8 @@ abstract class moodle_database {
     /**
      * Get a single database record as an object which match a particular WHERE clause.
      *
-     * @param string $table The database table to be checked against.
-     * @param string $select A fragment of SQL to be used in a where clause in the SQL call.
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be checked against.
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a where clause in the SQL call.
      * @param array $params array of sql parameters
      * @param string $fields A comma separated list of fields to be returned from the chosen table.
      * @param int $strictness IGNORE_MISSING means compatible mode, false returned if record not found, debug message if more found;
@@ -1661,7 +1661,7 @@ abstract class moodle_database {
      * The SQL statement should normally only return one record.
      * It is recommended to use get_records_sql() if more matches possible!
      *
-     * @param string $sql The SQL string you wish to be executed, should normally only return one record.
+     * @param string $sql {Mdlcode-variant-dbselect} The SQL string you wish to be executed, should normally only return one record.
      * @param array $params array of sql parameters
      * @param int $strictness IGNORE_MISSING means compatible mode, false returned if record not found, debug message if more found;
      *                        IGNORE_MULTIPLE means return first, ignore multiple records found(not recommended);
@@ -1670,6 +1670,7 @@ abstract class moodle_database {
      * @throws dml_exception A DML specific exception is thrown for any errors.
      */
     public function get_record_sql($sql, array $params=null, $strictness=IGNORE_MISSING) {
+        // Mdlcode call-subject: ^\$DB$
         $strictness = (int)$strictness; // we support true/false for BC reasons too
         if ($strictness == IGNORE_MULTIPLE) {
             $count = 1;
@@ -1698,7 +1699,7 @@ abstract class moodle_database {
     /**
      * Get a single field value from a table record where all the given conditions met.
      *
-     * @param string $table the table to query.
+     * @param string $table {Mdlcode-variant-dbtable} the table to query.
      * @param string $return the field to return the value of.
      * @param array $conditions optional array $fieldname=>requestedvalue with AND in between
      * @param int $strictness IGNORE_MISSING means compatible mode, false returned if record not found, debug message if more found;
@@ -1715,9 +1716,9 @@ abstract class moodle_database {
     /**
      * Get a single field value from a table record which match a particular WHERE clause.
      *
-     * @param string $table the table to query.
+     * @param string $table {Mdlcode-variant-dbtable} the table to query.
      * @param string $return the field to return the value of.
-     * @param string $select A fragment of SQL to be used in a where clause returning one row with one column
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a where clause returning one row with one column
      * @param array $params array of sql parameters
      * @param int $strictness IGNORE_MISSING means compatible mode, false returned if record not found, debug message if more found;
      *                        IGNORE_MULTIPLE means return first, ignore multiple records found(not recommended);
@@ -1740,7 +1741,7 @@ abstract class moodle_database {
     /**
      * Get a single field value (first field) using a SQL statement.
      *
-     * @param string $sql The SQL query returning one row with one column
+     * @param string $sql {Mdlcode-variant-dbselect} The SQL query returning one row with one column
      * @param array $params array of sql parameters
      * @param int $strictness IGNORE_MISSING means compatible mode, false returned if record not found, debug message if more found;
      *                        IGNORE_MULTIPLE means return first, ignore multiple records found(not recommended);
@@ -1760,9 +1761,9 @@ abstract class moodle_database {
     /**
      * Selects records and return values of chosen field as an array which match a particular WHERE clause.
      *
-     * @param string $table the table to query.
+     * @param string $table {Mdlcode-variant-dbtable} the table to query.
      * @param string $return the field we are intered in
-     * @param string $select A fragment of SQL to be used in a where clause in the SQL call.
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a where clause in the SQL call.
      * @param array $params array of sql parameters
      * @return array of values
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -1777,7 +1778,7 @@ abstract class moodle_database {
     /**
      * Selects records and return values (first field) as an array using a SQL statement.
      *
-     * @param string $sql The SQL query
+     * @param string $sql {Mdlcode-variant-dbselect} The SQL query
      * @param array $params array of sql parameters
      * @return array of values
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -1786,7 +1787,7 @@ abstract class moodle_database {
 
     /**
      * Insert new record into database, as fast as possible, no safety checks, lobs not supported.
-     * @param string $table name
+     * @param string $table {Mdlcode-variant-dbtable} name
      * @param stdClass|array $params data record as object or array
      * @param bool $returnid Returns id of inserted record.
      * @param bool $bulk true means repeated inserts expected
@@ -1802,7 +1803,7 @@ abstract class moodle_database {
      * Some conversions and safety checks are carried out. Lobs are supported.
      * If the return ID isn't required, then this just reports success as true/false.
      * $data is an object containing needed data
-     * @param string $table The database table to be inserted into
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be inserted into
      * @param object|array $dataobject A data object with values for one or more fields in the record
      * @param bool $returnid Should the id of the newly created record entry be returned? If this option is not requested then true/false is returned.
      * @param bool $bulk Set to true is multiple inserts are expected
@@ -1822,7 +1823,7 @@ abstract class moodle_database {
      *
      * @since Moodle 2.7
      *
-     * @param string $table  The database table to be inserted into
+     * @param string $table {Mdlcode-variant-dbtable}  The database table to be inserted into
      * @param array|Traversable $dataobjects list of objects to be inserted, must be compatible with foreach
      * @return void does not return new record ids
      *
@@ -1854,7 +1855,7 @@ abstract class moodle_database {
      * Import a record into a table, id field is required.
      * Safety checks are NOT carried out. Lobs are supported.
      *
-     * @param string $table name of database table to be inserted into
+     * @param string $table {Mdlcode-variant-dbtable} name of database table to be inserted into
      * @param object $dataobject A data object with values for one or more fields in the record
      * @return bool true
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -1863,7 +1864,7 @@ abstract class moodle_database {
 
     /**
      * Update record in database, as fast as possible, no safety checks, lobs not supported.
-     * @param string $table name
+     * @param string $table {Mdlcode-variant-dbtable} name
      * @param stdClass|array $params data record as object or array
      * @param bool $bulk True means repeated updates expected.
      * @return bool true
@@ -1878,7 +1879,7 @@ abstract class moodle_database {
      * Relies on $dataobject having a variable "id" to
      * specify the record to update
      *
-     * @param string $table The database table to be checked against.
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be checked against.
      * @param stdClass|array $dataobject An object with contents equal to fieldname=>fieldvalue.
      *        Must have an entry for 'id' to map to the table specified.
      * @param bool $bulk True means repeated updates expected.
@@ -1890,7 +1891,7 @@ abstract class moodle_database {
     /**
      * Set a single field in every table record where all the given conditions met.
      *
-     * @param string $table The database table to be checked against.
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be checked against.
      * @param string $newfield the field to set.
      * @param mixed $newvalue the value to set the field to.
      * @param array $conditions optional array $fieldname=>requestedvalue with AND in between
@@ -1905,10 +1906,10 @@ abstract class moodle_database {
     /**
      * Set a single field in every table record which match a particular WHERE clause.
      *
-     * @param string $table The database table to be checked against.
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be checked against.
      * @param string $newfield the field to set.
      * @param mixed $newvalue the value to set the field to.
-     * @param string $select A fragment of SQL to be used in a where clause in the SQL call.
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a where clause in the SQL call.
      * @param array $params array of sql parameters
      * @return bool true
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -1919,7 +1920,7 @@ abstract class moodle_database {
     /**
      * Count the records in a table where all the given conditions met.
      *
-     * @param string $table The table to query.
+     * @param string $table {Mdlcode-variant-dbtable} The table to query.
      * @param array $conditions optional array $fieldname=>requestedvalue with AND in between
      * @return int The count of records returned from the specified criteria.
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -1932,8 +1933,8 @@ abstract class moodle_database {
     /**
      * Count the records in a table which match a particular WHERE clause.
      *
-     * @param string $table The database table to be checked against.
-     * @param string $select A fragment of SQL to be used in a WHERE clause in the SQL call.
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be checked against.
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a WHERE clause in the SQL call.
      * @param array $params array of sql parameters
      * @param string $countitem The count string to be used in the SQL call. Default is COUNT('x').
      * @return int The count of records returned from the specified criteria.
@@ -1954,7 +1955,7 @@ abstract class moodle_database {
      * returned. However, this method should only be used for the
      * intended purpose.) If an error occurs, 0 is returned.
      *
-     * @param string $sql The SQL string you wish to be executed.
+     * @param string $sql {Mdlcode-variant-dbselect} The SQL string you wish to be executed.
      * @param array $params array of sql parameters
      * @return int the count
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -1970,7 +1971,7 @@ abstract class moodle_database {
     /**
      * Test whether a record exists in a table where all the given conditions met.
      *
-     * @param string $table The table to check.
+     * @param string $table {Mdlcode-variant-dbtable} The table to check.
      * @param array $conditions optional array $fieldname=>requestedvalue with AND in between
      * @return bool true if a matching record exists, else false.
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -1983,8 +1984,8 @@ abstract class moodle_database {
     /**
      * Test whether any records exists in a table which match a particular WHERE clause.
      *
-     * @param string $table The database table to be checked against.
-     * @param string $select A fragment of SQL to be used in a WHERE clause in the SQL call.
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be checked against.
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a WHERE clause in the SQL call.
      * @param array $params array of sql parameters
      * @return bool true if a matching record exists, else false.
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -2002,7 +2003,7 @@ abstract class moodle_database {
      * This function returns true if the SQL statement executes
      * without any errors and returns at least one record.
      *
-     * @param string $sql The SQL statement to execute.
+     * @param string $sql {Mdlcode-variant-dbselect} The SQL statement to execute.
      * @param array $params array of sql parameters
      * @return bool true if the SQL executes without errors and returns at least one record.
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -2018,7 +2019,7 @@ abstract class moodle_database {
      * Delete the records from a table where all the given conditions met.
      * If conditions not specified, table is truncated.
      *
-     * @param string $table the table to delete from.
+     * @param string $table {Mdlcode-variant-dbtable} the table to delete from.
      * @param array $conditions optional array $fieldname=>requestedvalue with AND in between
      * @return bool true.
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -2036,7 +2037,7 @@ abstract class moodle_database {
     /**
      * Delete the records from a table where one field match one list of values.
      *
-     * @param string $table the table to delete from.
+     * @param string $table {Mdlcode-variant-dbtable} the table to delete from.
      * @param string $field The field to search
      * @param array $values array of values
      * @return bool true.
@@ -2057,10 +2058,10 @@ abstract class moodle_database {
      *
      * (On database where the subquery is inefficient, it is implemented differently.)
      *
-     * @param string $table Table to delete from
+     * @param string $table {Mdlcode-variant-dbtable} Table to delete from
      * @param string $field Field in table to match
      * @param string $alias Name of single column in subquery e.g. 'id'
-     * @param string $subquery Subquery that will return values of the field to delete
+     * @param string $subquery {Mdlcode-variant-dbselect} Subquery that will return values of the field to delete
      * @param array $params Parameters for subquery
      * @throws dml_exception If there is any error
      * @since Moodle 3.10
@@ -2073,8 +2074,8 @@ abstract class moodle_database {
     /**
      * Delete one or more records from a table which match a particular WHERE clause.
      *
-     * @param string $table The database table to be checked against.
-     * @param string $select A fragment of SQL to be used in a where clause in the SQL call (used to define the selection criteria).
+     * @param string $table {Mdlcode-variant-dbtable} The database table to be checked against.
+     * @param string $select {Mdlcode-variant-dbselect} A fragment of SQL to be used in a where clause in the SQL call (used to define the selection criteria).
      * @param array $params array of sql parameters
      * @return bool true.
      * @throws dml_exception A DML specific exception is thrown for any errors.
@@ -2450,7 +2451,7 @@ abstract class moodle_database {
      *
      * (see parameters description below)
      *
-     * @param string $tablename Name of the table (without prefix). Not used for now but can be
+     * @param string $tablename {Mdlcode-variant-dbtable} Name of the table (without prefix). Not used for now but can be
      *                          necessary in the future if we want to use some introspection using
      *                          meta information against the DB. /// TODO ///
      * @param string $fieldname Name of the field we are going to check
@@ -2484,7 +2485,7 @@ abstract class moodle_database {
      *
      * (see parameters description below)
      *
-     * @param string $tablename Name of the table (without prefix). This is not used for now but can be
+     * @param string $tablename {Mdlcode-variant-dbtable} Name of the table (without prefix). This is not used for now but can be
      *                          necessary in the future if we want to use some introspection using
      *                          meta information against the DB.
      * @param string $fieldname The name of the field we are going to check.
@@ -2545,7 +2546,7 @@ abstract class moodle_database {
      *
      * @since Moodle 2.8
      *
-     * @param array $selects array of SQL select queries, each of them only returns fields with the names from $fields
+     * @param array $selects {Mdlcode-variant-dbselect} array of SQL select queries, each of them only returns fields with the names from $fields
      * @param string $fields comma-separated list of fields (used only by some DB engines)
      * @return string SQL query that will return only values that are present in each of selects
      */
@@ -2577,7 +2578,7 @@ abstract class moodle_database {
      * Replace given text in all rows of column.
      *
      * @since Moodle 2.6.1
-     * @param string $table name of the table
+     * @param string $table {Mdlcode-variant-dbtable} name of the table
      * @param database_column_info $column
      * @param string $search
      * @param string $replace
