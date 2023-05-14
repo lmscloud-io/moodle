@@ -23,6 +23,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+// Mdlcode-disable cannot-parse-capability
 
 /**
  * Subclass of core_role_capability_table_base for use on the Check permissions page.

@@ -104,6 +104,7 @@ if (!empty($cm) && $context->contextlevel == CONTEXT_MODULE) {
     $modinstance->cmidnumber = $cm->id; // MDL-12961.
     $functionname = $cm->modname.'_update_grades';
     require_once($CFG->dirroot."/mod/{$cm->modname}/lib.php");
+    // Mdlcode callback: mod PN_update_grades function_exists($functionname)
     if (function_exists($functionname)) {
         $functionname($modinstance, $rateduserid);
     }

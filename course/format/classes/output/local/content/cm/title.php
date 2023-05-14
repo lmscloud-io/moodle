@@ -166,6 +166,7 @@ class title extends inplace_editable implements named_templatable, renderable {
         // has already been encoded for display (puke).
         $data->onclick = htmlspecialchars_decode($mod->onclick, ENT_QUOTES);
 
+        // Mdlcode assume: $this->displaytemplate 'core_courseformat/local/content/cm/title'
         return $courseoutput->render_from_template(
             $this->displaytemplate,
             $data

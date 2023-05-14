@@ -842,6 +842,7 @@ class theme_config {
      */
     public function init_page(moodle_page $page) {
         $themeinitfunction = 'theme_'.$this->name.'_page_init';
+        // Mdlcode callback: theme PREFIX_init_page function_exists($themeinitfunction)
         if (function_exists($themeinitfunction)) {
             $themeinitfunction($page);
         }
@@ -1556,6 +1557,7 @@ class theme_config {
         foreach ($configs as $config) {
             if (isset($config->precompiledcsscallback)) {
                 $function = $config->precompiledcsscallback;
+                // Mdlcode callback: theme-config precompiledcsscallback
                 if (function_exists($function)) {
                     $css .= $function($this);
                 }
@@ -1570,6 +1572,7 @@ class theme_config {
      * @return string
      */
     public function get_icon_system() {
+        // Mdlcode-todo insert theme-config callback here
 
         // Getting all the candidate functions.
         $system = false;
@@ -1611,6 +1614,7 @@ class theme_config {
 
         // Calling the functions.
         foreach ($candidates as $function) {
+            // Mdlcode callback: theme-config extrascsscallback
             if (function_exists($function)) {
                 $content .= "\n/** Extra SCSS from $function **/\n" . $function($this) . "\n";
             }
@@ -1644,6 +1648,7 @@ class theme_config {
 
         // Calling the functions.
         foreach ($candidates as $function) {
+            // Mdlcode callback: config-theme prescsscallback
             if (function_exists($function)) {
                 $content .= "\n/** Pre-SCSS from $function **/\n" . $function($this) . "\n";
             }
@@ -1865,6 +1870,7 @@ class theme_config {
         // Now resolve all theme settings or do any other postprocessing.
         // This needs to be done before calling core parser, since the parser strips [[settings]] tags.
         $csspostprocess = $this->csspostprocess;
+        // Mdlcode callback: theme-config csspostprocess
         if ($csspostprocess && function_exists($csspostprocess)) {
             $css = $csspostprocess($css, $this);
         }
@@ -2419,6 +2425,7 @@ class theme_config {
     public function get_renderer(moodle_page $page, $component, $subtype = null, $target = null) {
         if (is_null($this->rf)) {
             $classname = $this->rendererfactory;
+            // Mdlcode-todo insert a theme-config callback here
             $this->rf = new $classname($this);
         }
 

@@ -595,6 +595,7 @@ class block_base {
     function user_can_addto($page) {
         global $CFG;
         require_once($CFG->dirroot . '/user/lib.php');
+        // Mdlcode assume-optional: $this->name() pluginnames-block
 
         // List of formats this block supports.
         $formats = $this->applicable_formats();
@@ -645,7 +646,7 @@ class block_base {
      * Returns true if the user can add a block to a page.
      *
      * @param moodle_page $page
-     * @param string $capability the capability to check
+     * @param string $capability {Mdlcode-variant-capability} the capability to check
      * @return boolean true if user can add a block, false otherwise.
      */
     private function has_add_block_capability($page, $capability) {

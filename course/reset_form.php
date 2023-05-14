@@ -83,6 +83,8 @@ class course_reset_form extends moodleform {
         $mform->addElement('checkbox', 'reset_groupings_remove', get_string('deleteallgroupings', 'group'));
         $mform->addElement('checkbox', 'reset_groupings_members', get_string('removegroupingsmembers', 'group'));
         $mform->disabledIf('reset_groupings_members', 'reset_groupings_remove', 'checked');
+        // Mdlcode assume: $mod->name pluginnames-mod.
+
 
         $unsupported_mods = array();
         if ($allmods = $DB->get_records('modules') ) {
@@ -96,8 +98,10 @@ class course_reset_form extends moodleform {
                         continue; // Skip mods with no instances
                     }
                     include_once($modfile);
+                    // Mdlcode callback: mod PN_reset_course_form_definition function_exists($mod_reset_course_form_definition)
                     if (function_exists($mod_reset_course_form_definition)) {
                         $mod_reset_course_form_definition($mform);
+                    // Mdlcode callback: mod PN_reset_userdata function_exists($mod_reset__userdata)
                     } else if (!function_exists($mod_reset__userdata)) {
                         $unsupported_mods[] = $mod;
                     }
@@ -146,6 +150,7 @@ class course_reset_form extends moodleform {
                 $mod_reset_course_form_defaults = $modname.'_reset_course_form_defaults';
                 if (file_exists($modfile)) {
                     @include_once($modfile);
+                    // Mdlcode callback: mod PN_reset_course_form_defaults function_exists($mod_reset_course_form_defaults)
                     if (function_exists($mod_reset_course_form_defaults)) {
                         if ($moddefs = $mod_reset_course_form_defaults($COURSE)) {
                             $defaults = $defaults + $moddefs;

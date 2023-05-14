@@ -3142,9 +3142,9 @@ function get_array_of_activities(int $courseid, bool $usecache = false): array {
  *
  * @deprecated since Moodle 4.1
  * @todo MDL-74484 Final deprecation in Moodle 4.5.
- * @param string $errorcode The name of the language string containing the error message.
+ * @param string $errorcode {Mdlcode-variant-string error*} The name of the language string containing the error message.
  *      Normally this should be in the error.php lang file.
- * @param string $module The language file to get the error message from.
+ * @param string $module {Mdlcode-variant-stringcomponent} The language file to get the error message from.
  * @param string $link The url where the user will be prompted to continue.
  *      If no url is provided the user will be directed to the site index page.
  * @param object $a Extra words and phrases that might be required in the error string
