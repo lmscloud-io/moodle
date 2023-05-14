@@ -1007,7 +1007,7 @@ class helper {
     /**
      * Get an array of the capabilities required to copy a course.
      *
-     * @return array
+     * @return array names {Mdlcode-variant-capability}
      */
     public static function get_course_copy_capabilities(): array {
         return array('moodle/backup:backupcourse', 'moodle/restore:restorecourse', 'moodle/course:view', 'moodle/course:create');
@@ -1021,6 +1021,7 @@ class helper {
      */
     public static function can_copy_course(int $courseid): bool {
         $coursecontext = \context_course::instance($courseid);
+        // Mdlcode-disable cannot-parse-capability.
         return has_all_capabilities(self::get_course_copy_capabilities(), $coursecontext);
     }
 }

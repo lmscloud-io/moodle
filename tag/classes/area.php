@@ -96,6 +96,7 @@ class core_tag_area {
      * @return lang_string
      */
     public static function display_name($component, $itemtype) {
+        // Mdlcode-disable cannot-parse-string
         $identifier = 'tagarea_' . clean_param($itemtype, PARAM_STRINGID);
         if ($component === 'core') {
             $component = 'tag';

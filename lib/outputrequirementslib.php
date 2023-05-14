@@ -757,6 +757,7 @@ class page_requirements_manager {
      * @return array description of module or null if not found
      */
     protected function find_module($component) {
+        // Mdlcode-disable unknown-js-module
         global $CFG, $PAGE;
 
         $module = null;
@@ -1034,11 +1035,12 @@ class page_requirements_manager {
      * function from the module with given arguments. If it is called multiple times, it will be create multiple
      * snippets.
      *
-     * @param string $fullmodule The name of the AMD module to load, formatted as <component name>/<module name>.
+     * @param string $fullmodule {Mdlcode-variant-jsmodule} The name of the AMD module to load, formatted as <component name>/<module name>.
      * @param string $func Optional function from the module to call, defaults to just loading the AMD module.
      * @param array $params The params to pass to the function (will be serialized into JSON).
      */
     public function js_call_amd($fullmodule, $func = null, $params = array()) {
+        // Mdlcode call-subject: (page|PAGE)->requires$
         global $CFG;
 
         $modulepath = explode('/', $fullmodule);
@@ -1090,13 +1092,14 @@ class page_requirements_manager {
      * Before writing new code that makes extensive use of YUI, you should consider it's replacement AMD/JQuery.
      * @see js_call_amd()
      *
-     * @param array|string $modules One or more modules
+     * @param array|string $modules {Mdlcode-variant-jsmodule} One or more modules
      * @param string $function The function to call once modules have been loaded
      * @param array $arguments An array of arguments to pass to the function
      * @param string $galleryversion Deprecated: The gallery version to use
      * @param bool $ondomready
      */
     public function yui_module($modules, $function, array $arguments = null, $galleryversion = null, $ondomready = false) {
+        // Mdlcode call-subject: (page|PAGE|page\(\))->requires$
         if (!is_array($modules)) {
             $modules = array($modules);
         }
@@ -1131,9 +1134,11 @@ class page_requirements_manager {
      *      The first argument is always the YUI3 Y instance with all required dependencies
      *      already loaded.
      * @param bool $ondomready wait for dom ready (helps with some IE problems when modifying DOM)
-     * @param array $module JS module specification array
+     * @param array $module {Mdlcode-variant-jsmodulearray} JS module specification array
      */
     public function js_init_call($function, array $extraarguments = null, $ondomready = false, array $module = null) {
+        // Mdlcode call-subject: (page|PAGE|page\(\))->requires$
+        // Mdlcode call-subject-in-file: lib/outputrequirementslib.php (this|(page|PAGE)->requires)$
         $jscode = js_writer::function_call_with_Y($function, $extraarguments);
         if (!$module) {
             // Detect module automatically.
@@ -1153,9 +1158,11 @@ class page_requirements_manager {
      *
      * @param string $jscode
      * @param bool $ondomready wait for dom ready (helps with some IE problems when modifying DOM)
-     * @param array $module JS module specification array
+     * @param array $module {Mdlcode-variant-jsmodulearray} JS module specification array
      */
     public function js_init_code($jscode, $ondomready = false, array $module = null) {
+        // Mdlcode call-subject: (page|PAGE|page\(\))->requires$
+        // Mdlcode call-subject-in-file: lib/outputrequirementslib.php (this|(page|PAGE)->requires)$
         $jscode = trim($jscode, " ;\n"). ';';
 
         $uniqid = html_writer::random_id();
@@ -1220,11 +1227,13 @@ class page_requirements_manager {
      * on server side, then the solution is to put them in your own data structure
      * (e.g. and array) that you pass to JavaScript with {@link data_for_js()}.
      *
-     * @param string $identifier the desired string.
-     * @param string $component the language file to look in.
+     * @param string $identifier {Mdlcode-variant-string} the desired string.
+     * @param string $component {Mdlcode-variant-stringcomponent} the language file to look in.
      * @param mixed $a any extra data to add into the string (optional).
      */
     public function string_for_js($identifier, $component, $a = null) {
+        // Mdlcode call-subject: (page|PAGE|page\(\))->requires$
+        // Mdlcode call-subject-in-file: lib/outputrequirementslib.php (this|(page|PAGE)->requires)$
         if (!$component) {
             throw new coding_exception('The $component parameter is required for page_requirements_manager::string_for_js().');
         }
@@ -1233,6 +1242,7 @@ class page_requirements_manager {
                     "from lang file '$component' with different \$a parameter?");
         }
         if (!isset($this->stringsforjs[$component][$identifier])) {
+            // Mdlcode-disable cannot-parse-string.
             $this->stringsforjs[$component][$identifier] = new lang_string($identifier, $component, $a);
             $this->stringsforjs_as[$component][$identifier] = $a;
         }
@@ -1255,20 +1265,23 @@ class page_requirements_manager {
      * $PAGE->requires->string_for_js('three', 'mymod', 3);
      * </code>
      *
-     * @param array $identifiers An array of desired strings
-     * @param string $component The module to load for
+     * @param array $identifiers {Mdlcode-variant-string} An array of desired strings
+     * @param string $component {Mdlcode-variant-stringcomponent} The module to load for
      * @param mixed $a This can either be a single variable that gets passed as extra
      *         information for every string or it can be an array of mixed data where the
      *         key for the data matches that of the identifier it is meant for.
      *
      */
     public function strings_for_js($identifiers, $component, $a = null) {
+        // Mdlcode call-subject: (page|PAGE|page\(\))->requires$
+        // Mdlcode call-subject-in-file: lib/outputrequirementslib.php (this|(page|PAGE)->requires)$
         foreach ($identifiers as $key => $identifier) {
             if (is_array($a) && array_key_exists($key, $a)) {
                 $extra = $a[$key];
             } else {
                 $extra = $a;
             }
+            // Mdlcode-disable cannot-parse-string.
             $this->string_for_js($identifier, $component, $extra);
         }
     }

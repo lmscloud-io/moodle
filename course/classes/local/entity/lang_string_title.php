@@ -43,8 +43,8 @@ class lang_string_title implements title {
     /**
      * The lang_string_title constructor.
      *
-     * @param string $identifier the component name.
-     * @param string $component the string identifier.
+     * @param string $identifier {Mdlcode-variant-string} the component name.
+     * @param string $component {Mdlcode-variant-stringcomponent} the string identifier.
      */
     public function __construct(string $identifier, string $component) {
         $this->identifier = $identifier;

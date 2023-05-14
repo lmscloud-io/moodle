@@ -117,6 +117,7 @@ class notification_list_processor implements templatable, renderable {
         $preferencebase = $this->get_preference_base();
         $defaultpreferences = get_message_output_default_preferences();
         $defaultpreference = $processor->name.'_provider_'.$preferencebase.'_locked';
+        // Mdlcode-disable-next-line cannot-parse-string.
         $providername = get_string('messageprovider:'.$this->provider->name, $this->provider->component);
         $processorname = get_string('pluginname', 'message_'.$processor->name);
         $labelparams = [

@@ -108,10 +108,12 @@ function report_participation_get_action_sql($action, $modname) {
     $viewfun = $modname.'_get_view_actions';
     $postfun = $modname.'_get_post_actions';
 
+    // Mdlcode callback: mod PN_get_view_actions function_exists($viewfun)
     if (function_exists($viewfun)) {
         $viewnames = $viewfun();
     }
 
+    // Mdlcode callback: mod PN_get_post_actions function_exists($postfun)
     if (function_exists($postfun)) {
         $postnames = $postfun();
     }

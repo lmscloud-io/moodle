@@ -1317,6 +1317,8 @@ function stats_get_action_names($str) {
         }
         require_once($file);
         $function = $mod->name.'_get_'.$str.'_actions';
+        // Mdlcode callback: mod PN_get_view_actions function_exists($function)
+        // Mdlcode callback: mod PN_get_post_actions function_exists($function)
         if (function_exists($function)) {
             $mod_actions = $function();
             if (is_array($mod_actions)) {

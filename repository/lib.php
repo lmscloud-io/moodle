@@ -34,6 +34,8 @@ define('FILE_CONTROLLED_LINK', 8);
 
 define('RENAME_SUFFIX', '_2');
 
+// Mdlcode assume: $this->get_typename() pluginnames-repository
+
 /**
  * This class is used to manage repository plugins
  *
@@ -1106,6 +1108,7 @@ abstract class repository implements cacheable_object {
         // and there are multiple instances of any repository type
         $sortorder = 1;
         foreach ($records as $record) {
+            // Mdlcode assume: $record->repositorytype pluginnames-repository
             $cache->set('i:'. $record->id, $record);
             if (!file_exists($CFG->dirroot . '/repository/'. $record->repositorytype.'/lib.php')) {
                 continue;
@@ -1574,6 +1577,7 @@ abstract class repository implements cacheable_object {
                     // If the user does not have the permission to view the repository, it won't be displayed in
                     // the list of instances. Hiding the link to create new instances will prevent the
                     // user from creating them without being able to find them afterwards, which looks like a bug.
+                    // Mdlcode assume: $type->get_typename() pluginnames-repository
                     if (!has_capability('repository/'.$type->get_typename().':view', $context)) {
                         continue;
                     }

@@ -25,7 +25,7 @@
 /**
  * Calculates capability data organised by context for the given roles.
  *
- * @param string $capability The capability to get data for.
+ * @param string $capability {Mdlcode-variant-capability} The capability to get data for.
  * @param array $roles An array of roles to get data for.
  * @return context[] An array of contexts.
  */

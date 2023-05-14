@@ -203,6 +203,7 @@ class mustache_template_source_loader {
             // Include $strings and $seenstrings by reference so that their values can be updated
             // outside of this anonymous function.
             function($component, $id) use ($save, &$strings, &$seenstrings, $lang) {
+                // Mdlcode-disable-next-line cannot-parse-string.
                 $string = get_string_manager()->get_string($id, $component, null, $lang);
                 // Save the string in the $strings results array.
                 list($strings, $seenstrings) = $save($strings, $seenstrings, $component, $id, $string);

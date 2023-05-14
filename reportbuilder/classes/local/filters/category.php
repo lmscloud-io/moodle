@@ -42,6 +42,7 @@ class category extends base {
      * @param MoodleQuickForm $mform
      */
     public function setup_form(MoodleQuickForm $mform): void {
+        // Mdlcode-disable cannot-parse-capability
         $label = get_string('filterfieldvalue', 'core_reportbuilder', $this->get_header());
 
         // See MDL-74627: in order to set the default value to "No selection" we need to prepend an empty value.

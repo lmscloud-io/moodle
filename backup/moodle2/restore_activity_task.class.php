@@ -295,6 +295,7 @@ abstract class restore_activity_task extends restore_task {
         // - section_included setting (if exists)
         $settingname = $settingprefix . 'included';
         $activity_included = new restore_activity_generic_setting($settingname, base_setting::IS_BOOLEAN, true);
+        // Mdlcode assume-next-line: $this->modulename pluginnames-mod
         $activity_included->get_ui()->set_icon(new image_icon('monologo', get_string('pluginname', $this->modulename),
             $this->modulename, array('class' => 'iconlarge icon-post ml-1')));
         $this->add_setting($activity_included);

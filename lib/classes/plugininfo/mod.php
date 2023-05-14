@@ -51,6 +51,7 @@ class mod extends base {
 
         // Only set visibility if it's different from the current value.
         if ($module->visible != $enabled) {
+            // Mdlcode callback-next-line: ignore
             if ($enabled && component_callback_exists("mod_{$pluginname}", 'pre_enable_plugin_actions')) {
                 // This callback may be used to perform actions that must be completed prior to enabling a plugin.
                 // Example of this may include:
@@ -121,6 +122,7 @@ class mod extends base {
     }
 
     public function init_display_name() {
+        // Mdlcode assume-optional: $this->component fullpluginnames-mod
         if (get_string_manager()->string_exists('pluginname', $this->component)) {
             $this->displayname = get_string('pluginname', $this->component);
         } else {

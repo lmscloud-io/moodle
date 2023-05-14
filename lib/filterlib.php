@@ -614,6 +614,7 @@ class filterobject {
  * @return string the human-readable name for this filter.
  */
 function filter_get_name($filter) {
+    // Mdlcode assume: $filter pluginnames-filter
     if (strpos($filter, 'filter/') === 0) {
         debugging("Old '$filter'' parameter used in filter_get_name()");
         $filter = substr($filter, 7);

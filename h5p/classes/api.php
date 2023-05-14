@@ -301,6 +301,8 @@ class api {
             $context = \context::instance_by_id($file->get_contextid());
             $plugins = \core_component::get_plugin_list($type);
             $isvalid = array_key_exists($component, $plugins);
+            // Mdlcode-todo
+            // Mdlcode assume-special: h5p-modblock-component-capability
             if ($isvalid && has_capability("$type/$component:addinstance", $context)) {
                 // The user can edit the content because she has the capability for creating instances where the file belongs.
                 return true;
@@ -625,6 +627,7 @@ class api {
         // In order to get the proper hash, a callback should be done (looking for those exceptions).
         $pathdata = null;
         if ($context->contextlevel == CONTEXT_MODULE || $context->contextlevel == CONTEXT_BLOCK) {
+            // Mdlcode callback-next-line: *
             $pathdata = component_callback($component, 'get_path_from_pluginfile', [$filearea, $parts], null);
         }
         if (null === $pathdata) {

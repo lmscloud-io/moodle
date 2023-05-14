@@ -174,6 +174,7 @@ class comment_manager {
             $userdata = html_writer::link(new moodle_url('/user/profile.php', ['id' => $c->userid]), $c->fullname);
             $this->setup_plugin($c);
             if (!empty($this->plugintype)) {
+                // Mdlcode callback: *
                 $context_url = plugin_callback($this->plugintype, $this->pluginname, 'comment', 'url', array($c));
             }
             $checkbox = html_writer::checkbox('comments', $c->id, false);

@@ -164,6 +164,7 @@ class core_enrol_external extends external_api {
                 $courseusers['courseid'] = $courseid;
                 $courseusers['capability'] = $capability;
 
+                // Mdlcode-disable cannot-parse-capability.
                 list($enrolledsql, $enrolledparams) = get_enrolled_sql($coursecontext, $capability, $groupid, $onlyactive);
                 $enrolledparams['courseid'] = $courseid;
 

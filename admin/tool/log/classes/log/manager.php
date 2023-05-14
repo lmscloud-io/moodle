@@ -126,6 +126,7 @@ class manager implements \core\log\manager {
             return array();
         }
 
+        // Mdlcode callback-next-line: ignore
         $reports = get_plugin_list_with_function('report', 'supports_logstore', 'lib.php');
         $enabled = $this->stores;
 
@@ -139,7 +140,9 @@ class manager implements \core\log\manager {
 
         $return = array();
         foreach ($reports as $report => $fulldir) {
+            // Mdlcode callback-next-line: report
             if (component_callback($report, 'supports_logstore', array($instance), false)) {
+                // Mdlcode assume-next-line: $report fullpluginnames-report
                 $return[$report] = get_string('pluginname', $report);
             }
         }
@@ -160,6 +163,7 @@ class manager implements \core\log\manager {
         $allstores = self::get_store_plugins();
         $enabled = $this->stores;
 
+        // Mdlcode callback: report
         $function = component_callback_exists($component, 'supports_logstore');
         if (!$function) {
             // The report doesn't define the callback, most probably it doesn't need log stores.
@@ -170,6 +174,7 @@ class manager implements \core\log\manager {
         foreach ($allstores as $store => $logclass) {
             $instance = empty($enabled[$store]) ? new $logclass($this) : $enabled[$store];
             if ($function($instance)) {
+                // Mdlcode assume: $store fullpluginnames-logstore
                 $return[$store] = get_string('pluginname', $store);
             }
         }

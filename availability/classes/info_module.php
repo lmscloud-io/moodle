@@ -109,6 +109,11 @@ class info_module extends info {
         return parent::filter_user_list($filtered);
     }
 
+    /**
+     * Returns the cappability used to ignore access restrictions.
+     *
+     * @return string Name of capability used to view hidden items of this type
+     */
     protected function get_view_hidden_capability() {
         return 'moodle/course:ignoreavailabilityrestrictions';
     }

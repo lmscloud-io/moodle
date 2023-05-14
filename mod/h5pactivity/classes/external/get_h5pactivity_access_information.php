@@ -90,6 +90,7 @@ class get_h5pactivity_access_information extends external_api {
             if ($field == 'cansubmit') {
                 $result[$field] = $manager->is_tracking_enabled();
             } else {
+                // Mdlcode-disable cannot-parse-capability.
                 $result[$field] = has_capability($capname, $context);
             }
         }

@@ -66,13 +66,16 @@ class participants_action_bar implements \renderable {
      */
     protected function get_ordered_nodes(): array {
         return [
+            // Mdlcode uses-next-line: string ['enrolments', 'enrol']
             'enrolments:enrol' => [
                 'review',
                 'manageinstances'
             ],
+            // Mdlcode uses-next-line: string ['groups', 'group']
             'groups:group' => [
                 'groups'
             ],
+            // Mdlcode uses-next-line: string ['permissions', 'role']
             'permissions:role' => [
                 'override',
                 'roles',
@@ -115,6 +118,7 @@ class participants_action_bar implements \renderable {
         $nodes = $this->get_ordered_nodes();
         foreach ($nodes as $description => $content) {
             list($stringid, $location) = explode(':', $description);
+            // Mdlcode-disable-next-line cannot-parse-string.
             $heading = get_string($stringid, $location);
             $items = [];
             foreach ($content as $key) {

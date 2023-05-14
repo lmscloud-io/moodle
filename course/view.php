@@ -1,6 +1,7 @@
 <?php
 
 //  Display the course home page.
+// Mdlcode assume-optional: $course->format pluginnames-format
 
     require_once('../config.php');
     require_once('lib.php');

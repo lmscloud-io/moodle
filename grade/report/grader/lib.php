@@ -626,6 +626,7 @@ class grade_report_grader extends grade_report {
      */
     public function get_left_rows($displayaverages) {
         global $CFG, $USER, $OUTPUT;
+        // Mdlcode assume: $CFG->grade_profilereport pluginnames-gradereport
 
         $rows = array();
 
