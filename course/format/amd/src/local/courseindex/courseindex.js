@@ -241,6 +241,7 @@ export default class Component extends BaseComponent {
         const exporter = this.reactive.getExporter();
         const data = exporter.cm(state, element);
         // Create the new content.
+        // Mdlcode uses-next-line: template 'core_courseformat/local/courseindex/cm'.
         const newcomponent = await this.renderComponent(fakeelement, 'core_courseformat/local/courseindex/cm', data);
         // Replace the fake node with the real content.
         const newelement = newcomponent.getElement();
@@ -270,6 +271,7 @@ export default class Component extends BaseComponent {
         const exporter = this.reactive.getExporter();
         const data = exporter.section(state, element);
         // Create the new content.
+        // Mdlcode uses-next-line: template 'core_courseformat/local/courseindex/section'.
         const newcomponent = await this.renderComponent(fakeelement, 'core_courseformat/local/courseindex/section', data);
         // Replace the fake node with the real content.
         const newelement = newcomponent.getElement();

@@ -128,6 +128,7 @@ class gradebookservices extends service_base {
      * @param \MoodleQuickForm $mform Moodle quickform object definition
      */
     public function get_configuration_options(&$mform) {
+        // Mdlcode assume-optional: $this->get_component_id() fullpluginnames-ltiservice
 
         $selectelementname = 'ltiservice_gradesynchronization';
         $identifier = 'grade_synchronization';

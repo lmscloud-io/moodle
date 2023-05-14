@@ -40,6 +40,7 @@ class dataformat extends base {
      * Display name
      */
     public function init_display_name() {
+        // Mdlcode assume-optional: $this->component fullpluginnames-dataformat
         if (!get_string_manager()->string_exists('dataformat', $this->component)) {
             $this->displayname = '[dataformat,' . $this->component . ']';
         } else {

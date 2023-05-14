@@ -1703,6 +1703,7 @@ function quiz_get_extra_capabilities() {
  */
 function quiz_extend_settings_navigation(settings_navigation $settings, navigation_node $quiznode) {
     global $CFG;
+    // Mdlcode assume: $report pluginnames-quiz
 
     // Require {@link questionlib.php}
     // Included here as we only ever want to include this file if we really need to.

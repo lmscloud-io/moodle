@@ -852,12 +852,13 @@ class external extends external_api {
      * Search users.
      *
      * @param string $query
-     * @param string $capability
+     * @param string $capability {Mdlcode-variant-capability}
      * @param int $limitfrom
      * @param int $limitnum
      * @return array
      */
     public static function search_users($query, $capability = '', $limitfrom = 0, $limitnum = 100) {
+        // Mdlcode-disable cannot-parse-capability
         global $DB, $CFG, $PAGE, $USER;
 
         $params = self::validate_parameters(self::search_users_parameters(), array(

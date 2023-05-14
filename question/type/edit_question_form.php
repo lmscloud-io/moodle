@@ -215,9 +215,11 @@ abstract class question_edit_form extends question_wizard_form {
             // Add extra information from plugins when editing a question (e.g.: Authors, version control and usage).
             $functionname = 'edit_form_display';
             $questiondata = [];
+            // Mdlcode callback-next-line: ignore
             $plugins = get_plugin_list_with_function('qbank', $functionname);
             foreach ($plugins as $componentname => $plugin) {
                 $element = new StdClass();
+                // Mdlcode callback-next-line: qbank
                 $element->pluginhtml = component_callback($componentname, $functionname, [$this->question]);
                 $questiondata['editelements'][] = $element;
             }

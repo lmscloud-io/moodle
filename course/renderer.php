@@ -431,6 +431,7 @@ class core_course_renderer extends plugin_renderer_base {
      */
     public function course_section_cm_completion($course, &$completioninfo, cm_info $mod, $displayoptions = array()) {
         global $CFG, $DB, $USER;
+        // Mdlcode-disable unknown-string
 
         debugging(__FUNCTION__ . ' is deprecated and is being replaced by the activity_information output component.',
             DEBUG_DEVELOPER);

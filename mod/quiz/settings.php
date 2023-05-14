@@ -24,6 +24,7 @@
 
 
 defined('MOODLE_INTERNAL') || die();
+// Mdlcode assume: $report pluginnames-quiz
 
 require_once($CFG->dirroot . '/mod/quiz/lib.php');
 

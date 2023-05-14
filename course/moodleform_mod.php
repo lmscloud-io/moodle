@@ -474,6 +474,7 @@ abstract class moodleform_mod extends moodleform {
                     $errors['completiongradeitemnumber'] = get_string(
                         'badcompletiongradeitemnumber',
                         'completion',
+                        // Mdlcode-disable-next-line cannot-parse-string.
                         get_string("grade_{$itemname}_name", $component)
                     );
                 }
@@ -813,6 +814,7 @@ abstract class moodleform_mod extends moodleform {
                         '' => get_string('activitygradenotrequired', 'completion'),
                     ];
                     foreach ($itemnames as $itemnumber => $itemname) {
+                        // Mdlcode-disable-next-line cannot-parse-string.
                         $options[$itemnumber] = get_string("grade_{$itemname}_name", $component);
                     }
 

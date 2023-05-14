@@ -71,6 +71,7 @@ class competency extends persistent {
         $parentname = ($parent) ? $parent->get('shortname') : get_string('competencyframeworkroot', 'tool_lp');
         $parentlabel = '';
         if (!empty($competency->get('id'))) {
+            // Mdlcode assume-next-line: $framework->get_taxonomy($parentlevel) ['behaviour', 'competency', 'concept', 'domain', 'indicator', 'level', 'outcome', 'practice', 'proficiency', 'skill', 'value']
             $parentlabel = get_string('taxonomy_parent_' . $framework->get_taxonomy($parentlevel), 'tool_lp');
         } else {
             $parentlabel = get_string('parentcompetency', 'tool_lp');

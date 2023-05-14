@@ -106,6 +106,7 @@ $COMPLETION_CRITERIA_TYPES = array(
 abstract class completion_criteria extends data_object {
 
     /* @var string Database table name that stores completion criteria information  */
+    // Mdlcode uses-next-line: dbtable 'course_completion_criteria'
     public $table = 'course_completion_criteria';
 
     /**

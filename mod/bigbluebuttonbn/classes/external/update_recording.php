@@ -85,6 +85,7 @@ class update_recording extends external_api {
         $recordingcontext = $instance->get_context();
         self::validate_context($recordingcontext);
         require_capability('mod/bigbluebuttonbn:managerecordings', $recordingcontext);
+        // Mdlcode assume: $action ['delete', 'edit', 'protect','publish','unprotect','unpublish','import']
         require_capability("mod/bigbluebuttonbn:{$action}recordings", $recordingcontext);
 
         // Fetch the session, features, and profile.

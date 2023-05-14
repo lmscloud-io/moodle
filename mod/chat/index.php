@@ -62,6 +62,7 @@ $strname  = get_string('name');
 $table = new html_table();
 
 if ($usesections) {
+    // Mdlcode assume-optional: $course->format pluginnames-format.
     $strsectionname = get_string('sectionname', 'format_'.$course->format);
     $table->head  = array ($strsectionname, $strname);
     $table->align = array ('center', 'left');

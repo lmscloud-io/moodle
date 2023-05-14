@@ -184,6 +184,7 @@ abstract class administration_helper extends cache_helper {
         $storenames = array();
         foreach ($config->get_all_stores() as $key => $store) {
             if (!empty($store['default'])) {
+                // Mdlcode assume: $key ['default_application', 'default_session', 'default_request']
                 $storenames[$key] = new \lang_string('store_'.$key, 'cache');
             } else {
                 $storenames[$store['name']] = $store['name'];
@@ -229,6 +230,7 @@ abstract class administration_helper extends cache_helper {
         $storenames = array();
         foreach ($instance->get_all_stores() as $key => $store) {
             if (!empty($store['default'])) {
+                // Mdlcode assume: $key ['default_application', 'default_session', 'default_request']
                 $storenames[$key] = new \lang_string('store_'.$key, 'cache');
             }
         }
@@ -267,6 +269,7 @@ abstract class administration_helper extends cache_helper {
         foreach ($instance->get_locks() as $lock) {
             $default = !empty($lock['default']);
             if ($default) {
+                // Mdlcode assume: $lock['name'] ['cachelock_file_default']
                 $name = new \lang_string($lock['name'], 'cache');
             } else {
                 $name = $lock['name'];
@@ -281,7 +284,7 @@ abstract class administration_helper extends cache_helper {
                 'name' => $name,
                 'default' => $default,
                 'uses' => $uses,
-                'type' => get_string('pluginname', $lock['type'])
+                'type' => get_string('pluginname', $lock['type']) // Mdlcode-disable-line cannot-parse-string.
             );
             $locks[$lock['name']] = $lockdata;
         }

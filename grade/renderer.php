@@ -34,6 +34,7 @@ class core_grades_renderer extends plugin_renderer_base {
      * @return string The HTML output
      */
     public function render_action_bar(action_bar $actionbar): string {
+        // Mdlcode-disable cannot-parse-template
         $data = $actionbar->export_for_template($this);
         return $this->render_from_template($actionbar->get_template(), $data);
     }

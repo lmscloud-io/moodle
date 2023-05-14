@@ -53,6 +53,7 @@ if (!empty($id)) {
     $breadcrumbtitle = get_string('edit');
 } else {
     $contenttypename = "contenttype_$pluginname";
+    // Mdlcode assume-next-line: $contenttypename fullpluginnames-contenttype
     $heading = get_string('addinganew', 'moodle', get_string('description', $contenttypename));
     $content = null;
     $breadcrumbtitle = get_string('add');

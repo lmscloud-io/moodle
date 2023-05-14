@@ -267,6 +267,7 @@ class helper {
         $comment = '';
         $extrahtml = [];
         foreach ($plugins as $componentname => $plugin) {
+            // Mdlcode callback-next-line: ignore
             $pluginhtml = component_callback($componentname, 'preview_display', [$question, $courseid]);
             if ($componentname === 'qbank_comment') {
                 $comment = $pluginhtml;

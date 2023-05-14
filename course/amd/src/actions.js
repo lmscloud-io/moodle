@@ -498,6 +498,7 @@ define(
             var modtypename = mainelement.attr('class').match(/modtype_([^\s]*)/)[1];
             var modulename = getModuleName(mainelement);
 
+            // Mdlcode assume-next-line: modtypename pluginnames-mod
             str.get_string('pluginname', modtypename).done(function(pluginname) {
                 var plugindata = {
                     type: pluginname,

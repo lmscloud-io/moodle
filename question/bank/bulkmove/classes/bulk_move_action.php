@@ -38,6 +38,9 @@ class bulk_move_action extends \core_question\local\bank\bulk_action_base {
         return new \moodle_url('/question/bank/bulkmove/move.php');
     }
 
+    /**
+     * @return array|null
+     */
     public function get_bulk_action_capabilities(): ?array {
         return [
             'moodle/question:moveall',

@@ -25,6 +25,7 @@
 
 
 defined('MOODLE_INTERNAL') || die();
+// Mdlcode assume: $this->qtype() ['ddimageortext', 'ddmarker']
 
 require_once($CFG->dirroot.'/question/type/ddimageortext/edit_ddtoimage_form_base.php');
 require_once($CFG->dirroot.'/question/type/ddmarker/shapes.php');

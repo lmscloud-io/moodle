@@ -104,10 +104,13 @@ class event_exporter_base extends exporter {
             $data->activityname = $cm->get('name');
 
             $component = 'mod_' . $data->modulename;
+            // Mdlcode callback-next-line: ignore
             if (!component_callback_exists($component, 'core_calendar_get_event_action_string')) {
+                // Mdlcode assume-next-line: $data->modulename pluginnames-mod
                 $modulename = get_string('modulename', $data->modulename);
                 $data->activitystr = get_string('requiresaction', 'calendar', $modulename);
             } else {
+                // Mdlcode callback-next-line: mod
                 $data->activitystr = component_callback(
                     $component,
                     'core_calendar_get_event_action_string',

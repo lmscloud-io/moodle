@@ -234,8 +234,8 @@ abstract class qtype_multianswer_subq_renderer_base extends qtype_renderer {
      * If the question number is set ({@see qtype_renderer::$questionnumber}), the label will
      * include the question number in order to indicate which question the answer field belongs to.
      *
-     * @param string $langkey The lang string key for the lang string that does not include the question number.
-     * @param string $component The Frankenstyle component name.
+     * @param string $langkey {Mdlcode-variant-string question} The lang string key for the lang string that does not include the question number.
+     * @param string $component {Mdlcode-variant-stringcomponent} The Frankenstyle component name.
      * @return string
      * @throws coding_exception
      */
@@ -255,6 +255,7 @@ abstract class qtype_multianswer_subq_renderer_base extends qtype_renderer {
 
         $params = self::$answercount[$questionnumberindex][$langkey];
 
+        // Mdlcode uses-next-line: string ['answerx', 'question']
         return $this->displayoptions->add_question_identifier_to_label(get_string($langkey, $component, $params));
     }
 }

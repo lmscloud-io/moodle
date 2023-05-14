@@ -257,6 +257,7 @@ function book_get_view_actions() {
             require_once("$dir/lib.php");
         }
         $function = 'booktool_'.$plugin.'_get_view_actions';
+        // Mdlcode callback: booktool PREFIX_get_view_actions function_exists($function)
         if (function_exists($function)) {
             if ($actions = $function()) {
                 $return = array_merge($return, $actions);
@@ -287,6 +288,7 @@ function book_get_post_actions() {
             require_once("$dir/lib.php");
         }
         $function = 'booktool_'.$plugin.'_get_post_actions';
+        // Mdlcode callback: booktool PREFIX_get_post_actions function_exists($function)
         if (function_exists($function)) {
             if ($actions = $function()) {
                 $return = array_merge($return, $actions);
@@ -362,6 +364,7 @@ function book_extend_settings_navigation(settings_navigation $settingsnav, navig
             require_once("$dir/lib.php");
         }
         $function = 'booktool_'.$plugin.'_extend_settings_navigation';
+        // Mdlcode callback: booktool PREFIX_extend_settings_navigation function_exists($function)
         if (function_exists($function)) {
             $function($settingsnav, $booknode);
         }

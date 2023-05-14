@@ -519,6 +519,7 @@ class data_field_base {     // Base class for Database Field Types (see field/*/
      * @return string
      */
     function name() {
+        // Mdlcode assume: $this->type pluginnames-datafield.
         return get_string('fieldtypelabel', "datafield_$this->type");
     }
 

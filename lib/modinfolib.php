@@ -883,6 +883,7 @@ class course_modinfo {
 
                         include_once("$CFG->dirroot/mod/$modname/lib.php");
 
+                        // Mdlcode callback: mod PN_get_coursemodule_info function_exists($functionname)
                         if ($hasfunction = function_exists($functionname)) {
                             if ($info = $functionname($rawmods[$cmid])) {
                                 if (!empty($info->icon)) {
@@ -2451,6 +2452,7 @@ class cm_info implements IteratorAggregate {
      * @return bool True if the user access is restricted.
      */
     public function is_user_access_restricted_by_capability() {
+        // Mdlcode assume-optional: $this->modname pluginnames-mod
         $userid = $this->modinfo->get_user_id();
         if ($userid == -1) {
             return null;
@@ -2491,10 +2493,12 @@ class cm_info implements IteratorAggregate {
         if (file_exists($libfile)) {
             include_once($libfile);
             $function = 'mod_' . $this->modname . '_' . $type;
-            if (function_exists($function)) {
+            // Mdlcode callback-next-line: mod PREFIX_cm_info_dynamic function_exists($function)
+            if (function_exists($function)) { // Mdlcode callback-line: mod PREFIX_cm_info_view function_exists($function)
                 $function($this);
             } else {
                 $function = $this->modname . '_' . $type;
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($function)) {
                     $function($this);
                 }

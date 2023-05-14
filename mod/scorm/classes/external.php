@@ -952,6 +952,7 @@ class mod_scorm_external extends external_api {
         foreach ($capabilities as $capname => $capdata) {
             // Get fields like cansubmit so it is consistent with the access_information function implemented in other modules.
             $field = 'can' . str_replace('mod/scorm:', '', $capname);
+            // Mdlcode-disable cannot-parse-capability.
             $result[$field] = has_capability($capname, $context);
         }
 

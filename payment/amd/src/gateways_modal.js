@@ -168,6 +168,7 @@ const updateCostRegion = async(root, defaultCost = '') => {
  * @returns {Promise<string>}
  */
 const processPayment = async(gateway, component, paymentArea, itemId, description) => {
+    // Mdlcode assume: gateway pluginnames-paygw
     const paymentMethod = await import(`paygw_${gateway}/gateways_modal`);
     return paymentMethod.process(component, paymentArea, itemId, description);
 };

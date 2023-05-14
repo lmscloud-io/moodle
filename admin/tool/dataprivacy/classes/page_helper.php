@@ -43,7 +43,7 @@ class page_helper {
      * @param moodle_url $url The page URL.
      * @param string $title The page's title.
      * @param string $attachtoparentnode The parent navigation node where this page can be accessed from.
-     * @param string $requiredcapability The required capability to view this page.
+     * @param string $requiredcapability {Mdlcode-variant-capability} The required capability to view this page.
      */
     public static function setup(moodle_url $url, $title, $attachtoparentnode = '',
                                  $requiredcapability = 'tool/dataprivacy:managedataregistry') {

@@ -446,7 +446,7 @@ function xmldb_bigbluebuttonbn_upgrade($oldversion = 0) {
  * Generic helper function for adding or changing a field in a table.
  *
  * @param database_manager $dbman
- * @param string $tablename
+ * @param string $tablename {Mdlcode-variant-dbtable}
  * @param string $fieldname
  * @param array $fielddefinition
  * @deprecated  please do not use this anymore (historical migrations)
@@ -477,7 +477,7 @@ function xmldb_bigbluebuttonbn_add_change_field(database_manager $dbman, string 
  * Generic helper function for adding index to a table.
  *
  * @param database_manager $dbman
- * @param string $tablename
+ * @param string $tablename {Mdlcode-variant-dbtable}
  * @param string $indexname
  * @param array $indexfields
  * @param string|false|null $indextype

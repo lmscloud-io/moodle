@@ -197,6 +197,7 @@ abstract class base {
      * Sets {@link $displayname} property to a localized name of the plugin
      */
     public function init_display_name() {
+        // Mdlcode assume-optional: $this->component fullpluginnames-/^.*$/
         if (!get_string_manager()->string_exists('pluginname', $this->component)) {
             $this->displayname = '[pluginname,' . $this->component . ']';
         } else {

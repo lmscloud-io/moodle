@@ -113,6 +113,7 @@ class core_external extends external_api {
                       array('stringid'=>$stringid, 'component' => $component, 'lang' => $lang, 'stringparams' => $stringparams));
 
         $stringmanager = get_string_manager();
+        // Mdlcode-disable-next-line cannot-parse-string.
         return $stringmanager->get_string($params['stringid'], $params['component'],
             core_external::format_string_parameters($params['stringparams']), $params['lang']);
     }
@@ -179,6 +180,7 @@ class core_external extends external_api {
                 'stringid' => $string['stringid'],
                 'component' => $string['component'],
                 'lang' => $lang,
+                // Mdlcode-disable-next-line cannot-parse-string.
                 'string' => $stringmanager->get_string($string['stringid'], $string['component'],
                     core_external::format_string_parameters($string['stringparams']), $lang));
         }
@@ -420,6 +422,7 @@ class core_external extends external_api {
         // Overwriting page_requirements_manager with the fragment one so only JS included from
         // this point is returned to the user.
         $PAGE->start_collecting_javascript_requirements();
+        // Mdlcode callback-next-line: * PREFIX_output_fragment_*
         $data = component_callback($params['component'], 'output_fragment_' . $params['callback'], array($arguments));
         $jsfooter = $PAGE->requires->get_end_code();
         $output = array('html' => $data, 'javascript' => $jsfooter);
@@ -471,9 +474,11 @@ class core_external extends external_api {
         // Validate and normalize parameters.
         $params = self::validate_parameters(self::update_inplace_editable_parameters(),
                       array('component' => $component, 'itemtype' => $itemtype, 'itemid' => $itemid, 'value' => $value));
+        /// Mdlcode callback-next-line: ignore
         if (!$functionname = component_callback_exists($component, 'inplace_editable')) {
             throw new \moodle_exception('inplaceeditableerror');
         }
+        // Mdlcode callback-next-line: *
         $tmpl = component_callback($params['component'], 'inplace_editable',
             array($params['itemtype'], $params['itemid'], $params['value']));
         if (!$tmpl || !($tmpl instanceof \core\output\inplace_editable)) {

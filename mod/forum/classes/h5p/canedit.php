@@ -63,6 +63,8 @@ class canedit {
                 $context = \context::instance_by_id($file->get_contextid());
                 $plugins = \core_component::get_plugin_list($type);
                 $isvalid = array_key_exists($component, $plugins);
+                // Mdlcode assume: $type 'mod'
+                // Mdlcode assume: $component 'forum'
                 if ($isvalid && has_capability("$type/$component:addinstance", $context)) {
                     // The user can edit the content because she has the capability for creating instances where the file belongs.
                     return true;

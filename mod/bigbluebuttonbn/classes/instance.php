@@ -621,6 +621,7 @@ EOF;
      * @return bool
      */
     public function can_perform_on_recordings($action): bool {
+        // Mdlcode assume: $action ['protect','unprotect','publish','unpublish','delete']
         // Note: This will include site administrators.
         // The has_capability() function returns truthy for admins unless otherwise directed.
         return has_capability("mod/bigbluebuttonbn:{$action}recordings", $this->get_context());

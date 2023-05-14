@@ -31,7 +31,7 @@ class recipients_action_bar extends manage_badge_action_bar {
     /**
      * The template that this tertiary nav should use.
      *
-     * @return string
+     * @return string {Mdlcode-variant-template}
      */
     public function get_template(): string {
         return 'core_badges/award_badge';

@@ -23,6 +23,7 @@
  */
 
 require('../../config.php');
+// Mdlcode-disable cannot-parse-capability
 
 $contextid  = required_param('contextid', PARAM_INT);
 

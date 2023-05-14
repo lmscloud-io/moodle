@@ -132,6 +132,7 @@ class core_tag_collection {
      * @return string
      */
     public static function display_name($record) {
+        // Mdlcode-disable cannot-parse-string.
         $syscontext = context_system::instance();
         if (!empty($record->component)) {
             $identifier = 'tagcollection_' .

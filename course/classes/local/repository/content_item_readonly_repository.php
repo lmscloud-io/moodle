@@ -46,6 +46,7 @@ class content_item_readonly_repository implements content_item_readonly_reposito
      */
     private function get_core_module_help_string(string $modname): string {
         global $OUTPUT;
+        // Mdlcode assume-optional: $modname pluginnames-mod
 
         $help = '';
         $sm = get_string_manager();
@@ -134,6 +135,7 @@ class content_item_readonly_repository implements content_item_readonly_reposito
         $pluginmanager = \core_plugin_manager::instance();
         foreach ($pluginmanager->get_subplugins_of_plugin($parentpluginname) as $subpluginname => $subplugin) {
             // Call the hook, but with a copy of the module content item data.
+            // Mdlcode assume-next-line: $subpluginname subplugins-mod
             $spcontentitems = component_callback($subpluginname, 'get_course_content_items', [$modulecontentitem, $user], null);
             if (!is_null($spcontentitems)) {
                 foreach ($spcontentitems as $spcontentitem) {
@@ -156,6 +158,7 @@ class content_item_readonly_repository implements content_item_readonly_reposito
         $pluginmanager = \core_plugin_manager::instance();
         foreach ($pluginmanager->get_subplugins_of_plugin($parentpluginname) as $subpluginname => $subplugin) {
             // Call the hook, but with a copy of the module content item data.
+            // Mdlcode assume-next-line: $subpluginname subplugins-mod
             $spcontentitems = component_callback($subpluginname, 'get_all_content_items', [$modulecontentitem], null);
             if (!is_null($spcontentitems)) {
                 foreach ($spcontentitems as $spcontentitem) {
@@ -208,6 +211,7 @@ class content_item_readonly_repository implements content_item_readonly_reposito
             $contentitem = new content_item(
                 $mod->id,
                 $mod->name,
+                // Mdlcode assume-next-line: $mod->name pluginnames-mod
                 new lang_string_title("modulename", $mod->name),
                 new \moodle_url(''), // No course scope, so just an empty link.
                 $OUTPUT->pix_icon('monologo', '', $mod->name, ['class' => 'icon activityicon']),
@@ -219,6 +223,7 @@ class content_item_readonly_repository implements content_item_readonly_reposito
 
             $modcontentitemreference = clone($contentitem);
 
+            // Mdlcode callback-next-line: ignore
             if (component_callback_exists('mod_' . $mod->name, 'get_all_content_items')) {
                 // Call the module hooks for this module.
                 $plugincontentitems = component_callback('mod_' . $mod->name, 'get_all_content_items',
@@ -281,6 +286,7 @@ class content_item_readonly_repository implements content_item_readonly_reposito
             $contentitem = new content_item(
                 $mod->id,
                 $mod->name,
+                // Mdlcode assume-next-line: $mod->name pluginnames-mod
                 new lang_string_title("modulename", $mod->name),
                 new \moodle_url($urlbase, ['add' => $mod->name]),
                 $OUTPUT->pix_icon($icon, '', $mod->name, ['class' => "activityicon $iconclass"]),
@@ -296,6 +302,7 @@ class content_item_readonly_repository implements content_item_readonly_reposito
             // component (lti + lti source being an example), but we can still list these items.
             $modcontentitemreference = clone($contentitem);
 
+            // Mdlcode callback-next-line: ignore
             if (component_callback_exists('mod_' . $mod->name, 'get_course_content_items')) {
                 // Call the module hooks for this module.
                 $plugincontentitems = component_callback('mod_' . $mod->name, 'get_course_content_items',

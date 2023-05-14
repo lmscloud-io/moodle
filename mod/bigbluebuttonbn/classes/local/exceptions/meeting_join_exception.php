@@ -30,7 +30,7 @@ class meeting_join_exception extends \moodle_exception {
     /**
      * Constructor
      *
-     * @param string $errorcode The name of the string from error.php to print
+     * @param string $errorcode {Mdlcode-variant-string mod_bigbluebuttonbn} The name of the string from error.php to print
      */
     public function __construct($errorcode) {
         parent::__construct($errorcode, plugin::COMPONENT);

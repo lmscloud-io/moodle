@@ -36,6 +36,7 @@ class question_category_list extends moodle_list {
      * Table name.
      * @var $table
      */
+    // Mdlcode uses-next-line: dbtable 'question_categories'
     public $table = "question_categories";
 
     /**

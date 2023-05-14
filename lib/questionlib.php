@@ -1432,6 +1432,7 @@ function question_default_export_filename($course, $category): string {
  */
 function question_has_capability_on($questionorid, $cap, $notused = -1): bool {
     global $USER, $DB;
+    // Mdlcode assume: $cap ['add', 'edit', 'view', 'use', 'move', 'tag', 'comment']
 
     if (is_numeric($questionorid)) {
         $questionid = (int)$questionorid;
@@ -1483,6 +1484,7 @@ function question_has_capability_on($questionorid, $cap, $notused = -1): bool {
     // Each of these has a 'mine' and 'all' version that is appended to the capability name.
     $capabilitieswithallandmine = ['edit' => 1, 'view' => 1, 'use' => 1, 'move' => 1, 'tag' => 1, 'comment' => 1];
 
+    // Mdlcode-disable unknown-capability.
     if (!isset($capabilitieswithallandmine[$cap])) {
         return has_capability('moodle/question:' . $cap, $context);
     } else {
@@ -1513,6 +1515,7 @@ function question_require_capability_on($question, $cap): bool {
  * @return string|bool A URL for editing questions in this context.
  */
 function question_edit_url($context) {
+    // Mdlcode-disable cannot-parse-capability
     global $CFG, $SITE;
     if (!has_any_capability(question_get_question_capabilities(), $context)) {
         return false;
@@ -1648,7 +1651,7 @@ function question_extend_settings_navigation(navigation_node $navigationnode, $c
 /**
  * Get the array of capabilities for question.
  *
- * @return array all the capabilities that relate to accessing particular questions.
+ * @return array {Mdlcode-variant-capability} caps all the capabilities that relate to accessing particular questions.
  */
 function question_get_question_capabilities(): array {
     return [
@@ -1833,6 +1836,7 @@ function question_pluginfile($course, $context, $component, $filearea, $args, $f
         $questionid = (int) array_shift($args);
         $previewcontext = context_helper::instance_by_id($previewcontextid);
 
+        // Mdlcode callback-next-line: *
         $result = component_callback($previewcomponent, 'question_preview_pluginfile', array(
                 $previewcontext, $questionid,
                 $context, $component, $filearea, $args,
@@ -1869,6 +1873,7 @@ function question_pluginfile($course, $context, $component, $filearea, $args, $f
         include_once("$dir/lib.php");
 
         $filefunction = $module . '_question_pluginfile';
+        // Mdlcode callback-next-line: * PREFIX_question_pluginfile function_exists($filefunction)
         if (function_exists($filefunction)) {
             $filefunction($course, $context, $component, $filearea, $qubaid, $slot,
                 $args, $forcedownload, $options);
@@ -1877,6 +1882,7 @@ function question_pluginfile($course, $context, $component, $filearea, $args, $f
         // Okay, we're here so lets check for function without 'mod_'.
         if (strpos($module, 'mod_') === 0) {
             $filefunctionold  = substr($module, 4) . '_question_pluginfile';
+            // Mdlcode callback-next-line: ignore
             if (function_exists($filefunctionold)) {
                 $filefunctionold($course, $context, $component, $filearea, $qubaid, $slot,
                     $args, $forcedownload, $options);
@@ -1969,6 +1975,7 @@ function question_module_uses_questions($modname): bool {
     }
 
     $component = 'mod_'.$modname;
+    // Mdlcode callback: mod
     if (component_callback_exists($component, 'question_pluginfile')) {
         debugging("{$component} uses questions but doesn't declare FEATURE_USES_QUESTIONS", DEBUG_DEVELOPER);
         return true;

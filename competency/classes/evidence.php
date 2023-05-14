@@ -138,6 +138,7 @@ class evidence extends persistent {
      * @return lang_string
      */
     public function get_description() {
+        // Mdlcode-disable cannot-parse-string
         return new lang_string($this->get('descidentifier'), $this->get('desccomponent'), $this->get_desca());
     }
 

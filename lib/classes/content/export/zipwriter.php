@@ -236,7 +236,7 @@ class zipwriter {
      *
      * @param   context $context
      * @param   string $filepathinzip
-     * @param   string $template
+     * @param   string $template {Mdlcode-variant-template}
      * @param   stdClass $templatedata
      */
     public function add_file_from_template(
@@ -278,6 +278,7 @@ class zipwriter {
         ];
 
         $renderer = $PAGE->get_renderer('core');
+        // Mdlcode-disable cannot-parse-template
         $this->add_file_from_string($context, $filepathinzip, $renderer->render_from_template($template, $templatedata));
     }
 

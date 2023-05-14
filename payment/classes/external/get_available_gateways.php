@@ -59,6 +59,7 @@ class get_available_gateways extends external_api {
      * @return \stdClass[]
      */
     public static function execute(string $component, string $paymentarea, int $itemid): array {
+        // Mdlcode assume: $gateway pluginnames-paygw
 
         $params = external_api::validate_parameters(self::execute_parameters(), [
             'component' => $component,

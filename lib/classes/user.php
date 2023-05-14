@@ -361,7 +361,7 @@ class core_user {
      * Gets an SQL query that lists all enrolled user ids on any course where the current
      * user has the specified capability. Helper function used for searching users.
      *
-     * @param string $capability Required capability
+     * @param string $capability {Mdlcode-variant-capability} Required capability
      * @return array Array containing SQL and params, or two nulls if there are no courses
      */
     protected static function get_enrolled_sql_on_courses_with_capability($capability) {

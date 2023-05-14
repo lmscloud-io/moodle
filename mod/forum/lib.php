@@ -466,6 +466,7 @@ function forum_user_complete($course, $user, $mod, $forum) {
 
     $getgradeinfo = function($grades, string $type) use ($course): string {
         global $OUTPUT;
+        // Mdlcode assume: $type ['rating', 'wholeforum']
 
         if (empty($grades)) {
             return '';
@@ -5090,6 +5091,7 @@ function forum_check_throttling($forum, $cm = null) {
     $a = new stdClass();
     $a->blockafter = $forum->blockafter;
     $a->numposts = $numposts;
+    // Mdlcode assume: $forum->blockperiod ['172800', '259200', '345600', '432000', '518400', '604800', '86400']
     $a->blockperiod = get_string('secondstotime'.$forum->blockperiod);
 
     if ($forum->blockafter <= $numposts) {
@@ -5597,6 +5599,7 @@ function forum_extend_settings_navigation(settings_navigation $settingsnav, navi
         $reportnames = array_keys(core_component::get_plugin_list('forumreport'));
 
         foreach ($reportnames as $reportname) {
+            // Mdlcode assume: $reportname pluginnames-forumreport
             if (has_capability("forumreport/{$reportname}:view", $settingsnav->get_page()->context)) {
                 $reportlinkparams = [
                     'courseid' => $forumobject->course,

@@ -54,6 +54,7 @@ abstract class grade_exported extends base {
      * @return string
      */
     public static function get_name() {
+<<<<<<< HEAD
         $component = 'gradeexport_' . self::get_export_type();
         if (get_string_manager()->string_exists('eventgradeexported', $component)) {
             return get_string('eventgradeexported', $component);
@@ -61,6 +62,10 @@ abstract class grade_exported extends base {
 
         // Fallback to generic name.
         return get_string('eventgradeexported', 'core_grades');
+=======
+        // Mdlcode assume: self::get_export_type() pluginnames-gradeexport
+        return get_string('eventgradeexported', 'gradeexport_'. self::get_export_type());
+>>>>>>> Mdlcode 4.0
     }
 
     /**

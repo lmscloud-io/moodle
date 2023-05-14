@@ -781,6 +781,7 @@ class course_enrolment_manager {
     public function unenrol_user($ue) {
         global $DB;
         list ($instance, $plugin) = $this->get_user_enrolment_components($ue);
+        // Mdlcode assume-optional: $instance->enrol pluginnames-enrol
         if ($instance && $plugin && $plugin->allow_unenrol_user($instance, $ue) && has_capability("enrol/$instance->enrol:unenrol", $this->context)) {
             $plugin->unenrol_user($instance, $ue->userid);
             return true;
@@ -926,6 +927,7 @@ class course_enrolment_manager {
         //Only allow editing if the user has the appropriate capability
         //Already checked in /user/index.php but checking again in case this function is called from elsewhere
         list($instance, $plugin) = $this->get_user_enrolment_components($userenrolment);
+        // Mdlcode assume-optional: $instance->enrol pluginnames-enrol
         if ($instance && $plugin && $plugin->allow_manage($instance) && has_capability("enrol/$instance->enrol:manage", $this->context)) {
             if (!isset($data->status)) {
                 $data->status = $userenrolment->status;
@@ -1474,12 +1476,14 @@ class enrol_user_button extends single_button {
      */
     public function initialise_js(moodle_page $page) {
         foreach ($this->jsyuimodules as $js) {
+            // Mdlcode-disable-next-line cannot-parse-js-module.
             $page->requires->yui_module($js->modules, $js->function, $js->arguments, null, $js->ondomready);
         }
         foreach ($this->jsinitcalls as $js) {
             $page->requires->js_init_call($js->function, $js->extraarguments, $js->ondomready, $js->module);
         }
         foreach ($this->jsstrings as $string) {
+            // Mdlcode-disable-next-line cannot-parse-string.
             $page->requires->strings_for_js($string->identifiers, $string->component, $string->a);
         }
     }

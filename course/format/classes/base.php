@@ -506,9 +506,10 @@ abstract class base {
      * Returns the display name of the given section that the course prefers.
      *
      * @param int|stdClass $section Section object from database or just field course_sections.section
-     * @return Display name that the course format prefers, e.g. "Topic 2"
+     * @return string Display name that the course format prefers, e.g. "Topic 2"
      */
     public function get_section_name($section) {
+        // Mdlcode assume-optional: $this->format pluginnames-format
         if (is_object($section)) {
             $sectionnum = $section->section;
         } else {

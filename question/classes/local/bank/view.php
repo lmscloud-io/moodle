@@ -1131,6 +1131,7 @@ class view {
                 // Check capabilities.
                 $capcount = 0;
                 foreach ($action['capabilities'] as $capability) {
+                    // Mdlcode-disable-next-line cannot-parse-capability
                     if (has_capability($capability, $catcontext)) {
                         $capcount ++;
                     }

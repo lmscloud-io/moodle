@@ -1066,6 +1066,7 @@ class moodle_page {
      * @return bool
      */
     public function user_can_edit_blocks() {
+        // Mdlcode-disable cannot-parse-capability
         return $this->_forcelockallblocks ? false : has_capability($this->_blockseditingcap, $this->_context);
     }
 
@@ -1074,6 +1075,7 @@ class moodle_page {
      * @return bool
      */
     public function user_allowed_editing() {
+        // Mdlcode-disable cannot-parse-capability
         return has_any_capability($this->all_editing_caps(), $this->_context);
     }
 
@@ -1532,9 +1534,10 @@ class moodle_page {
      * pages like the My Moodle page need to use a different capability
      * like 'moodle/my:manageblocks'.
      *
-     * @param string $capability a capability.
+     * @param string $capability {Mdlcode-variant-capability} a capability.
      */
     public function set_blocks_editing_capability($capability) {
+        // Mdlcode call-subject: ^\$PAGE$
         $this->_blockseditingcap = $capability;
     }
 
@@ -1543,9 +1546,10 @@ class moodle_page {
      * If that is the case, you can pass other capabilities that let the user
      * edit this page here.
      *
-     * @param string|array $capability either a capability, or an array of capabilities.
+     * @param string|array $capability {Mdlcode-variant-capability} either a capability, or an array of capabilities.
      */
     public function set_other_editing_capability($capability) {
+        // Mdlcode call-subject: ^\$PAGE$
         if (is_array($capability)) {
             $this->_othereditingcaps = array_unique($this->_othereditingcaps + $capability);
         } else {

@@ -44,6 +44,7 @@ class assign_admin_page_manage_assign_plugins extends admin_externalpage {
      * @param string $subtype
      */
     public function __construct($subtype) {
+        // Mdlcode assume: $subtype ['assignsubmission', 'assignfeedback']
         $this->subtype = $subtype;
         $url = new moodle_url('/mod/assign/adminmanageplugins.php', array('subtype'=>$subtype));
         parent::__construct('manage' . $subtype . 'plugins',

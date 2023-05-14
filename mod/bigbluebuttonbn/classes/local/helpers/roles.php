@@ -115,7 +115,7 @@ class roles {
      * Can do some administration in this course, likely manage recordings
      *
      * @param int $courseid
-     * @param string $capability
+     * @param string $capability {Mdlcode-variant-capability}
      */
     public static function has_capability_in_course(int $courseid, string $capability) {
         global $DB;

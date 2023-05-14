@@ -3206,6 +3206,7 @@ class assign {
         $modinfo = get_fast_modinfo($course);
 
         if ($usesections) {
+            // Mdlcode assume-optional: $course->format pluginnames-format.
             $strsectionname = get_string('sectionname', 'format_'.$course->format);
             $sections = $modinfo->get_section_info_all();
         }

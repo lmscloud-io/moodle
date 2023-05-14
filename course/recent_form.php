@@ -127,10 +127,12 @@ class recent_form extends moodleform {
             }
             include_once($libfile);
             $libfunction = $modname."_get_recent_mod_activity";
+            // Mdlcode callback: mod PN_get_recent_mod_activity function_exists($libfunction)
             if (!function_exists($libfunction)) {
                 unset($modsused[$modname]);
                 continue;
             }
+            // Mdlcode assume-next-line: $modname pluginnames-mod
             $options["mod/$modname"] = get_string('allmods', '', get_string('modulenameplural', $modname));
         }
 

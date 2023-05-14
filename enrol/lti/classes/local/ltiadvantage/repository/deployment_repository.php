@@ -16,6 +16,7 @@
 
 namespace enrol_lti\local\ltiadvantage\repository;
 use enrol_lti\local\ltiadvantage\entity\deployment;
+// Mdlcode assume: $this->deploymenttable 'enrol_lti_deployment'
 
 /**
  * The deployment_repository class.

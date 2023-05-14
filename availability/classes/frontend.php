@@ -101,6 +101,7 @@ abstract class frontend {
      */
     public static function include_all_javascript($course, \cm_info $cm = null,
             \section_info $section = null) {
+        // Mdlcode assume: $component fullpluginnames-availability
         global $PAGE;
 
         // Prepare array of required YUI modules. It is bad for performance to

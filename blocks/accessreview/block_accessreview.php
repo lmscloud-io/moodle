@@ -223,6 +223,7 @@ class block_accessreview extends block_base {
             } else if ($errordisplay == 'showpercent') {
                 $display = round(($total), 1) . '%';
             }
+            // Mdlcode assume-next-line: $type ['form','image','layout','link','media','table','text']
             $tabledata[] = [$typeicon . get_string('checktype:' . $type, manager::PLUGINNAME), $display];
         }
         return $tabledata;
@@ -266,6 +267,7 @@ class block_accessreview extends block_base {
      */
     protected function get_download_link(context $context): string {
         global $OUTPUT, $COURSE;
+        // Mdlcode-disable cannot-parse-capability
 
         if (has_capability(accessibility::get_capability_name('viewcoursetools'), $context)) {
             return html_writer::link(
@@ -298,6 +300,7 @@ class block_accessreview extends block_base {
      */
     protected function get_report_link(context $context): string {
         global $OUTPUT, $COURSE;
+        // Mdlcode-disable cannot-parse-capability
 
         if (has_capability(accessibility::get_capability_name('viewcoursetools'), $context)) {
             return html_writer::link(

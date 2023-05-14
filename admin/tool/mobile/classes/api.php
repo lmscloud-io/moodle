@@ -119,6 +119,7 @@ class api {
                         foreach ($langs as $langid => $langname) {
                             foreach ($addoninfo['lang'] as $stringinfo) {
                                 $lang[$langid][$stringinfo[0]] =
+                                    // Mdlcode-disable-next-line cannot-parse-string.
                                     $stringmanager->get_string($stringinfo[0], $stringinfo[1], null, $langid);
                             }
                         }
@@ -618,6 +619,7 @@ class api {
             // Check the certificate is not self-signed or has an untrusted-root.
             // This may be weak in some scenarios (when the curl SSL verifier is outdated).
             if (empty($info['http_code']) || empty($info['certinfo'])) {
+                // Mdlcode uses-next-line: string ['selfsignedoruntrustedcertificatewarning', 'tool_mobile']
                 $warnings[] = ['selfsignedoruntrustedcertificatewarning', 'tool_mobile'];
             } else {
                 $timenow = time();
@@ -626,6 +628,7 @@ class api {
 
                 if (count($info['certinfo']) == 1) {
                     // This will work in a normal browser because it will complete the chain, but not in a mobile app.
+                    // Mdlcode uses-next-line: string ['invalidcertificatechainwarning', 'tool_mobile']
                     $warnings[] = ['invalidcertificatechainwarning', 'tool_mobile'];
                 }
 
@@ -648,29 +651,35 @@ class api {
                     // Check if the signature algorithm is weak (Android won't work with SHA-1).
                     if ($key != $lastkey &&
                             ($signaturealgorithm == 'sha1WithRSAEncryption' || $signaturealgorithm == 'sha1WithRSA')) {
+                        // Mdlcode uses-next-line: string ['insecurealgorithmwarning', 'tool_mobile']
                         $warnings['insecurealgorithmwarning'] = ['insecurealgorithmwarning', 'tool_mobile'];
                     }
                     // Check certificate start date.
                     if (strtotime($cert['start date']) > $timenow) {
+                        // Mdlcode uses-next-line: string ['invalidcertificatestartdatewarning', 'tool_mobile']
                         $warnings['invalidcertificatestartdatewarning'] = ['invalidcertificatestartdatewarning', 'tool_mobile'];
                     }
                     // Check certificate end date.
                     if (strtotime($cert['expire date']) < $timenow) {
+                        // Mdlcode uses-next-line: string ['invalidcertificateexpiredatewarning', 'tool_mobile']
                         $warnings['invalidcertificateexpiredatewarning'] = ['invalidcertificateexpiredatewarning', 'tool_mobile'];
                     }
                 }
             }
         } else {
             // Warning for non https sites.
+            // Mdlcode uses-next-line: string ['nohttpsformobilewarning', 'admin']
             $warnings[] = ['nohttpsformobilewarning', 'admin'];
         }
 
         // Check ADOdb debug enabled.
         if (get_config('auth_db', 'debugauthdb') || get_config('enrol_database', 'debugdb')) {
+            // Mdlcode uses-next-line: string ['adodbdebugwarning', 'tool_mobile']
             $warnings[] = ['adodbdebugwarning', 'tool_mobile'];
         }
         // Check display errors on.
         if (!empty($CFG->debugdisplay)) {
+            // Mdlcode uses-next-line: string ['displayerrorswarning', 'tool_mobile']
             $warnings[] = ['displayerrorswarning', 'tool_mobile'];
         }
         // Check mobile notifications.
@@ -682,6 +691,7 @@ class api {
             }
         }
         if (!$enabled) {
+            // Mdlcode uses-next-line: string ['mobilenotificationsdisabledwarning', 'tool_mobile']
             $warnings[] = ['mobilenotificationsdisabledwarning', 'tool_mobile'];
         }
 

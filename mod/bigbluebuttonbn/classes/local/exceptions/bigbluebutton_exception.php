@@ -30,7 +30,7 @@ class bigbluebutton_exception extends \moodle_exception {
     /**
      * Constructor
      *
-     * @param string $errorcode The name of the string from error.php to print
+     * @param string $errorcode {Mdlcode-variant-string mod_bigbluebuttonbn} The name of the string from error.php to print
      * @param mixed $additionalinfo Extra words and phrases that might be required in the error string
      */
     public function __construct($errorcode, $additionalinfo = null) {

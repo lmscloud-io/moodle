@@ -1148,6 +1148,7 @@ class core_badges_renderer extends plugin_renderer_base {
      * @return bool|string
      */
     public function render_tertiary_navigation(\core_badges\output\base_action_bar $actionbar) {
+        // Mdlcode-disable cannot-parse-template
         return $this->render_from_template($actionbar->get_template(), $actionbar->export_for_template($this));
     }
 }
