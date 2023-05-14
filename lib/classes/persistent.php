@@ -23,6 +23,7 @@
  */
 namespace core;
 defined('MOODLE_INTERNAL') || die();
+// Mdlcode-disable cannot-parse-db-tablename
 
 use coding_exception;
 use invalid_parameter_exception;

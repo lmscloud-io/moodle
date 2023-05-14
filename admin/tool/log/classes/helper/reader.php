@@ -45,6 +45,7 @@ trait reader {
      */
     public function get_name() {
         if (get_string_manager()->string_exists('pluginname', $this->component)) {
+            // Mdlcode assume-optional-next-line: $this->component fullpluginnames-logstore
             return get_string('pluginname', $this->component);
         }
         return $this->store;
@@ -57,6 +58,7 @@ trait reader {
      */
     public function get_description() {
         if (get_string_manager()->string_exists('pluginname_desc', $this->component)) {
+            // Mdlcode assume-optional-next-line: $this->component fullpluginnames-logstore
             return get_string('pluginname_desc', $this->component);
         }
         return $this->store;

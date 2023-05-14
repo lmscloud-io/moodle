@@ -299,6 +299,7 @@ abstract class section_renderer extends core_course_renderer {
      * @return string HTML to output.
      */
     protected function section_left_content($section, $course, $onsectionpage) {
+        // Mdlcode assume-optional: $course->format pluginnames-format
 
         debugging('section_left_content() can not be used anymore. Please use ' .
             'core_courseformat\\output\\local\\content\\section to render a section.', DEBUG_DEVELOPER);

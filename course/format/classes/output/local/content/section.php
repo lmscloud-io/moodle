@@ -309,6 +309,7 @@ class section implements named_templatable, renderable {
      * @return bool if the cm has name data
      */
     protected function add_format_data(stdClass &$data, array $haspartials, renderer_base $output): bool {
+        // Mdlcode assume-optional: $format->get_format() pluginnames-format
         $section = $this->section;
         $format = $this->format;
 

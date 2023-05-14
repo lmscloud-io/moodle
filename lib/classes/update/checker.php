@@ -745,6 +745,7 @@ class checker {
                     $html .= ' '.get_string('updateavailable_version', 'core_admin', $coreupdate->version);
                 }
                 if (isset($coreupdate->maturity)) {
+                    // Mdlcode assume: $coreupdate->maturity ['50','100','150','200']
                     $text .= ' ('.get_string('maturity'.$coreupdate->maturity, 'core_admin').')';
                     $html .= ' ('.get_string('maturity'.$coreupdate->maturity, 'core_admin').')';
                 }
@@ -770,6 +771,7 @@ class checker {
             $html .= html_writer::start_tag('ul') . PHP_EOL;
             foreach ($pluginupdates as $pluginupdate) {
                 $html .= html_writer::start_tag('li');
+                // Mdlcode assume-optional: $pluginupdate->component fullpluginnames-/^.*$/
                 $text .= get_string('pluginname', $pluginupdate->component);
                 $html .= html_writer::tag('strong', get_string('pluginname', $pluginupdate->component));
 

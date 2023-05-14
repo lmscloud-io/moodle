@@ -228,7 +228,7 @@ class contentbank {
     /**
      * Return all the context where a user has all the given capabilities.
      *
-     * @param  string $capability The capability the user needs to have.
+     * @param  string $capability {Mdlcode-variant-capability} The capability the user needs to have.
      * @param  int|null $userid Optional userid. $USER by default.
      * @return array Array of the courses and course categories where the user has the given capability.
      */

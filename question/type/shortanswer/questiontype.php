@@ -39,6 +39,7 @@ require_once($CFG->dirroot . '/question/type/shortanswer/question.php');
  */
 class qtype_shortanswer extends question_type {
     public function extra_question_fields() {
+        // Mdlcode uses-next-line: dbtable 'qtype_shortanswer_options'
         return array('qtype_shortanswer_options', 'usecase');
     }
 

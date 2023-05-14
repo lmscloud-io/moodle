@@ -24,7 +24,7 @@ namespace core_favourites\local\repository;
 use \core_favourites\local\entity\favourite;
 
 defined('MOODLE_INTERNAL') || die();
-
+// Mdlcode assume: $this->favouritetable 'favourite'
 /**
  * Class favourite_repository.
  *

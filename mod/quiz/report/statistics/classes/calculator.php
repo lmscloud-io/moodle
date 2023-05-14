@@ -191,6 +191,7 @@ class calculator {
      * @return string the string id for this option.
      */
     public static function using_attempts_string_id($whichattempts) {
+        // Mdlcode returns: string 'quiz_statistics'
         switch ($whichattempts) {
             case QUIZ_ATTEMPTFIRST :
                 return 'firstattempts';

@@ -535,6 +535,7 @@ class rating_manager {
         // from the related component.
         list($type, $name) = core_component::normalize_component($options->component);
         $default = array(null, 'id', 'userid');
+        // Mdlcode callback-next-line: *
         list($itemtablename, $itemidcol, $itemuseridcol) = plugin_callback($type,
                                                                            $name,
                                                                            'rating',
@@ -953,6 +954,7 @@ class rating_manager {
         $defaultpluginpermissions = array('rate' => false, 'view' => false, 'viewany' => false, 'viewall' => false);
         if (!empty($component)) {
             list($type, $name) = core_component::normalize_component($component);
+            // Mdlcode callback: *
             $pluginpermissionsarray = plugin_callback($type,
                                                       $name,
                                                       'rating',
@@ -1004,6 +1006,7 @@ class rating_manager {
 
         // This looks for a function like forum_rating_validate() in mod_forum lib.php
         // wrapping the params array in another array as call_user_func_array() expands arrays into multiple arguments.
+        // Mdlcode callback: *
         $isvalid = plugin_callback($plugintype, $pluginname, 'rating', 'validate', array($params), null);
 
         // If null then the callback does not exist.
@@ -1139,6 +1142,7 @@ class rating_manager {
                 $modinstance->cmidnumber = $cm->id; // MDL-12961.
                 $functionname = $cm->modname.'_update_grades';
                 require_once($CFG->dirroot."/mod/{$cm->modname}/lib.php");
+                // Mdlcode callback: mod PN_update_grades
                 if (function_exists($functionname)) {
                     $functionname($modinstance, $rateduserid);
                 }

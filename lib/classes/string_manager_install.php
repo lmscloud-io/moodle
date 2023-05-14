@@ -75,6 +75,7 @@ class core_string_manager_install implements core_string_manager {
      */
     public function string_exists($identifier, $component) {
         // Simple old style hack ;).
+        // Mdlcode-disable-next-line cannot-parse-string.
         $str = get_string($identifier, $component);
         return (strpos($str, '[[') === false);
     }

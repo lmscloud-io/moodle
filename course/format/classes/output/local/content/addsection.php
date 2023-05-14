@@ -146,6 +146,7 @@ class addsection implements named_templatable, renderable {
         $data = new stdClass();
 
         if (get_string_manager()->string_exists('addsections', 'format_' . $course->format)) {
+            // Mdlcode assume-optional: $course->format pluginnames-format.
             $addstring = get_string('addsections', 'format_' . $course->format);
         } else {
             $addstring = get_string('addsections');

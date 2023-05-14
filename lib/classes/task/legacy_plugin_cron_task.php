@@ -91,6 +91,7 @@ class legacy_plugin_cron_task extends scheduled_task {
                 if (file_exists($libfile)) {
                     include_once($libfile);
                     $cronfunction = $mod->name."_cron";
+                    // Mdlcode callback: mod PN_cron function_exists($cronfunction)
                     if (function_exists($cronfunction)) {
                         mtrace("Processing module function $cronfunction ...\n", '');
                         $predbqueries = null;

@@ -37,7 +37,7 @@ abstract class externallib_advanced_testcase extends advanced_testcase {
      * Assign a capability to $USER
      * The function creates a student $USER if $USER->id is empty
      *
-     * @param string $capability capability name
+     * @param string $capability {Mdlcode-variant-capability} capability name
      * @param int $contextid
      * @param int $roleid
      * @return int the role id - mainly returned for creation, so calling function can reuse it
@@ -104,7 +104,7 @@ abstract class externallib_advanced_testcase extends advanced_testcase {
     /**
      * Unassign a capability to $USER.
      *
-     * @param string $capability capability name.
+     * @param string $capability {Mdlcode-variant-capability} capability name.
      * @param int $contextid set the context id if you used assignUserCapability.
      * @param int $roleid set the role id if you used assignUserCapability.
      * @param int $courseid set the course id if you used getDataGenerator->enrol_users.

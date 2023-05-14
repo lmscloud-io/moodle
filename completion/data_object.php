@@ -33,6 +33,7 @@ defined('MOODLE_INTERNAL') || die();
  * See data_object::__constructor
  */
 define('DATA_OBJECT_FETCH_BY_KEY',  2);
+// Mdlcode assume: $this->table ['course_completion_aggr_methd','course_completions','course_completion_crit_compl','course_completion_criteria']
 
 /**
  * A data abstraction object that holds methods and attributes
@@ -200,7 +201,7 @@ abstract class data_object {
      * Factory method - uses the parameters to retrieve all matching instances from the DB.
      *
      * @final
-     * @param string $table The table name to fetch from
+     * @param string $table {Mdlcode-variant-dbtable} The table name to fetch from
      * @param string $classname The class that you want the result instantiated as
      * @param array $params Any params required to select the desired row
      * @return mixed array of object instances or false if not found

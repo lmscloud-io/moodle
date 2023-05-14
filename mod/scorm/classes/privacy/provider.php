@@ -360,7 +360,7 @@ class provider implements
     /**
      * Delete data from $tablename with the IDs returned by $sql query.
      *
-     * @param  string $tablename  Table name where executing the SQL query.
+     * @param  string $tablename {Mdlcode-variant-dbtable}  Table name where executing the SQL query.
      * @param  string $sql    SQL query for getting the IDs of the scoestrack entries to delete.
      * @param  array  $params SQL params for the query.
      */

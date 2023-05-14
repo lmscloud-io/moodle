@@ -33,6 +33,7 @@ defined('MOODLE_INTERNAL') || die();
 class filter extends base {
 
     public function init_display_name() {
+        // Mdlcode assume-optional: $this->component fullpluginnames-filter
         if (!get_string_manager()->string_exists('filtername', $this->component)) {
             $this->displayname = '[filtername,' . $this->component . ']';
         } else {

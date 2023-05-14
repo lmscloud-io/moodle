@@ -240,6 +240,7 @@ const updateButtonTitle = (button, ascending) => {
 
     const sortString = (ascending ? 'sortbyxreverse' : 'sortbyx');
 
+    // Mdlcode assume-next-line: button.dataset.string ['contentname', 'uses', 'lastmodified', 'size', 'type', 'author']
     return getString(button.dataset.string, 'contentbank')
     .then(columnName => {
         return getString(sortString, 'core', columnName);

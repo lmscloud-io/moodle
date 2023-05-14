@@ -43,6 +43,7 @@ abstract class core_role_capability_table_with_risks extends core_role_capabilit
     protected $roleid;
 
     public function __construct($context, $id, $roleid) {
+        // Mdlcode assume: $permname ['inherit', 'allow', 'prevent', 'prohibit']
         parent::__construct($context, $id);
 
         $this->allrisks = get_all_risks();
@@ -120,6 +121,7 @@ abstract class core_role_capability_table_with_risks extends core_role_capabilit
     public function save_changes() {
         // Set the permissions.
         foreach ($this->changed as $changedcap) {
+            // Mdlcode-disable cannot-parse-capability
             assign_capability($changedcap, $this->permissions[$changedcap],
                 $this->roleid, $this->context->id, true);
         }
@@ -179,6 +181,7 @@ abstract class core_role_capability_table_with_risks extends core_role_capabilit
      */
     public function get_risk_icon($type) {
         global $OUTPUT;
+        // Mdlcode assume: $type ['riskconfig', 'riskxss', 'riskpersonal', 'riskspam', 'riskdataloss']
 
         $alt = get_string("{$type}short", "admin");
         $title = get_string($type, "admin");
