@@ -25,6 +25,13 @@
 namespace enrol_lti;
 
 defined('MOODLE_INTERNAL') || die;
+// Mdlcode assume: $this->consumertable 'enrol_lti_lti2_consumer'
+// Mdlcode assume: $this->contexttable 'enrol_lti_lti2_context'
+// Mdlcode assume: $this->noncetable 'enrol_lti_lti2_nonce'
+// Mdlcode assume: $this->resourcelinktable 'enrol_lti_lti2_resource_link'
+// Mdlcode assume: $this->sharekeytable 'enrol_lti_lti2_share_key'
+// Mdlcode assume: $this->toolproxytable 'enrol_lti_lti2_tool_proxy'
+// Mdlcode assume: $this->userresulttable 'enrol_lti_lti2_user_result'
 
 use IMSGlobal\LTI\ToolProvider;
 use IMSGlobal\LTI\ToolProvider\ConsumerNonce;

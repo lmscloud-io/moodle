@@ -284,8 +284,8 @@ class core_string_manager_standard implements core_string_manager {
     /**
      * Get String returns a requested string
      *
-     * @param string $identifier The identifier of the string to search for
-     * @param string $component The module the string is associated with
+     * @param string $identifier {Mdlcode-variant-string} The identifier of the string to search for
+     * @param string $component {Mdlcode-variant-stringcomponent} The module the string is associated with
      * @param string|object|array $a An object, string or number that can be used
      *      within translation strings
      * @param string $lang moodle translation language, null means use current
@@ -293,6 +293,7 @@ class core_string_manager_standard implements core_string_manager {
      */
     public function get_string($identifier, $component = '', $a = null, $lang = null) {
         global $CFG;
+        // Mdlcode call-subject: ^(get_string_manager\(\)|\$stringmanager)$
 
         $this->countgetstring++;
         // There are very many uses of these time formatting strings without the 'langconfig' component,

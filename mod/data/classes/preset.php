@@ -576,6 +576,7 @@ class preset {
      * @return string The plugin preset name to display.
      */
     public static function get_name_from_plugin(string $pluginname): string {
+        // Mdlcode assume: $pluginname pluginnames-datapreset
         $pos = strpos($pluginname, '/');
         if ($pos !== false) {
              $pluginname = substr($pluginname, $pos + 1);
@@ -594,6 +595,7 @@ class preset {
      * @return string The plugin preset description to display.
      */
     public static function get_description_from_plugin(string $pluginname): string {
+        // Mdlcode assume: $pluginname pluginnames-datapreset
         if (get_string_manager()->string_exists('modulename_help', 'datapreset_'.$pluginname)) {
             return get_string('modulename_help', 'datapreset_'.$pluginname);
         } else {

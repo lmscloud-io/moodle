@@ -122,6 +122,7 @@ define(['jquery',
                 args.grade = data.rating;
                 args.note = data.note;
                 ajax.call([{
+                    // Mdlcode assume-next-line: self._methodName ['core_competency_grade_competency_in_plan','core_competency_grade_competency_in_course','core_competency_grade_competency']
                     methodname: self._methodName,
                     args: args,
                     done: function(evidence) {

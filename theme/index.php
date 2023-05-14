@@ -23,6 +23,7 @@
 
 require_once(__DIR__ . '/../config.php');
 require_once($CFG->libdir . '/adminlib.php');
+// Mdlcode assume: $theme->name pluginnames-theme
 
 $choose = optional_param('choose', '', PARAM_PLUGIN);
 $reset  = optional_param('reset', 0, PARAM_BOOL);

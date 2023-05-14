@@ -63,6 +63,7 @@ class category extends base {
      * @param MoodleQuickForm $mform
      */
     public function setup_form(MoodleQuickForm $mform): void {
+        // Mdlcode-disable cannot-parse-capability
         $operatorlabel = get_string('filterfieldoperator', 'core_reportbuilder', $this->get_header());
         $mform->addElement('select', "{$this->name}_operator", $operatorlabel, $this->get_operators())
             ->setHiddenLabel(true);

@@ -543,6 +543,7 @@ class auth_plugin_base {
      * @return string The description
      */
     function get_description() {
+        // Mdlcode assume: $this->authtype pluginnames-auth
         $authdescription = get_string("auth_{$this->authtype}description", "auth_{$this->authtype}");
         return $authdescription;
     }
@@ -1278,6 +1279,7 @@ function display_auth_lock_options($settings, $auth, $userfields, $helptext, $ma
         $customfieldname = array_combine(array_column($allcustomfields, 'shortname'), $allcustomfields);
     }
 
+    // Mdlcode assume: $fieldname profilefields
     foreach ($userfields as $field) {
         // Define the fieldname we display to the  user.
         // this includes special handling for some profile fields.

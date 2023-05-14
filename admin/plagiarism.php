@@ -29,7 +29,7 @@
 require_once(__DIR__ . '/../config.php');
 require_once($CFG->libdir.'/adminlib.php');
 require_once($CFG->libdir.'/tablelib.php');
-
+// Mdlcode assume: $plugin pluginnames-plagiarism
 
 admin_externalpage_setup('manageplagiarismplugins');
 
@@ -60,6 +60,8 @@ $table->attributes['class'] = 'manageplagiarismtable generaltable';
 $authcount = count($plagiarismplugins);
 foreach ($plagiarismplugins as $plugin => $dir) {
     if (file_exists($dir.'/settings.php')) {
+        // Mdlcode-disable cannot-parse-string
+        // Mdlcode assume-next-line: $plugin pluginnames-plagiarism
         $displayname = "<span>".get_string($plugin, 'plagiarism_'.$plugin)."</span>";
         // Settings link.
         $url = new moodle_url("/plagiarism/$plugin/settings.php");
