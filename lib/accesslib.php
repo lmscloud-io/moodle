@@ -1388,17 +1388,13 @@ function delete_role($roleid) {
 /**
  * Function to write context specific overrides, or default capabilities.
  *
-<<<<<<< HEAD
  * The $performancehints array can currently contain two values intended to make this faster when
  * this function is being called in a loop, if you have already checked certain details:
  * 'contextexists' - if we already know the contextid exists in context table
  * ASSIGN_HINT_NO_EXISTING - if we already know there is no entry in role_capabilities matching
  *   contextid, roleid, and capability
  *
- * @param string $capability string name
-=======
  * @param string $capability {Mdlcode-variant-capability} string name
->>>>>>> 8f336720902... Mdlcode 4.1
  * @param int $permission CAP_ constants
  * @param int $roleid role id
  * @param int|context $contextid context id
@@ -4965,13 +4961,8 @@ function prohibit_is_removable($roleid, context $context, $capability) {
  * it should produce as few overrides as possible.
  *
  * @param int $roleid
-<<<<<<< HEAD
  * @param stdClass|context $context
- * @param string $capname capability name
-=======
- * @param stdClass $context
  * @param string $capname {Mdlcode-variant-capability} capability name
->>>>>>> 8f336720902... Mdlcode 4.1
  * @param int $permission
  * @return void
  */
