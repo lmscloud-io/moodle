@@ -262,13 +262,12 @@ class helper {
      * @return array
      */
     public static function get_preview_extra_elements(question_definition $question, int $courseid): array {
-        // Mdlcode callback-next-line: ignore
         $plugins = get_plugin_list_with_function('qbank', 'preview_display');
 
         $comment = '';
         $extrahtml = [];
         foreach ($plugins as $componentname => $plugin) {
-            // Mdlcode callback-next-line: qbank
+            // Mdlcode callback-next-line: ignore
             $pluginhtml = component_callback($componentname, 'preview_display', [$question, $courseid]);
             if ($componentname === 'qbank_comment') {
                 $comment = $pluginhtml;
