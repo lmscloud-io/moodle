@@ -174,12 +174,13 @@ class core_course_category implements renderable, cacheable_object, IteratorAggr
     /**
      * Get list of plugin callback functions.
      *
-     * @param string $name Callback function name.
+     * @param string $name {Mdlcode-variant-callback} Callback function name.
      * @return [callable] $pluginfunctions
      */
     public function get_plugins_callback_function(string $name) : array {
-        // Mdlcode callback-todo this is a callback invokation function
+        // Mdlcode call-subject: coursecat$
         $pluginfunctions = [];
+        // Mdlcode callback-next-line: ignore.
         if ($pluginsfunction = get_plugins_with_function($name)) {
             foreach ($pluginsfunction as $plugintype => $plugins) {
                 foreach ($plugins as $pluginfunction) {
