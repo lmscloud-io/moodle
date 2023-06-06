@@ -137,6 +137,7 @@ function add_moduleinfo($moduleinfo, $course, $mform = null) {
 
     $addinstancefunction    = $moduleinfo->modulename."_add_instance";
     try {
+        // Mdlcode uses-next-line: callback ['mod', 'PN_add_instance']
         $returnfromfunc = $addinstancefunction($moduleinfo, $mform);
     } catch (moodle_exception $e) {
         $returnfromfunc = $e;
@@ -658,6 +659,7 @@ function update_moduleinfo($cm, $moduleinfo, $course, $mform = null) {
     }
 
     $updateinstancefunction = $moduleinfo->modulename."_update_instance";
+    // Mdlcode uses-next-line: callback ['mod', 'PN_update_instance']
     if (!$updateinstancefunction($moduleinfo, $mform)) {
         throw new \moodle_exception('cannotupdatemod', '', course_get_url($course, $cm->section), $moduleinfo->modulename);
     }
