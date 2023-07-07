@@ -155,7 +155,7 @@ if (file_exists($componentdir)) {
     $functionname = $plugin.'_rss_get_feed';
 
     // Mdlcode-todo this plugin is in rsslib.php, not lib.php
-    // Mdlcode callback: * PN_rss_get_feed function_exists($functionname)
+    // Mdlcode callback-next-line: ignore
     if (function_exists($functionname)) {
         // The $pathname will be null if there was a problem (eg user doesn't have the necessary capabilities).
         // NOTE:the component providing the feed must do its own capability checks and security.
