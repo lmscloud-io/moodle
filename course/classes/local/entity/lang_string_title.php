@@ -57,6 +57,7 @@ class lang_string_title implements title {
      * @return string the value of the string.
      */
     public function get_value(): string {
+        // Mdlcode-disable-next-line cannot-parse-string
         return get_string($this->identifier, $this->component);
     }
 }

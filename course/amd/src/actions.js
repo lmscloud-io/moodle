@@ -552,6 +552,8 @@ define(
         var replaceActionItem = function(actionitem, image, stringname,
                                            stringcomponent, newaction) {
 
+            // Mdlcode assume-optional: stringname ['hidefromothers', 'showfromothers']
+            // Mdlcode assume-optional-next-line: stringcomponent fullpluginnames-format
             var stringRequests = [{key: stringname, component: stringcomponent}];
             // Do not provide an icon with duplicate, different text to the menu item.
 
