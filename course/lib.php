@@ -404,6 +404,7 @@ function get_module_types_names($plural = false, $resetcache = false) {
         if ($allmods = $DB->get_records("modules")) {
             foreach ($allmods as $mod) {
                 if (file_exists("$CFG->dirroot/mod/$mod->name/lib.php") && $mod->visible) {
+                    // Mdlcode assume: $mod->name pluginnames-mod
                     $modnames[0][$mod->name] = get_string("modulename", "$mod->name", null, true);
                     $modnames[1][$mod->name] = get_string("modulenameplural", "$mod->name", null, true);
                 }
