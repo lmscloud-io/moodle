@@ -76,6 +76,7 @@ class manager {
         $weighttoggle = false;
 
         foreach ($factors as $factor) {
+            // Mdlcode assume: $factor->name pluginnames-factor
             $namespace = 'factor_'.$factor->name;
             $name = get_string('pluginname', $namespace);
 
