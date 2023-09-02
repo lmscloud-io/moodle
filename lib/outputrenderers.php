@@ -250,7 +250,7 @@ class renderer_base {
         if ($widget instanceof named_templatable) {
             // This is a named templatable.
             // Fetch the template name from the get_template_name function instead.
-            // Note: This has highrer priority than the guessed template name.
+            // Note: This has higher priority than the guessed template name.
             return $this->render_from_template(
                 $widget->get_template_name($this),
                 $widget->export_for_template($this)
