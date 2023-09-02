@@ -109,7 +109,7 @@ class factor extends object_factor_base {
      */
     public function get_summary_condition(): string {
         $safetypes = get_config('factor_auth', 'goodauth');
-
+        // Mdlcode assume: $this->name pluginnames-factor
         return get_string('summarycondition', 'factor_'.$this->name, $safetypes);
     }
 }
