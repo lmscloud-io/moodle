@@ -467,7 +467,7 @@ class help_icon implements renderable, templatable {
      * @param string $identifier {Mdlcode-variant-string} string for help page title,
      *  string with _help suffix is used for the actual help text.
      *  string with _link suffix is used to create a link to further info (if it exists)
-     * @param string $component
+     * @param string $component {Mdlcode-variant-stringcomponent}
      * @param string|object|array|int $a An object, string or number that can be used
      *      within translation strings
      */
