@@ -2508,7 +2508,7 @@ class core_renderer extends renderer_base {
      * @return string HTML fragment
      */
     public function help_icon($identifier, $component = 'moodle', $linktext = '') {
-        // Mdlcode call-subject: (output|OUTPUT)$
+        // Mdlcode call-subject: (output|OUTPUT|get_renderer\(\)|\$this)$
         // Mdlcode call-special: is-help
         $icon = new help_icon($identifier, $component);
         $icon->diag_strings();
