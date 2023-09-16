@@ -174,11 +174,13 @@ class core_course_category implements renderable, cacheable_object, IteratorAggr
     /**
      * Get list of plugin callback functions.
      *
-     * @param string $name Callback function name.
+     * @param string $name {Mdlcode-variant-callback} Callback function name.
      * @return [callable] $pluginfunctions
      */
     public function get_plugins_callback_function(string $name) : array {
+        // Mdlcode call-subject: coursecat$
         $pluginfunctions = [];
+        // Mdlcode callback-next-line: ignore.
         if ($pluginsfunction = get_plugins_with_function($name)) {
             foreach ($pluginsfunction as $plugintype => $plugins) {
                 foreach ($plugins as $pluginfunction) {
@@ -1424,10 +1426,11 @@ class core_course_category implements renderable, cacheable_object, IteratorAggr
     /**
      * Checks if the user has at least one of the given capabilities on any category.
      *
-     * @param array|string $capabilities One or more capabilities to check. Check made is an OR.
+     * @param array|string $capabilities {Mdlcode-variant-capability} One or more capabilities to check. Check made is an OR.
      * @return bool
      */
     public static function has_capability_on_any($capabilities) {
+        // Mdlcode-disable cannot-parse-capability.
         global $DB;
         if (!isloggedin() || isguestuser()) {
             return false;
@@ -1564,7 +1567,7 @@ class core_course_category implements renderable, cacheable_object, IteratorAggr
      *     - onlywithcompletion - set to true if we only need courses with completion enabled
      * @param array $options display options, same as in get_courses() except 'recursive' is ignored -
      *                       search is always category-independent
-     * @param array $requiredcapabilities List of capabilities required to see return course.
+     * @param array $requiredcapabilities {Mdlcode-variant-capability} List of capabilities required to see return course.
      * @return core_course_list_element[]
      */
     public static function search_courses($search, $options = array(), $requiredcapabilities = array()) {
@@ -1718,7 +1721,7 @@ class core_course_category implements renderable, cacheable_object, IteratorAggr
      * @param array $search search criteria, see method search_courses() for more details
      * @param array $options display options. They do not affect the result but
      *     the 'sort' property is used in cache key for storing list of course ids
-     * @param array $requiredcapabilities List of capabilities required to see return course.
+     * @param array $requiredcapabilities {Mdlcode-variant-capability} List of capabilities required to see return course.
      * @return int
      */
     public static function search_courses_count($search, $options = array(), $requiredcapabilities = array()) {
@@ -2598,7 +2601,7 @@ class core_course_category implements renderable, cacheable_object, IteratorAggr
      * moving categories, where you do not want to allow people to move a category
      * to be the child of itself.
      *
-     * @param string/array $requiredcapability if given, only categories where the current
+     * @param string|array $requiredcapability {Mdlcode-variant-capability} if given, only categories where the current
      *      user has this capability will be returned. Can also be an array of capabilities,
      *      in which case they are all required.
      * @param integer $excludeid Exclude this category and its children from the lists built.

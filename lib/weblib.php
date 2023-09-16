@@ -3719,6 +3719,7 @@ function get_formatted_help_string($identifier, $component, $ajax = false, $a = 
     $data = new stdClass();
 
     if ($sm->string_exists($identifier, $component)) {
+        // Mdlcode-disable-next-line cannot-parse-string.
         $data->heading = format_string(get_string($identifier, $component));
     } else {
         // Gracefully fall back to an empty string.
@@ -3736,10 +3737,12 @@ function get_formatted_help_string($identifier, $component, $ajax = false, $a = 
         $options->overflowdiv = !$ajax;
 
         // Should be simple wiki only MDL-21695.
+        // Mdlcode-disable-next-line cannot-parse-string.
         $data->text = format_text(get_string($identifier.'_help', $component, $a), FORMAT_MARKDOWN, $options);
 
         $helplink = $identifier . '_link';
         if ($sm->string_exists($helplink, $component)) {  // Link to further info in Moodle docs.
+            // Mdlcode-disable-next-line cannot-parse-string.
             $link = get_string($helplink, $component);
             $linktext = get_string('morehelp');
 

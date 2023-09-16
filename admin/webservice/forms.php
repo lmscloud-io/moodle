@@ -57,6 +57,7 @@ class external_service_authorised_user_settings_form extends moodleform {
 class external_service_form extends moodleform {
 
     function definition() {
+        // Mdlcode-disable cannot-parse-capability.
         $mform = $this->_form;
         $service = isset($this->_customdata) ? $this->_customdata : new stdClass();
 

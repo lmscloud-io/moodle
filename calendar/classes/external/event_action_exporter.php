@@ -97,6 +97,7 @@ class event_action_exporter extends exporter {
         $mapper = container::get_event_mapper();
         $calevent = $mapper->from_event_to_legacy_event($event);
         $params = [$calevent, $this->data->itemcount];
+        // Mdlcode callback: *
         $showitemcount = component_callback($event->get_component(), $showitemcountcallback, $params, false);
 
         // Prepare other values data.

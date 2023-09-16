@@ -144,6 +144,7 @@ class content_item_service {
             $subplugins = $pluginmanager->get_subplugins_of_plugin('mod_' . $plugin->name);
             foreach ($subplugins as $subpluginname => $subplugininfo) {
                 try {
+                    // Mdlcode assume-next-line: $subpluginname subplugins-mod
                     if (component_callback_exists($subpluginname, 'get_course_content_items')) {
                         $itemtypes[] = $prefix . $subpluginname;
                     }

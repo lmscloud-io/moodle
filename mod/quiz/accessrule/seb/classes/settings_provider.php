@@ -817,6 +817,7 @@ class settings_provider {
                 break;
             }
         }
+        // Mdlcode assume: $capsttocheck ['quizaccess/seb:manage_seb_linkquitseb', 'quizaccess/seb:manage_seb_userconfirmquit', 'quizaccess/seb:manage_seb_allowuserquitseb', 'quizaccess/seb:manage_seb_quitpassword', 'quizaccess/seb:manage_seb_allowreloadinexam', 'quizaccess/seb:manage_seb_showsebtaskbar', 'quizaccess/seb:manage_seb_showreloadbutton', 'quizaccess/seb:manage_seb_showtime', 'quizaccess/seb:manage_seb_showkeyboardlayout', 'quizaccess/seb:manage_seb_showwificontrol', 'quizaccess/seb:manage_seb_enableaudiocontrol', 'quizaccess/seb:manage_seb_muteonstartup', 'quizaccess/seb:manage_seb_allowspellchecking', 'quizaccess/seb:manage_seb_activateurlfiltering', 'quizaccess/seb:manage_seb_filterembeddedcontent', 'quizaccess/seb:manage_seb_expressionsallowed', 'quizaccess/seb:manage_seb_regexallowed', 'quizaccess/seb:manage_seb_expressionsblocked', 'quizaccess/seb:manage_seb_regexblocked']
 
         foreach ($capsttocheck as $capability) {
             // Capability must exist.

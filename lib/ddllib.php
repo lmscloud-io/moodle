@@ -74,7 +74,7 @@ require_once($CFG->libdir.'/ddl/database_manager.php');
  */
 class ddl_exception extends moodle_exception {
     /**
-     * @param string $errorcode
+     * @param string $errorcode {Mdlcode-variant-string error*}
      * @param string $debuginfo
      */
     function __construct($errorcode, $a=NULL, $debuginfo=null) {

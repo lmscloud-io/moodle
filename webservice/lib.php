@@ -65,6 +65,7 @@ class webservice {
      */
     public function authenticate_user($token) {
         global $DB, $CFG;
+        // Mdlcode-disable cannot-parse-capability.
 
         // web service must be enabled to use this script
         if (!$CFG->enablewebservices) {
@@ -1136,6 +1137,7 @@ abstract class webservice_server implements webservice_server_interface {
         set_login_session_preferences();
         $this->userid = $user->id;
 
+        // Mdlcode assume: $this->wsname pluginnames-webservice
         if ($this->authmethod != WEBSERVICE_AUTHMETHOD_SESSION_TOKEN && !has_capability("webservice/$this->wsname:use", $this->restricted_context)) {
             throw new webservice_access_exception("You are not allowed to use the {$this->wsname} protocol " .
                 "(missing capability: webservice/{$this->wsname}:use)");
@@ -1411,6 +1413,7 @@ abstract class webservice_base_server extends webservice_server {
      */
     protected function load_function_info() {
         global $DB, $USER, $CFG;
+        // Mdlcode-disable cannot-parse-capability.
 
         if (empty($this->functionname)) {
             throw new invalid_parameter_exception('Missing function name');
@@ -1528,6 +1531,7 @@ abstract class webservice_base_server extends webservice_server {
      */
     protected function init_service_class() {
         global $USER, $DB;
+        // Mdlcode-disable cannot-parse-capability.
 
         // Initialise service methods and struct classes.
         $this->servicemethods = array();

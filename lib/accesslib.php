@@ -418,7 +418,7 @@ function get_guest_role() {
  *
  * @category access
  *
- * @param string $capability the name of the capability to check. For example mod/forum:view
+ * @param string $capability {Mdlcode-variant-capability} the name of the capability to check. For example mod/forum:view
  * @param context $context the context to check the capability in. You normally get this with instance method of a context class.
  * @param integer|stdClass $user A user id or object. By default (null) checks the permissions of the current user.
  * @param boolean $doanything If false, ignores effect of admin role assignment
@@ -587,13 +587,14 @@ function has_capability($capability, context $context, $user = null, $doanything
  * @category access
  * @see has_capability()
  *
- * @param array $capabilities an array of capability names.
+ * @param array $capabilities {Mdlcode-variant-capability} an array of capability names.
  * @param context $context the context to check the capability in. You normally get this with instance method of a context class.
  * @param integer|stdClass $user A user id or object. By default (null) checks the permissions of the current user.
  * @param boolean $doanything If false, ignore effect of admin role assignment
  * @return boolean true if the user has any of these capabilities. Otherwise false.
  */
 function has_any_capability(array $capabilities, context $context, $user = null, $doanything = true) {
+    // Mdlcode-disable cannot-parse-capability
     foreach ($capabilities as $capability) {
         if (has_capability($capability, $context, $user, $doanything)) {
             return true;
@@ -612,7 +613,7 @@ function has_any_capability(array $capabilities, context $context, $user = null,
  * @category access
  * @see has_capability()
  *
- * @param array $capabilities an array of capability names.
+ * @param array $capabilities {Mdlcode-variant-capability} an array of capability names.
  * @param context $context the context to check the capability in. You normally get this with instance method of a context class.
  * @param integer|stdClass $user A user id or object. By default (null) checks the permissions of the current user.
  * @param boolean $doanything If false, ignore effect of admin role assignment
@@ -620,6 +621,7 @@ function has_any_capability(array $capabilities, context $context, $user = null,
  */
 function has_all_capabilities(array $capabilities, context $context, $user = null, $doanything = true) {
     foreach ($capabilities as $capability) {
+        // Mdlcode-disable-next-line cannot-parse-capability
         if (!has_capability($capability, $context, $user, $doanything)) {
             return false;
         }
@@ -635,7 +637,7 @@ function has_all_capabilities(array $capabilities, context $context, $user = nul
  *
  * @category access
  *
- * @param string $capability the name of the capability to check.
+ * @param string $capability {Mdlcode-variant-capability} the name of the capability to check.
  * @param context $context course or category context where is course going to be created
  * @param integer|stdClass $user A user id or object. By default (null) checks the permissions of the current user.
  * @return boolean true if the user will have this capability.
@@ -775,7 +777,7 @@ function has_coursecontact_role($userid) {
  * and at the same time no role with prohibit.
  *
  * @access private
- * @param string $capability
+ * @param string $capability {Mdlcode-variant-capability} 
  * @param context $context
  * @param array $accessdata
  * @return bool
@@ -856,7 +858,7 @@ function has_capability_in_accessdata($capability, context $context, array &$acc
  *
  * @see has_capability()
  *
- * @param string $capability the name of the capability to check. For example mod/forum:view
+ * @param string $capability {Mdlcode-variant-capability} the name of the capability to check. For example mod/forum:view
  * @param context $context the context to check the capability in. You normally get this with context_xxxx::instance().
  * @param int $userid A user id. By default (null) checks the permissions of the current user.
  * @param bool $doanything If false, ignore effect of admin role assignment
@@ -882,7 +884,7 @@ function require_capability($capability, context $context, $userid = null, $doan
  * @category access
  * @see has_capability()
  *
- * @param array $capabilities an array of capability names.
+ * @param array $capabilities {Mdlcode-variant-capability} an array of capability names.
  * @param context $context the context to check the capability in. You normally get this with context_xxxx::instance().
  * @param int $userid A user id. By default (null) checks the permissions of the current user.
  * @param bool $doanything If false, ignore effect of admin role assignment
@@ -893,6 +895,7 @@ function require_capability($capability, context $context, $userid = null, $doan
 function require_all_capabilities(array $capabilities, context $context, $userid = null, $doanything = true,
                                   $errormessage = 'nopermissions', $stringfile = ''): void {
     foreach ($capabilities as $capability) {
+        // Mdlcode-disable cannot-parse-capability
         if (!has_capability($capability, $context, $userid, $doanything)) {
             throw new required_capability_exception($context, $capability, $errormessage, $stringfile);
         }
@@ -1171,7 +1174,7 @@ function get_role_archetypes() {
  * Assign the defaults found in this capability definition to roles that have
  * the corresponding legacy capabilities assigned to them.
  *
- * @param string $capability
+ * @param string $capability {Mdlcode-variant-capability}
  * @param array $legacyperms an array in the format (example):
  *                      'guest' => CAP_PREVENT,
  *                      'student' => CAP_ALLOW,
@@ -1225,7 +1228,7 @@ function is_safe_capability($capability) {
  *
  * @param int $roleid
  * @param int $contextid
- * @param string $capability
+ * @param string $capability {Mdlcode-variant-capability}
  * @return stdClass local capability override
  */
 function get_local_override($roleid, $contextid, $capability) {
@@ -1368,7 +1371,7 @@ function delete_role($roleid) {
 /**
  * Function to write context specific overrides, or default capabilities.
  *
- * @param string $capability string name
+ * @param string $capability {Mdlcode-variant-capability} string name
  * @param int $permission CAP_ constants
  * @param int $roleid role id
  * @param int|context $contextid context id
@@ -1438,7 +1441,7 @@ function assign_capability($capability, $permission, $roleid, $contextid, $overw
 /**
  * Unassign a capability from a role.
  *
- * @param string $capability the name of the capability
+ * @param string $capability {Mdlcode-variant-capability} the name of the capability
  * @param int $roleid the role id
  * @param int|context $contextid null means all contexts
  * @return boolean true or exception
@@ -1486,7 +1489,7 @@ function unassign_capability($capability, $roleid, $contextid = null) {
  * It just checks for permissions and overrides.
  * Use get_roles_with_cap_in_context() if resolution is required.
  *
- * @param string $capability capability name (string)
+ * @param string $capability {Mdlcode-variant-capability} capability name (string)
  * @param string $permission optional, the permission defined for this capability
  *                      either CAP_ALLOW, CAP_PREVENT or CAP_PROHIBIT. Defaults to null which means any.
  * @param stdClass $context null means any
@@ -1888,7 +1891,7 @@ function is_guest(context $context, $user = null) {
  *
  * @param context $context
  * @param int|stdClass $user if null $USER is used
- * @param string $withcapability extra capability name
+ * @param string $withcapability {Mdlcode-variant-capability} extra capability name
  * @return bool
  */
 function is_viewing(context $context, $user = null, $withcapability = '') {
@@ -1930,7 +1933,7 @@ function is_viewing(context $context, $user = null, $withcapability = '') {
  *
  * @param stdClass $course record
  * @param stdClass|int|null $user user record or id, current user if null
- * @param string $withcapability Check for this capability as well.
+ * @param string $withcapability {Mdlcode-variant-capability} Check for this capability as well.
  * @param bool $onlyactive consider only active enrolments in enabled plugins and time restrictions
  * @return boolean Returns true if the user is able to access the course
  */
@@ -2217,6 +2220,7 @@ function get_default_role_archetype_allows($type, $archetype) {
  */
 function reset_role_capabilities($roleid) {
     global $DB;
+    // Mdlcode-disable cannot-parse-capability
 
     $role = $DB->get_record('role', array('id'=>$roleid), '*', MUST_EXIST);
     $defaultcaps = get_default_capabilities($role->archetype);
@@ -2249,6 +2253,7 @@ function reset_role_capabilities($roleid) {
  */
 function update_capabilities($component = 'moodle') {
     global $DB, $OUTPUT;
+    // Mdlcode-disable cannot-parse-capability
 
     $storedcaps = array();
 
@@ -2373,6 +2378,7 @@ function update_capabilities($component = 'moodle') {
  */
 function capabilities_cleanup($component, $newcapdef = null) {
     global $DB;
+    // Mdlcode-disable cannot-parse-capability
 
     $removedcount = 0;
 
@@ -2430,6 +2436,7 @@ function get_all_risks() {
  * @return string the human-readable capability name as a link to Moodle Docs.
  */
 function get_capability_docs_link($capability) {
+    // Mdlcode-disable cannot-parse-capability
     $url = get_docs_url('Capabilities/' . $capability->name);
     return '<a onclick="this.target=\'docspopup\'" href="' . $url . '">' . get_capability_string($capability->name) . '</a>';
 }
@@ -2518,7 +2525,7 @@ function is_inside_frontpage(context $context) {
 /**
  * Returns capability information (cached)
  *
- * @param string $capabilityname
+ * @param string $capabilityname {Mdlcode-variant-capability}
  * @return stdClass or null if capability not found
  */
 function get_capability_info($capabilityname) {
@@ -2556,11 +2563,11 @@ function get_all_capabilities() {
  * Returns the human-readable, translated version of the capability.
  * Basically a big switch statement.
  *
- * @param string $capabilityname e.g. mod/choice:readresponses
+ * @param string $capabilityname {Mdlcode-variant-capability} e.g. mod/choice:readresponses
  * @return string
  */
 function get_capability_string($capabilityname) {
-
+    // Mdlcode-disable cannot-parse-string
     // Typical capability name is 'plugintype/pluginname:capabilityname'
     list($type, $name, $capname) = preg_split('|[/:]|', $capabilityname);
 
@@ -2640,6 +2647,7 @@ function get_component_string($component, $contextlevel) {
         default:
             $prefix = '';
     }
+    // Mdlcode-disable-next-line cannot-parse-string
     return $prefix . get_string('pluginname', $component);
 }
 
@@ -3472,7 +3480,7 @@ function set_role_contextlevels($roleid, array $contextlevels) {
  * Gets sql joins for finding users with capability in the given context.
  *
  * @param context $context Context for the join.
- * @param string|array $capability Capability name or array of names.
+ * @param string|array $capability {Mdlcode-variant-capability} Capability name or array of names.
  *      If an array is provided then this is the equivalent of a logical 'OR',
  *      i.e. the user needs to have one of these capabilities.
  * @param string $useridcolumn e.g. 'u.id'.
@@ -3695,7 +3703,7 @@ function get_with_capability_join(context $context, $capability, $useridcolumn) 
  * on some DBs.
  *
  * @param context $context
- * @param string|array $capability - capability name(s)
+ * @param string|array $capability {Mdlcode-variant-capability} - capability name(s)
  * @param string $fields - fields to be pulled. The user table is aliased to 'u'. u.id MUST be included.
  * @param string $sort - the sort order. Default is lastaccess time.
  * @param mixed $limitfrom - number of records to skip (offset)
@@ -4107,7 +4115,7 @@ function count_role_users($roleid, context $context, $parent = false) {
  * It is now reasonably efficient, but bear in mind that if there are users who have the capability
  * everywhere, it may return an array of all courses.
  *
- * @param string $capability Capability in question
+ * @param string $capability {Mdlcode-variant-capability} Capability in question
  * @param int $userid User ID or null for current user
  * @param bool $doanything True if 'doanything' is permitted (default)
  * @param string $fieldsexceptid Leave blank if you only need 'id' in the course records;
@@ -4637,7 +4645,7 @@ function role_cap_duplicate($sourcerole, $targetrole) {
  * Use get_role_names_with_cap_in_context() if you need role names to display in the UI
  *
  * @param stdClass $context
- * @param string $capability
+ * @param string $capability {Mdlcode-variant-capability}
  * @return array($neededroles, $forbiddenroles)
  */
 function get_roles_with_cap_in_context($context, $capability) {
@@ -4697,13 +4705,14 @@ function get_roles_with_cap_in_context($context, $capability) {
  * Uses get_roles_with_cap_in_context(). Returns $allowed minus $forbidden
  *
  * @param stdClass $context
- * @param array $capabilities An array of capabilities
+ * @param array $capabilities {Mdlcode-variant-capability} An array of capabilities
  * @return array of roles with all of the required capabilities
  */
 function get_roles_with_caps_in_context($context, $capabilities) {
     $neededarr = array();
     $forbiddenarr = array();
     foreach ($capabilities as $caprequired) {
+        // Mdlcode-disable-next-line cannot-parse-capability
         list($neededarr[], $forbiddenarr[]) = get_roles_with_cap_in_context($context, $caprequired);
     }
 
@@ -4732,7 +4741,7 @@ function get_roles_with_caps_in_context($context, $capabilities) {
  * Uses get_roles_with_caps_in_context(). Returns $allowed minus $forbidden
  *
  * @param stdClass $context
- * @param array $capabilities An array of capabilities
+ * @param array $capabilities {Mdlcode-variant-capability} An array of capabilities
  * @return array of roles with all of the required capabilities
  */
 function get_role_names_with_caps_in_context($context, $capabilities) {
@@ -4755,7 +4764,7 @@ function get_role_names_with_caps_in_context($context, $capabilities) {
  *
  * @param int $roleid
  * @param context $context
- * @param string $capability name
+ * @param string $capability {Mdlcode-variant-capability} name
  * @return bool
  */
 function prohibit_is_removable($roleid, context $context, $capability) {
@@ -4792,7 +4801,7 @@ function prohibit_is_removable($roleid, context $context, $capability) {
  *
  * @param int $roleid
  * @param stdClass $context
- * @param string $capname capability name
+ * @param string $capname {Mdlcode-variant-capability} capability name
  * @param int $permission
  * @return void
  */
@@ -7164,6 +7173,7 @@ class context_module extends context {
      */
     public function get_context_name($withprefix = true, $short = false, $escape = true) {
         global $DB;
+        // Mdlcode assume: $cm->modname pluginnames-mod
 
         $name = '';
         if ($cm = $DB->get_record_sql("SELECT cm.*, md.name AS modname
@@ -7240,6 +7250,7 @@ class context_module extends context {
         if (file_exists($modfile)) {
             include_once($modfile);
             $modfunction = $module->name.'_get_extra_capabilities';
+            // Mdlcode callback: mod PN_get_extra_capabilities function_exists($modfunction)
             if (function_exists($modfunction)) {
                 $extracaps = $modfunction();
             }
@@ -7731,7 +7742,7 @@ function get_suspended_userids(context $context, $usecache = false) {
  * Gets sql for finding users with capability in the given context
  *
  * @param context $context
- * @param string|array $capability Capability name or array of names.
+ * @param string|array $capability {Mdlcode-variant-capability} Capability name or array of names.
  *      If an array is provided then this is the equivalent of a logical 'OR',
  *      i.e. the user needs to have one of these capabilities.
  * @return array($sql, $params)

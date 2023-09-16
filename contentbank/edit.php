@@ -52,6 +52,7 @@ if (!empty($id)) {
     $contenttypename = $content->get_content_type();
 } else {
     $contenttypename = "contenttype_$pluginname";
+    // Mdlcode assume-next-line: $contenttypename fullpluginnames-contenttype
     $heading = get_string('addinganew', 'moodle', get_string('description', $contenttypename));
     $content = null;
 }

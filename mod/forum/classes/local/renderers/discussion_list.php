@@ -99,7 +99,7 @@ class discussion_list {
      * @param   builder_factory     $builderfactory The factory used to fetch the builder instances
      * @param   capability_manager  $capabilitymanager The managed used to check capabilities on the forum
      * @param   url_factory         $urlfactory The factory used to create URLs in the forum
-     * @param   string              $template
+     * @param   string              $template {Mdlcode-variant-template}
      * @param   notification[]      $notifications A list of any notifications to be displayed within the page
      * @param   callable|null       $postprocessfortemplate Callback function to process discussion lists for templates
      */
@@ -218,6 +218,7 @@ class discussion_list {
         }
 
         if (!$discussions) {
+            // Mdlcode-disable-next-line cannot-parse-template
             return $this->renderer->render_from_template($this->template, $forumview);
         }
 
@@ -239,6 +240,7 @@ class discussion_list {
         $firstdiscussion = reset($discussions);
         $forumview['firstgradeduserid'] = $firstdiscussion->get_latest_post_author()->get_id();
 
+        // Mdlcode-disable-next-line cannot-parse-template
         return $this->renderer->render_from_template($this->template, $forumview);
     }
 
@@ -352,6 +354,7 @@ class discussion_list {
             $notifications[] = (new notification(
                 get_string('thisforumisthrottled', 'forum', [
                     'blockafter' => $forum->get_block_after(),
+                    // Mdlcode assume: $forum->get_block_period() ['172800', '259200', '345600', '432000', '518400', '604800', '86400']
                     'blockperiod' => get_string('secondstotime' . $forum->get_block_period())
                 ]),
                 notification::NOTIFY_INFO

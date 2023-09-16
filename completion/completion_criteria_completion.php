@@ -39,6 +39,7 @@ require_once($CFG->dirroot.'/completion/data_object.php');
 class completion_criteria_completion extends data_object {
 
     /* @var string Database table that stores completion type criteria */
+    // Mdlcode uses-next-line: dbtable 'course_completion_crit_compl'
     public $table = 'course_completion_crit_compl';
 
     /* @var array Array of required table fields, must start with 'id'. */

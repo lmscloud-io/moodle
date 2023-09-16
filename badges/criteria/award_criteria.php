@@ -246,6 +246,7 @@ abstract class award_criteria {
      * @param stdClass $data details of various criteria
      */
     public function config_form_criteria($data) {
+        // Mdlcode assume: $this->criteriatype ['1','2','3','4','5','6','7','8','9']
         global $OUTPUT;
         $agg = $data->get_aggregation_methods();
 
@@ -363,6 +364,7 @@ abstract class award_criteria {
     /**
      * Saves intial criteria records with required parameters set up.
      *
+     * @uses ::get_string()
      * @param array $params Values from the form or any other array.
      */
     public function save($params = array()) {

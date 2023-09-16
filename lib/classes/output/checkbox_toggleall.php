@@ -110,7 +110,7 @@ class checkbox_toggleall implements renderable, templatable {
     /**
      * Fetches the appropriate template for the checkbox toggle all element.
      *
-     * @return string
+     * @return string {Mdlcode-variant-template}
      */
     public function get_template() {
         if ($this->ismaster) {

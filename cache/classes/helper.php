@@ -602,6 +602,7 @@ class cache_helper {
         if ($component === 'core') {
             $component = 'cache';
         }
+        // Mdlcode-disable-next-line cannot-parse-string.
         return new lang_string($identifier, $component);
     }
 

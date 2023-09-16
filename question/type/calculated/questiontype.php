@@ -1489,6 +1489,9 @@ class qtype_calculated extends question_type {
 
     public function dataset_options_from_database($form, $name, $prefix = '',
             $langfile = 'qtype_calculated') {
+        // Mdlcode assume: $prefix ''
+        // Mdlcode assume: $langfile 'qtype_calculated'
+        // Mdlcode assume: $type ['1','2','3']
         global $CFG, $DB;
         $type = 1; // Only type = 1 (i.e. old 'LITERAL') has ever been used.
         // First options - it is not a dataset...

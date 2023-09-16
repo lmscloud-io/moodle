@@ -587,6 +587,7 @@ class fields {
      */
     public static function get_display_name(string $field): string {
         global $CFG;
+        // Mdlcode assume: $field profilefields
 
         // Custom fields have special handling.
         if (preg_match(self::PROFILE_FIELD_REGEX, $field, $matches)) {

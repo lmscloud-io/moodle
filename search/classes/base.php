@@ -136,7 +136,7 @@ abstract class base {
      * @return string
      */
     public function get_visible_name($lazyload = false) {
-
+        // Mdlcode-disable cannot-parse-string
         $component = $this->componentname;
 
         // Core subsystem strings go to lang/XX/search.php.

@@ -180,6 +180,7 @@ class manager {
             }
 
             // Now, ask the module to provide descriptions for its custom conditional completion rules.
+            // Mdlcode callback-next-line: mod
             if ($customruledescriptions = component_callback($moduledata->modname,
                 'get_completion_active_rule_descriptions', [$moduledata])) {
                 $activeruledescriptions = array_merge($activeruledescriptions, $customruledescriptions);

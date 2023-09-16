@@ -900,7 +900,7 @@ class api {
      *                          - children: All descendants
      *                          - parents: All parents, grand parents, etc...
      *                          - self: Context passed only.
-     * @param array $hasanycapability Array of capabilities passed to {@link has_any_capability()} in each context.
+     * @param array $hasanycapability {Mdlcode-variant-capability} Array of capabilities passed to {@link has_any_capability()} in each context.
      * @return context[] An array of contexts where keys are context IDs.
      */
     public static function get_related_contexts($context, $includes, array $hasanycapability = null) {
@@ -4262,8 +4262,8 @@ class api {
      * @param competency|int $competencyorid The competency, or its id for which evidence is added.
      * @param context|int $contextorid The context in which the evidence took place.
      * @param int $action The type of action to take on the competency. \core_competency\evidence::ACTION_*.
-     * @param string $descidentifier The strings identifier.
-     * @param string $desccomponent The strings component.
+     * @param string $descidentifier {Mdlcode-variant-string} The strings identifier.
+     * @param string $desccomponent {Mdlcode-variant-stringcomponent} The strings component.
      * @param mixed $desca Any arguments the string requires.
      * @param bool $recommend When true, the user competency will be sent for review.
      * @param string $url The url the evidence may link to.
@@ -5232,7 +5232,7 @@ class api {
      * This is used e.g. to find all the users where someone is able to manage their learning plans,
      * it also would be useful for mentees etc.
      *
-     * @param string $capability - The capability string we are filtering for. If '' is passed,
+     * @param string $capability - {Mdlcode-variant-capability} The capability string we are filtering for. If '' is passed,
      *                             an always matching filter is returned.
      * @param int $userid - The user id we are using for the access checks. Defaults to current user.
      * @param int $type - The type of named params to return (passed to $DB->get_in_or_equal).

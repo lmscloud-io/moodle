@@ -210,7 +210,7 @@ class check_subscriptions extends \core\task\scheduled_task {
      * @since 3.2.0
      * @param \stdClass $user the user record.
      * @param \stdClass $course the course record.
-     * @param string $capability the capability to check.
+     * @param string $capability {Mdlcode-variant-capability} the capability to check.
      * @return bool true if the user can access the course with the specified capability, false otherwise.
      */
     protected function user_can_access_course($user, $course, $capability) {

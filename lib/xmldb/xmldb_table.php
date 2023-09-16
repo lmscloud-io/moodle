@@ -48,7 +48,7 @@ class xmldb_table extends xmldb_object {
 
     /**
      * Creates one new xmldb_table
-     * @param string $name
+     * @param string $name {Mdlcode-variant-dbtable}
      */
     public function __construct($name) {
         parent::__construct($name);

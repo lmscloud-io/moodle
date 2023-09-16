@@ -517,6 +517,7 @@ class api {
         // In order to get the proper hash, a callback should be done (looking for those exceptions).
         $pathdata = null;
         if ($context->contextlevel == CONTEXT_MODULE || $context->contextlevel == CONTEXT_BLOCK) {
+            // Mdlcode callback-next-line: *
             $pathdata = component_callback($component, 'get_path_from_pluginfile', [$filearea, $parts], null);
         }
         if (null === $pathdata) {

@@ -247,6 +247,7 @@ const registerEventListeners = (courseId, displayFormat) => {
  */
 const getTogglePreferenceParams = toggleState => {
     return {
+        // Mdlcode uses-next-line: webservice 'core_user_update_user_preferences'
         methodname: 'core_user_update_user_preferences',
         args: {
             preferences: [{
@@ -257,6 +258,7 @@ const getTogglePreferenceParams = toggleState => {
     };
 };
 
+// Mdlcode-disable cannot-parse-webservice
 const setToggleStatePreference = toggleState => fetchMany([getTogglePreferenceParams(toggleState)]);
 
 /**

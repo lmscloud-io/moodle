@@ -501,6 +501,7 @@ function mnet_server_invoke_dangerous_method($includefile, $methodname, $method,
         throw new mnet_server_exception(7012, "nosuchfunction");
     }
 
+    // Mdlcode callback: ignore
     if (!function_exists($functionname)) {
         throw new mnet_server_exception(7012, "nosuchfunction");
     }

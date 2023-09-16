@@ -28,6 +28,7 @@
 
 require_once(__DIR__ . '/../config.php');
 require_once($CFG->dirroot . '/repository/lib.php');
+// Mdlcode assume: $plugin pluginnames-repository
 
 $edit    = optional_param('edit', 0, PARAM_INT);
 $new     = optional_param('new', '', PARAM_ALPHANUMEXT);
@@ -107,6 +108,7 @@ if (!empty($new) && empty($edit)){
 }
 
 if (isset($type)) {
+    // Mdlcode assume: $type->get_typename() pluginnames-repository
     if (!$type->get_visible()) {
         print_error('typenotvisible', 'repository', $baseurl);
     }

@@ -30,6 +30,7 @@ use tool_brickfield\output\renderer;
 use tool_brickfield\registration;
 
 defined('MOODLE_INTERNAL') || die();
+// Mdlcode-disable cannot-parse-capability
 
 $accessibilitydisabled = !accessibility::is_accessibility_enabled();
 

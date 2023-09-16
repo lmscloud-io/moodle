@@ -22,6 +22,8 @@ use moodle_url;
 use stdClass;
 use tool_brickfield\local\tool\filter;
 
+// Mdlcode assume: self::$pluginpath 'tool/brickfield'
+
 /**
  * Provides the Brickfield Accessibility toolkit API.
  *
@@ -100,9 +102,10 @@ class accessibility {
      * Get the canonicalised name of a capability.
      *
      * @param   string $capability
-     * @return  string
+     * @return  string {Mdlcode-variant-capability}
      */
     public static function get_capability_name(string $capability): string {
+        // Mdlcode assume: $capability ['viewcoursetools', 'viewsystemtools']
         return self::$pluginpath . ':' . $capability;
     }
 
