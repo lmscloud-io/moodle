@@ -128,8 +128,7 @@ foreach ($sections as $i => $section) {
                     }
 
 
-                    // Mdlcode assume: $mod->modname pluginnames-mod.
-                    // Mdlcode-todo this directive does not work
+                    // Mdlcode assume: "$mod->modname" pluginnames-mod.
                     $instance = $DB->get_record("$mod->modname", array("id"=>$mod->instance));
                     $libfile = "$CFG->dirroot/mod/$mod->modname/lib.php";
 
