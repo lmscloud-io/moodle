@@ -86,7 +86,6 @@ class manage_badge_action_bar extends base_action_bar {
      * @return array
      */
     protected function get_badge_administration_mapping_construct(): array {
-        // Mdlcode-todo the key is a string identifier and the 'capability' is a capability
         return [
             // Mdlcode uses-next-line: string ['boverview', 'badges']
             'boverview' => [

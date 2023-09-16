@@ -3438,8 +3438,10 @@ function calendar_get_view(\calendar_information $calendar, $view, $includenavig
         $date->modify('+' . $monthdays . ' days');
 
         if ($view === 'mini' || $view === 'minithree') {
+            // Mdlcode uses-next-line: template 'core_calendar/calendar_mini'
             $template = 'core_calendar/calendar_mini';
         } else {
+            // Mdlcode uses-next-line: template 'core_calendar/calendar_month'
             $template = 'core_calendar/calendar_month';
         }
     }
@@ -3522,21 +3524,23 @@ function calendar_get_view(\calendar_information $calendar, $view, $includenavig
         $data = $day->export($renderer);
         $data->viewingday = true;
         $data->showviewselector = true;
+        // Mdlcode uses-next-line: template 'core_calendar/calendar_day'
         $template = 'core_calendar/calendar_day';
     } else if ($view == "upcoming" || $view == "upcoming_mini") {
         $upcoming = new \core_calendar\external\calendar_upcoming_exporter($calendar, $related);
         $data = $upcoming->export($renderer);
 
         if ($view == "upcoming") {
+            // Mdlcode uses-next-line: template 'core_calendar/calendar_upcoming'
             $template = 'core_calendar/calendar_upcoming';
             $data->viewingupcoming = true;
             $data->showviewselector = true;
         } else if ($view == "upcoming_mini") {
+            // Mdlcode uses-next-line: template 'core_calendar/calendar_upcoming_mini'
             $template = 'core_calendar/calendar_upcoming_mini';
         }
     }
 
-    // Mdlcode-todo $template is a name of a template
     return [$data, $template];
 }
 
@@ -3716,9 +3720,9 @@ function calendar_get_footer_options($calendar, array $options = []) {
     $renderer = $PAGE->get_renderer('core_calendar');
     $footer = new \core_calendar\external\footer_options_exporter($calendar, $USER->id, $authtoken, $options);
     $data = $footer->export($renderer);
+    // Mdlcode uses-next-line: template 'core_calendar/footer_options'
     $template = 'core_calendar/footer_options';
 
-    // Mdlcode-todo $template is a name of a template
     return [$data, $template];
 }
 
