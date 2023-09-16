@@ -40,6 +40,7 @@ require_once($CFG->dirroot.'/completion/data_object.php');
 class completion_aggregation extends data_object {
 
     /* @var string Database table name that stores completion aggregation information */
+    // Mdlcode uses-next-line: dbtable 'course_completion_aggr_methd'
     public $table = 'course_completion_aggr_methd';
 
     /**

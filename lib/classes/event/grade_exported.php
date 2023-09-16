@@ -64,6 +64,7 @@ abstract class grade_exported extends base {
      * @return string
      */
     public static function get_name() {
+        // Mdlcode assume: self::get_export_type() pluginnames-gradeexport
         return get_string('eventgradeexported', 'gradeexport_'. self::get_export_type());
     }
 

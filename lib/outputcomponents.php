@@ -480,12 +480,13 @@ class help_icon implements renderable, templatable {
     /**
      * Constructor
      *
-     * @param string $identifier string for help page title,
+     * @param string $identifier {Mdlcode-variant-string} string for help page title,
      *  string with _help suffix is used for the actual help text.
      *  string with _link suffix is used to create a link to further info (if it exists)
-     * @param string $component
+     * @param string $component {Mdlcode-variant-stringcomponent}
      */
     public function __construct($identifier, $component) {
+        // Mdlcode call-special: is-help
         $this->identifier = $identifier;
         $this->component  = $component;
     }

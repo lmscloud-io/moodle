@@ -50,6 +50,7 @@ class copy_form extends \moodleform {
      */
     public function definition() {
         global $CFG, $OUTPUT, $USER;
+        // Mdlcode-disable cannot-parse-capability
 
         $mform = $this->_form;
         $course = $this->_customdata['course'];

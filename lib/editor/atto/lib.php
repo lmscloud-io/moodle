@@ -85,6 +85,7 @@ class atto_texteditor extends texteditor {
      */
     public function use_editor($elementid, array $options=null, $fpoptions=null) {
         global $PAGE;
+        // Mdlcode assume: $plugin pluginnames-atto
 
         if (array_key_exists('atto:toolbar', $options)) {
             $configstr = $options['atto:toolbar'];

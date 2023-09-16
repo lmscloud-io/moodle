@@ -62,6 +62,7 @@ class manager {
             if (is_readable($file)) {
                 require_once($file);
                 $function = "core_" . $component . "_myprofile_navigation";
+                // Mdlcode callback: core PFN_myprofile_navigation function_exists($function)
                 if (function_exists($function)) {
                     $function($tree, $user, $iscurrentuser, $course);
                 }

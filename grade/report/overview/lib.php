@@ -287,6 +287,7 @@ class grade_report_overview extends grade_report {
 
                 $coursenamelink = format_string(get_course_display_name_for_list($course), true, ['context' => $coursecontext]);
 
+                // Mdlcode assume: $CFG->grade_profilereport pluginnames-gradereport
                 // Link to the course grade report pages (performing same capability checks as the pages themselves).
                 if ($activitylink &&
                         (has_capability('gradereport/' . $CFG->grade_profilereport .':view', $coursecontext) || $viewasuser)) {

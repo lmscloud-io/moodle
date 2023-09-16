@@ -305,6 +305,7 @@ class mod_workshop_renderer extends plugin_renderer_base {
                 // Display a control widget to switch to the given phase or mark the phase as the current one.
                 foreach ($phase->actions as $action) {
                     if ($action->type === 'switchphase') {
+                        // Mdlcode assume: $phasecode ['10', '20', '30', '40', '50']
                         if ($phasecode == workshop::PHASE_ASSESSMENT && $plan->workshop->phase == workshop::PHASE_SUBMISSION
                                 && $plan->workshop->phaseswitchassessment) {
                             $icon = new pix_icon('i/scheduled', get_string('switchphaseauto', 'mod_workshop'));

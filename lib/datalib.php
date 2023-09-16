@@ -680,7 +680,7 @@ function get_courses($categoryid="all", $sort="c.sortorder ASC", $fields="c.*") 
  * @param int $page The page number to get
  * @param int $recordsperpage The number of records per page
  * @param int $totalcount Passed in by reference.
- * @param array $requiredcapabilities Extra list of capabilities used to filter courses
+ * @param array $requiredcapabilities {Mdlcode-variant-capability} Extra list of capabilities used to filter courses
  * @param array $searchcond additional search conditions, for example ['c.enablecompletion = :p1']
  * @param array $params named parameters for additional search conditions, for example ['p1' => 1]
  * @return stdClass[] {@link $COURSE} records

@@ -432,6 +432,7 @@ class page_helper {
 
             // Set the sub-title for add mode.
             $level = $parent ? $parent->get_level() + 1 : 1;
+            // Mdlcode assume-next-line: $framework->get_taxonomy($level) ['behaviour', 'competency', 'concept', 'domain', 'indicator', 'level', 'outcome', 'practice', 'proficiency', 'skill', 'value']
             $subtitle = get_string('taxonomy_add_' . $framework->get_taxonomy($level), 'tool_lp');
 
         } else {
@@ -442,6 +443,7 @@ class page_helper {
             $PAGE->navbar->add($title);
 
             // Set the sub-title for edit mode.
+            // Mdlcode assume-next-line: $framework->get_taxonomy($competency->get_level()) ['behaviour', 'competency', 'concept', 'domain', 'indicator', 'level', 'outcome', 'practice', 'proficiency', 'skill', 'value']
             $subtitle = get_string('taxonomy_edit_' . $framework->get_taxonomy($competency->get_level()), 'tool_lp');
         }
 

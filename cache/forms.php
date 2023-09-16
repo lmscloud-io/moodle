@@ -296,6 +296,7 @@ class cache_mode_mappings_form extends moodleform {
                     if (empty($store['default'])) {
                         $options[$mode][$storename] = $store['name'];
                     } else {
+                        // Mdlcode assume: $store['name'] ['default_application', 'default_session', 'default_request']
                         $options[$mode][$storename] = get_string('store_'.$store['name'], 'cache');
                     }
                 }

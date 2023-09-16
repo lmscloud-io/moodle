@@ -282,13 +282,14 @@ class mod_assign_external extends external_api {
      *
      * @param array $courseids An optional array of course ids. If provided only assignments within the given course
      * will be returned. If the user is not enrolled in or can't view a given course a warning will be generated and returned.
-     * @param array $capabilities An array of additional capability checks you wish to be made on the course context.
+     * @param array $capabilities {Mdlcode-variant-capability} An array of additional capability checks you wish to be made on the course context.
      * @param bool $includenotenrolledcourses Wheter to return courses that the user can see even if is not enroled in.
      * This requires the parameter $courseids to not be empty.
      * @return An array of courses and warnings.
      * @since  Moodle 2.4
      */
     public static function get_assignments($courseids = array(), $capabilities = array(), $includenotenrolledcourses = false) {
+        // Mdlcode-disable cannot-parse-capability
         global $USER, $DB, $CFG;
 
         $params = self::validate_parameters(

@@ -2961,6 +2961,7 @@ function cron_execute_plugin_type($plugintype, $description = null) {
     global $DB;
 
     // Get list from plugin => function for all plugins.
+    // Mdlcode callback-next-line: *
     $plugins = get_plugin_list_with_function($plugintype, 'cron');
 
     // Modify list for backward compatibility (different files/names).
@@ -3049,6 +3050,7 @@ function cron_bc_hack_plugin_functions($plugintype, $plugins) {
             }
             include_once("$dir/cron.php");
             $cronfunction = $component . '_cron';
+            // Mdlcode callback-next-line: plugin PFN_cron
             if (function_exists($cronfunction)) {
                 $plugins[$component] = $cronfunction;
             } else {
@@ -3072,6 +3074,9 @@ function cron_bc_hack_plugin_functions($plugintype, $plugins) {
             include_once("$dir/lib.php");
             $cronfunction = str_replace('grade', 'grade_', $plugintype) . '_' .
                     $pluginname . '_cron';
+            // Mdlcode callback: gradereport grade_report_PN_cron function_exists($cronfunction)
+            // Mdlcode callback: gradeexport grade_export_PN_cron function_exists($cronfunction)
+            // Mdlcode callback: gradeimport grade_import_PN_cron function_exists($cronfunction)
             if (function_exists($cronfunction)) {
                 $plugins[$component] = $cronfunction;
             }

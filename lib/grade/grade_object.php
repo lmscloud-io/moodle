@@ -24,6 +24,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+// Mdlcode assume: $this->table ['grade_outcomes', 'grade_categories', 'grade_grades', 'grade_items', 'scale']
 
 /**
  * An abstract object that holds methods and attributes common to all grade_* objects defined here.
@@ -171,7 +172,7 @@ abstract class grade_object {
     /**
      * Factory method which uses the parameters to retrieve all matching instances from the database
      *
-     * @param string $table The table to retrieve from
+     * @param string $table {Mdlcode-variant-dbtable} The table to retrieve from
      * @param string $classname The name of the class to instantiate
      * @param array $params An array of conditions like $fieldname => $fieldvalue
      * @return array|bool Array of object instances or false if not found

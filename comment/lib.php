@@ -232,6 +232,7 @@ class comment {
         $this->template .= html_writer::end_tag('div'); // .comment-message
 
         if (!empty($this->plugintype)) {
+            // Mdlcode callback: *
             $this->template = plugin_callback($this->plugintype, $this->pluginname, 'comment', 'template', array($this->comment_param), $this->template);
         }
 
@@ -315,6 +316,7 @@ class comment {
         $this->postcap = has_capability('moodle/comment:post', $this->context);
         $this->viewcap = has_capability('moodle/comment:view', $this->context);
         if (!empty($this->plugintype)) {
+            // Mdlcode callback: *
             $permissions = plugin_callback($this->plugintype, $this->pluginname, 'comment', 'permissions', array($this->comment_param), array('post'=>false, 'view'=>false));
             $this->postcap = $this->postcap && $permissions['post'];
             $this->viewcap = $this->viewcap && $permissions['view'];
@@ -598,6 +600,7 @@ class comment {
 
         if (!empty($this->plugintype)) {
             // moodle module will filter comments
+            // Mdlcode callback: *
             $comments = plugin_callback($this->plugintype, $this->pluginname, 'comment', 'display', array($comments, $this->comment_param), $comments);
         }
 
@@ -709,6 +712,7 @@ class comment {
         $newcmt->timecreated  = $now;
 
         // This callback allow module to modify the content of comment, such as filter or replacement
+        // Mdlcode callback: *
         plugin_callback($this->plugintype, $this->pluginname, 'comment', 'add', array(&$newcmt, $this->comment_param));
 
         $cmt_id = $DB->insert_record('comments', $newcmt);
@@ -956,6 +960,7 @@ class comment {
         foreach ($params as $key=>$value) {
             $this->comment_param->$key = $value;
         }
+        // Mdlcode callback: *
         $validation = plugin_callback($this->plugintype, $this->pluginname, 'comment', 'validate', array($this->comment_param), false);
         if (!$validation) {
             throw new comment_exception('invalidcommentparam');

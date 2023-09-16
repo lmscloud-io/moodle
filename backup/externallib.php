@@ -279,6 +279,7 @@ class core_backup_external extends external_api {
      * @since Moodle 3.9
      */
     public static function get_copy_progress($copies) {
+        // Mdlcode-disable cannot-parse-capability
         // Release session lock.
         \core\session\manager::write_close();
 
@@ -358,6 +359,7 @@ class core_backup_external extends external_api {
      * @return int new group id.
      */
     public static function submit_copy_form($jsonformdata) {
+        // Mdlcode-disable cannot-parse-capability
 
         // Release session lock.
         \core\session\manager::write_close();

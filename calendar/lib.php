@@ -3548,6 +3548,7 @@ function calendar_get_view(\calendar_information $calendar, $view, $includenavig
         }
     }
 
+    // Mdlcode-todo $template is a name of a template
     return [$data, $template];
 }
 
@@ -3725,6 +3726,7 @@ function calendar_get_footer_options($calendar) {
     $data = $footer->export($renderer);
     $template = 'core_calendar/footer_options';
 
+    // Mdlcode-todo $template is a name of a template
     return [$data, $template];
 }
 

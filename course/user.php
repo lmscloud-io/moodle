@@ -166,6 +166,7 @@ switch ($mode) {
         }
         echo $OUTPUT->header();
 
+        // Mdlcode assume-optional: $CFG->grade_profilereport pluginnames-gradereport
         if (empty($CFG->grade_profilereport) or !file_exists($CFG->dirroot.'/grade/report/'.$CFG->grade_profilereport.'/lib.php')) {
             $CFG->grade_profilereport = 'user';
         }
@@ -179,6 +180,7 @@ switch ($mode) {
         }
 
         $functionname = 'grade_report_'.$CFG->grade_profilereport.'_profilereport';
+        // Mdlcode callback: gradereport grade_report_PN_profilereport function_exists($functionname)
         if (function_exists($functionname)) {
             $functionname($course, $user, $viewasuser);
         }

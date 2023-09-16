@@ -38,6 +38,7 @@ $coursecontext = context_course::instance($course->id);
 // Security and access checks.
 require_login($course, false);
 $copycaps = \core_course\management\helper::get_course_copy_capabilities();
+// Mdlcode-disable cannot-parse-capability.
 require_all_capabilities($copycaps, $coursecontext);
 
 if ($returnurl != '') {

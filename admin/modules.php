@@ -118,6 +118,7 @@
         }
 
         try {
+            // Mdlcode assume: $module->name pluginnames-mod
             $count = $DB->count_records_select($module->name, "course<>0");
         } catch (dml_exception $e) {
             $count = -1;

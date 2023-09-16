@@ -638,8 +638,8 @@ abstract class handler {
      *
      * @param \MoodleQuickForm $mform
      * @param int $instanceid id of the instance, can be null when instance is being created
-     * @param string $headerlangidentifier If specified, a lang string will be used for field category headings
-     * @param string $headerlangcomponent
+     * @param string $headerlangidentifier {Mdlcode-variant-string moodle} If specified, a lang string will be used for field category headings
+     * @param string $headerlangcomponent {Mdlcode-variant-stringcomponent}
      */
     public function instance_form_definition(\MoodleQuickForm $mform, int $instanceid = 0,
             ?string $headerlangidentifier = null, ?string $headerlangcomponent = null) {

@@ -1242,6 +1242,7 @@ class flexible_table {
                             // Done this way for the possibility of more than two sortable full name display fields.
                             $this->headers[$index] = '';
                             foreach ($requirednames as $name) {
+                                // Mdlcode assume-next-line: $name profilefields
                                 $sortname = $this->sort_link(get_string($name),
                                         $name, $primarysortcolumn === $name, $primarysortorder);
                                 $this->headers[$index] .= $sortname . ' / ';

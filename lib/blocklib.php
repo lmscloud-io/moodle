@@ -2125,6 +2125,7 @@ function generate_page_type_patterns($pagetype, $parentcontext = null, $currentc
             if (file_exists($libfile)) {
                 require_once($libfile);
                 $function = $possiblecomponent.'_page_type_list';
+                // Mdlcode callback-next-line: core PN_page_type_list function_exists($function)
                 if (function_exists($function)) {
                     if ($patterns = $function($pagetype, $parentcontext, $currentcontext)) {
                         break;
@@ -2145,9 +2146,11 @@ function generate_page_type_patterns($pagetype, $parentcontext = null, $currentc
                     if (file_exists($libfile)) {
                         require_once($libfile);
                         $function = $possiblecomponent.'_'.$pluginname.'_page_type_list';
+                        // Mdlcode callback-next-line: ignore
                         if (!function_exists($function)) {
                             $function = $pluginname.'_page_type_list';
                         }
+                        // Mdlcode callback-next-line: plugin PREFIX_page_type_list function_exists($function)
                         if (function_exists($function)) {
                             if ($patterns = $function($pagetype, $parentcontext, $currentcontext)) {
                                 break;
@@ -2164,6 +2167,7 @@ function generate_page_type_patterns($pagetype, $parentcontext = null, $currentc
             if (file_exists($libfile)) {
                 require_once($libfile);
                 $function = $possiblecomponent.'_page_type_list';
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($function)) {
                     if ($patterns = $function($pagetype, $parentcontext, $currentcontext)) {
                         break;

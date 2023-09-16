@@ -233,6 +233,7 @@ function report_stats_report($course, $report, $mode, $user, $roleid, $time) {
             echo $OUTPUT->heading(
                 format_string($course->shortname) .
                 ' - ' .
+                // Mdlcode assume: $report ['1', '2', '3', '4', '5', '7', '8', '9', '10', '11', '12', '13', '14'].
                 get_string('statsreport' . $report) .
                 $rolename .
                 $userdisplayname

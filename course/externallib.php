@@ -320,6 +320,7 @@ class core_course_external extends external_api {
                             // Call $modulename_export_contents (each module callback take care about checking the capabilities).
                             require_once($CFG->dirroot . '/mod/' . $cm->modname . '/lib.php');
                             $getcontentfunction = $cm->modname.'_export_contents';
+                            // Mdlcode callback: mod PN_export_contents function_exists($getcontentfunction)
                             if (function_exists($getcontentfunction)) {
                                 $contents = $getcontentfunction($cm, $baseurl);
                                 $module['contentsinfo'] = array(
@@ -2515,7 +2516,7 @@ class core_course_external extends external_api {
      * @param string $criteriavalue Criteria value
      * @param int $page             Page number (for pagination)
      * @param int $perpage          Items per page
-     * @param array $requiredcapabilities Optional list of required capabilities (used to filter the list).
+     * @param array $requiredcapabilities {Mdlcode-variant-capability} Optional list of required capabilities (used to filter the list).
      * @param int $limittoenrolled  Limit to only enrolled courses
      * @param int onlywithcompletion Limit to only courses where completion is enabled
      * @return array of course objects and warnings
@@ -2530,7 +2531,7 @@ class core_course_external extends external_api {
                                           $limittoenrolled=0,
                                           $onlywithcompletion=0) {
         global $CFG;
-
+        // Mdlcode-disable cannot-parse-capability
         $warnings = array();
 
         $parameters = array(
@@ -4397,6 +4398,7 @@ class core_course_external extends external_api {
         $activeplugin = get_config('core', 'activitychooseractivefooter');
 
         if ($activeplugin !== COURSE_CHOOSER_FOOTER_NONE) {
+            // Mdlcode callback-next-line: *
             $footerdata = component_callback($activeplugin, 'custom_chooser_footer', [$courseid, $sectionid]);
             return [
                 'footer' => true,

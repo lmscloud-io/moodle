@@ -370,7 +370,7 @@ class quiz {
     /**
      * Wrapper round the has_capability funciton that automatically passes in the quiz context.
      *
-     * @param string $capability the name of the capability to check. For example mod/quiz:view.
+     * @param string $capability {Mdlcode-variant-capability} the name of the capability to check. For example mod/quiz:view.
      * @param int|null $userid A user id. By default (null) checks the permissions of the current user.
      * @param bool $doanything If false, ignore effect of admin role assignment.
      * @return boolean true if the user has this capability. Otherwise false.
@@ -382,7 +382,7 @@ class quiz {
     /**
      * Wrapper round the require_capability function that automatically passes in the quiz context.
      *
-     * @param string $capability the name of the capability to check. For example mod/quiz:view.
+     * @param string $capability {Mdlcode-variant-capability} the name of the capability to check. For example mod/quiz:view.
      * @param int|null $userid A user id. By default (null) checks the permissions of the current user.
      * @param bool $doanything If false, ignore effect of admin role assignment.
      */

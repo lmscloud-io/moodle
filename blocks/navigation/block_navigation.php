@@ -57,6 +57,7 @@ class block_navigation extends block_base {
      */
     function init() {
         $this->blockname = get_class($this);
+        // Mdlcode assume: $this->blockname fullpluginnames-block.
         $this->title = get_string('pluginname', $this->blockname);
     }
 

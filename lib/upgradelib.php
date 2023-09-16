@@ -629,6 +629,7 @@ function upgrade_plugins($type, $startcallback, $endcallback, $verbose) {
             if (get_config($plugin->fullname, 'installrunning')) {
                 require_once($fullplug.'/db/install.php');
                 $recover_install_function = 'xmldb_'.$plugin->fullname.'_install_recovery';
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($recover_install_function)) {
                     $startcallback($component, true, $verbose);
                     $recover_install_function();
@@ -809,6 +810,7 @@ function upgrade_plugins_modules($startcallback, $endcallback, $verbose) {
             if (get_config($module->name, 'installrunning')) {
                 require_once($fullmod.'/db/install.php');
                 $recover_install_function = 'xmldb_'.$module->name.'_install_recovery';
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($recover_install_function)) {
                     $startcallback($component, true, $verbose);
                     $recover_install_function();
@@ -1003,6 +1005,7 @@ function upgrade_plugins_blocks($startcallback, $endcallback, $verbose) {
             if (get_config('block_'.$blockname, 'installrunning')) {
                 require_once($fullblock.'/db/install.php');
                 $recover_install_function = 'xmldb_block_'.$blockname.'_install_recovery';
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($recover_install_function)) {
                     $startcallback($component, true, $verbose);
                     $recover_install_function();
@@ -2060,6 +2063,7 @@ function upgrade_plugin_mnet_functions($component) {
                 $functionreflect = $r->getMethod($dataobject->functionname);
                 $dataobject->static = (int)$functionreflect->isStatic();
             } else {
+                // Mdlcode callback-next-line: ignore
                 if (!function_exists($dataobject->functionname)) {
                     throw new moodle_exception('installnosuchfunction', 'mnet', '', (object)array('method' => $dataobject->functionname, 'file' => $dataobject->filename));
                 }

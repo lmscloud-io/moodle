@@ -44,6 +44,7 @@ define([
         var pendingPromise = new Pending('core_customfield/form:confirmDelete');
         Str.get_strings([
             {'key': 'confirm'},
+            // Mdlcode assume-next-line: type ['field', 'category']
             {'key': 'confirmdelete' + type, component: 'core_customfield'},
             {'key': 'yes'},
             {'key': 'no'},

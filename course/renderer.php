@@ -435,6 +435,7 @@ class core_course_renderer extends plugin_renderer_base {
     public function course_section_cm_completion($course, &$completioninfo, cm_info $mod, $displayoptions = array()) {
         global $CFG, $DB, $USER;
         $output = '';
+        // Mdlcode-disable unknown-string
 
         $istrackeduser = $completioninfo->is_tracked_user($USER->id);
         $isediting = $this->page->user_is_editing();

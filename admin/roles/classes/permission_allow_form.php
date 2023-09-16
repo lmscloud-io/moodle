@@ -33,6 +33,7 @@ class core_role_permission_allow_form extends moodleform {
      */
     protected function definition() {
         global $CFG;
+        // Mdlcode-disable cannot-parse-capability
 
         $mform = $this->_form;
         list($context, $capability, $overridableroles) = $this->_customdata;

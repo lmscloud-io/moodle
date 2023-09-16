@@ -169,6 +169,9 @@ class notification implements \renderable, \templatable {
         );
     }
 
+    /**
+     * @return string {Mdlcode-variant-template}
+     */
     public function get_template_name() {
         $templatemappings = [
             // Current types mapped to template names.
