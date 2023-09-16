@@ -1783,6 +1783,7 @@ class mod_forum_external extends external_api {
      */
     public static function get_forum_access_information($forumid) {
         global $DB;
+        // Mdlcode-disable cannot-parse-capability.
 
         $params = self::validate_parameters(self::get_forum_access_information_parameters(), array('forumid' => $forumid));
 

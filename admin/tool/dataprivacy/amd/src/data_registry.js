@@ -227,6 +227,7 @@ define(['jquery', 'core/str', 'core/ajax', 'core/notification', 'core/templates'
             var formData = $(SELECTORS.FORM_CONTAINER).find('form').serialize();
             return this.strings.then(function(strings) {
                 Ajax.call([{
+                    // Mdlcode assume-next-line: saveMethodName ['tool_dataprivacy_set_contextlevel_form', 'tool_dataprivacy_set_context_form']
                     methodname: saveMethodName,
                     args: {jsonformdata: JSON.stringify(formData)},
                     done: function() {

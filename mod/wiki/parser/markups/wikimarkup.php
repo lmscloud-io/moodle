@@ -96,6 +96,7 @@ abstract class wiki_markup_parser extends generic_parser {
                 global $CFG;
                 require_once($CFG->dirroot . $callback[0]);
 
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($callback[1])) {
                     $this->linkgeneratorcallback = $callback[1];
                 }
@@ -111,6 +112,7 @@ abstract class wiki_markup_parser extends generic_parser {
                 global $CFG;
                 require_once($CFG->dirroot . $callback[0]);
 
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($callback[1])) {
                     $this->realpathcallback = $callback[1];
                 }
@@ -126,6 +128,7 @@ abstract class wiki_markup_parser extends generic_parser {
                 global $CFG;
                 require_once($CFG->dirroot . $callback[0]);
 
+                // Mdlcode callback-next-line: ignore
                 if (function_exists($callback[1])) {
                     $this->tablegeneratorcallback = $callback[1];
                 }

@@ -694,6 +694,7 @@ class completion_info {
 
         if (plugin_supports('mod', $cm->modname, FEATURE_COMPLETION_HAS_RULES)) {
             $function = $cm->modname.'_get_completion_state';
+            // Mdlcode callback: mod PN_get_completion_state function_exists($function)
             if (!function_exists($function)) {
                 $this->internal_systemerror("Module {$cm->modname} claims to support
                     FEATURE_COMPLETION_HAS_RULES but does not have required

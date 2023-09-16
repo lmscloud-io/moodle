@@ -733,6 +733,7 @@ define(['jquery',
      * @function strAddTaxonomy
      */
     var strAddTaxonomy = function(level) {
+        // Mdlcode assume-next-line: getTaxonomyAtLevel(level) ['behaviour', 'competency', 'concept', 'domain', 'indicator', 'level', 'outcome', 'practice', 'proficiency', 'skill', 'value']
         return str.get_string('taxonomy_add_' + getTaxonomyAtLevel(level), 'tool_lp');
     };
 
@@ -744,6 +745,7 @@ define(['jquery',
      * @function strSelectedTaxonomy
      */
     var strSelectedTaxonomy = function(level) {
+        // Mdlcode assume-next-line: getTaxonomyAtLevel(level) ['behaviour', 'competency', 'concept', 'domain', 'indicator', 'level', 'outcome', 'practice', 'proficiency', 'skill', 'value']
         return str.get_string('taxonomy_selected_' + getTaxonomyAtLevel(level), 'tool_lp');
     };
 

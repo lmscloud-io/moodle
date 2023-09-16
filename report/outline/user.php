@@ -127,6 +127,9 @@ foreach ($sections as $i => $section) {
                         continue;
                     }
 
+
+                    // Mdlcode assume: $mod->modname pluginnames-mod.
+                    // Mdlcode-todo this directive does not work
                     $instance = $DB->get_record("$mod->modname", array("id"=>$mod->instance));
                     $libfile = "$CFG->dirroot/mod/$mod->modname/lib.php";
 
@@ -136,6 +139,7 @@ foreach ($sections as $i => $section) {
                         switch ($mode) {
                             case "outline":
                                 $user_outline = $mod->modname."_user_outline";
+                                // Mdlcode callback: mod PN_user_outline function_exists($user_outline)
                                 if (function_exists($user_outline)) {
                                     $output = $user_outline($course, $user, $mod, $instance);
                                 } else {
@@ -153,6 +157,7 @@ foreach ($sections as $i => $section) {
                                 ob_start();
 
                                 echo "<ul>";
+                                // Mdlcode callback: mod PN_user_complete function_exists($user_complete)
                                 if (function_exists($user_complete)) {
                                     $user_complete($course, $user, $mod, $instance);
                                 } else {

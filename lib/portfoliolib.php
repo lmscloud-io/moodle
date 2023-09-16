@@ -823,6 +823,7 @@ function portfolio_static_function($plugin, $function) {
 
     require_once($CFG->libdir . '/portfolio/plugin.php');
     require_once($CFG->dirroot . '/portfolio/' . $plugin .  '/lib.php');
+    // Mdlcode callback-todo this calls a static method similar to component_class_callback
     return call_user_func_array(array('portfolio_plugin_' . $plugin, $function), $args);
 }
 

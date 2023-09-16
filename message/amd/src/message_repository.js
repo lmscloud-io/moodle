@@ -13,6 +13,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+// Mdlcode-disable cannot-parse-webservice
 /**
  * Retrieves messages from the server.
  *
@@ -534,6 +535,7 @@ define(
     var deleteMessages = function(userId, messageIds) {
         return $.when.apply(null, Ajax.call(messageIds.map(function(messageId) {
             return {
+                // Mdlcode uses-next-line: webservice 'core_message_delete_message'
                 methodname: 'core_message_delete_message',
                 args: {
                     messageid: messageId,
@@ -553,6 +555,7 @@ define(
     var deleteMessagesForAllUsers = function(userId, messageIds) {
         return $.when.apply(null, Ajax.call(messageIds.map(function(messageId) {
             return {
+                // Mdlcode uses-next-line: webservice 'core_message_delete_message_for_all_users'
                 methodname: 'core_message_delete_message_for_all_users',
                 args: {
                     messageid: messageId,

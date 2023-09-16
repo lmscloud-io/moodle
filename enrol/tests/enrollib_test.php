@@ -292,7 +292,7 @@ class core_enrollib_testcase extends advanced_testcase {
      * un-enrol users before removing the enrolment data. If the capabilities are missing the data should not be removed.
      *
      * @dataProvider enrol_course_delete_with_userid_provider
-     * @param array $excludedcapabilities The capabilities that should be excluded from the user's role
+     * @param array $excludedcapabilities {Mdlcode-variant-capability} The capabilities that should be excluded from the user's role
      * @param bool $expected The expected results
      */
     public function test_enrol_course_delete_with_userid($excludedcapabilities, $expected) {

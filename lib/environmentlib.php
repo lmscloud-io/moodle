@@ -1111,6 +1111,7 @@ function process_environment_bypass($xml, &$result) {
         $function = $xml['#']['BYPASS'][0]['@']['function'];
         $message  = $xml['#']['BYPASS'][0]['@']['message'];
     /// Look for the function
+        // Mdlcode callback-next-line: ignore
         if (function_exists($function)) {
         /// Call it, and if bypass = true is returned, apply meesage
             if ($function($result)) {
@@ -1151,6 +1152,7 @@ function process_environment_restrict($xml, &$result) {
         $function = $xml['#']['RESTRICT'][0]['@']['function'];
         $message  = $xml['#']['RESTRICT'][0]['@']['message'];
     /// Look for the function
+        // Mdlcode callback-next-line: ignore
         if (function_exists($function)) {
         /// Call it, and if restrict = true is returned, apply meesage
             if ($function($result)) {
@@ -1363,7 +1365,7 @@ class environment_results {
     /**
      * Set the feedback string
      *
-     * @param mixed $str the feedback string that will be fetched from the admin lang file.
+     * @param string|array $str {Mdlcode-variant-string admin} the feedback string that will be fetched from the admin lang file.
      *                  pass just the string or pass an array of params for get_string
      *                  You always should put your string in admin.php but a third param is useful
      *                  to pass an $a object / string to get_string

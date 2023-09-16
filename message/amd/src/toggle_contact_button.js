@@ -88,6 +88,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/notification', 'core/cust
      * @return {object} jQuery promise
      */
     var sendRequest = function(element, request) {
+        // Mdlcode-disable cannot-parse-webservice
         if (isLoading(element)) {
             return $.Deferred();
         }
@@ -117,6 +118,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/notification', 'core/cust
         }
 
         var request = {
+            // Mdlcode uses-next-line: webservice 'core_message_create_contact_request'
             methodname: 'core_message_create_contacts',
             args: {
                 userids: [getUserId(element)],
@@ -144,6 +146,7 @@ define(['jquery', 'core/ajax', 'core/templates', 'core/notification', 'core/cust
         }
 
         var request = {
+            // Mdlcode uses-next-line: webservice 'core_message_delete_contacts'
             methodname: 'core_message_delete_contacts',
             args: {
                 userids: [getUserId(element)],

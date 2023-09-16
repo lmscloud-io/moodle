@@ -159,6 +159,7 @@ function uninstall_plugin($type, $name) {
     if ($type === 'mod') {
         $pluginname = $name;  // eg. 'forum'
         if (get_string_manager()->string_exists('modulename', $component)) {
+            // Mdlcode assume-optional-next-line: $component fullpluginnames-mod
             $strpluginname = get_string('modulename', $component);
         } else {
             $strpluginname = $component;
@@ -167,6 +168,7 @@ function uninstall_plugin($type, $name) {
     } else {
         $pluginname = $component;
         if (get_string_manager()->string_exists('pluginname', $component)) {
+            // Mdlcode assume-optional-next-line: $component fullpluginnames-/^(?!mod$)/
             $strpluginname = get_string('pluginname', $component);
         } else {
             $strpluginname = $component;
@@ -184,6 +186,7 @@ function uninstall_plugin($type, $name) {
     if (file_exists($uninstalllib)) {
         require_once($uninstalllib);
         $uninstallfunction = 'xmldb_' . $pluginname . '_uninstall';    // eg. 'xmldb_workshop_uninstall()'
+        // Mdlcode callback: ignore
         if (function_exists($uninstallfunction)) {
             // Do not verify result, let plugin complain if necessary.
             $uninstallfunction();
@@ -379,6 +382,7 @@ function drop_plugin_tables($name, $file, $feedback=true) {
 
         // found orphan table --> delete it
         if ($DB->get_manager()->table_exists($table)) {
+            // Mdlcode-disable-next-line cannot-parse-db-tablename
             $xmldb_table = new xmldb_table($table);
             $DB->get_manager()->drop_table($xmldb_table);
         }
@@ -1222,7 +1226,7 @@ class admin_externalpage implements part_of_admin_tree {
      * @param string $name The internal name for this external page. Must be unique amongst ALL part_of_admin_tree objects.
      * @param string $visiblename The displayed name for this external page. Usually obtained through get_string().
      * @param string $url The external URL that we should link to when someone requests this external page.
-     * @param mixed $req_capability The role capability/permission a user must have to access this external page. Defaults to 'moodle/site:config'.
+     * @param array|string $req_capability {Mdlcode-variant-capability} The role capability/permission a user must have to access this external page. Defaults to 'moodle/site:config'.
      * @param boolean $hidden Is this external page hidden in admin tree block? Default false.
      * @param stdClass $context The context the page relates to. Not sure what happens
      *      if you specify something other than system or front page. Defaults to system.
@@ -1300,6 +1304,7 @@ class admin_externalpage implements part_of_admin_tree {
      */
     public function check_access() {
         global $CFG;
+        // Mdlcode-disable cannot-parse-capability
         $context = empty($this->context) ? context_system::instance() : $this->context;
         foreach($this->req_capability as $cap) {
             if (has_capability($cap, $context)) {
@@ -1445,7 +1450,7 @@ class admin_settingpage implements part_of_admin_tree {
      *
      * @param string $name The internal name for this external page. Must be unique amongst ALL part_of_admin_tree objects.
      * @param string $visiblename The displayed name for this external page. Usually obtained through get_string().
-     * @param mixed $req_capability The role capability/permission a user must have to access this external page. Defaults to 'moodle/site:config'.
+     * @param array|string $req_capability {Mdlcode-variant-capability} The role capability/permission a user must have to access this external page. Defaults to 'moodle/site:config'.
      * @param boolean $hidden Is this external page hidden in admin tree block? Default false.
      * @param stdClass $context The context the page relates to. Not sure what happens
      *      if you specify something other than system or front page. Defaults to system.
@@ -1583,6 +1588,7 @@ class admin_settingpage implements part_of_admin_tree {
      * @return bool Returns true for yes false for no
      */
     public function check_access() {
+        // Mdlcode-disable cannot-parse-capability
         global $CFG;
         $context = empty($this->context) ? context_system::instance() : $this->context;
         foreach($this->req_capability as $cap) {
@@ -4139,7 +4145,7 @@ class admin_setting_users_with_capability extends admin_setting_configmultiselec
      * @param string $visiblename localised name
      * @param string $description localised long description
      * @param array $defaultsetting array of usernames
-     * @param string $capability string capability name.
+     * @param string $capability {Mdlcode-variant-capability} string capability name.
      * @param bool $includeadmins include administrators
      */
     function __construct($name, $visiblename, $description, $defaultsetting, $capability, $includeadmins = true) {
@@ -4154,6 +4160,7 @@ class admin_setting_users_with_capability extends admin_setting_configmultiselec
      * @return bool Always returns true
      */
     function load_choices() {
+        // Mdlcode-disable cannot-parse-capability
         if (is_array($this->choices)) {
             return true;
         }
@@ -6029,6 +6036,7 @@ class admin_setting_grade_profilereport extends admin_setting_configselect {
             if (file_exists($plugindir.'/lib.php')) {
                 require_once($plugindir.'/lib.php');
                 $functionname = 'grade_report_'.$plugin.'_profilereport';
+                // Mdlcode callback: gradereport grade_report_PN_profilereport function_exists($functionname)
                 if (function_exists($functionname)) {
                     $this->choices[$plugin] = get_string('pluginname', 'gradereport_'.$plugin);
                 }
@@ -6194,6 +6202,7 @@ class admin_page_managemods extends admin_externalpage {
                     $found = true;
                     break;
                 }
+                // Mdlcode assume-next-line: $module->name fullpluginnames-mod
                 $strmodulename = get_string('modulename', $module->name);
                 if (strpos(core_text::strtolower($strmodulename), $query) !== false) {
                     $found = true;
@@ -9134,12 +9143,14 @@ function db_replace($search, $replace) {
             continue;
         }
 
+        // Mdlcode-disable-next-line cannot-parse-db-tablename
         if ($columns = $DB->get_columns($table)) {
             $DB->set_debug(true);
             foreach ($columns as $column) {
                 if (!db_should_replace($table, $column->name)) {
                     continue;
                 }
+                // Mdlcode-disable-next-line cannot-parse-db-tablename
                 $DB->replace_all_text($table, $column, $search, $replace);
             }
             $DB->set_debug(false);
@@ -9162,6 +9173,7 @@ function db_replace($search, $replace) {
 
         $function = 'block_'.$blockname.'_global_db_replace';
         include_once($fullblock.'/lib.php');
+        // Mdlcode callback: block PFN_global_db_replace function_exists($function)
         if (!function_exists($function)) {
             continue;
         }
@@ -9504,6 +9516,7 @@ class admin_setting_enablemobileservice extends admin_setting_configcheckbox {
         if ((string)$data === $this->yes) {
             $notifications = tool_mobile\api::get_potential_config_issues(); // Safe to call, plugin available if we reach here.
             foreach ($notifications as $notification) {
+                // Mdlcode-disable-next-line cannot-parse-string.
                 $message = get_string($notification[0], $notification[1]);
                 $html .= $OUTPUT->notification($message, \core\output\notification::NOTIFY_WARNING);
             }
@@ -10604,6 +10617,7 @@ class admin_setting_configstoredfile extends admin_setting {
         $this->oldhashes = null;
 
         $callbackfunction = $this->updatedcallback;
+        // Mdlcode callback-next-line: ignore
         if (!empty($callbackfunction) and function_exists($callbackfunction)) {
             $callbackfunction($this->get_full_name());
         }
@@ -11425,6 +11439,7 @@ class admin_settings_sitepolicy_handler_select extends admin_setting_configselec
         $plugins = $manager->get_all_handlers();
         foreach ($plugins as $pname => $unused) {
             $this->choices[$pname] = new lang_string('sitepolicyhandlerplugin', 'core_admin',
+                // Mdlcode-disable-next-line cannot-parse-string.
                 ['name' => new lang_string('pluginname', $pname), 'component' => $pname]);
         }
 
@@ -11558,6 +11573,7 @@ class admin_settings_h5plib_handler_select extends admin_setting_configselect {
         $this->choices = \core_h5p\local\library\autoloader::get_all_handlers();
         foreach ($this->choices as $name => $class) {
             $this->choices[$name] = new lang_string('sitepolicyhandlerplugin', 'core_admin',
+                // Mdlcode-disable-next-line cannot-parse-string.
                 ['name' => new lang_string('pluginname', $name), 'component' => $name]);
         }
 

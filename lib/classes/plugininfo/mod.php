@@ -58,6 +58,7 @@ class mod extends base {
     }
 
     public function init_display_name() {
+        // Mdlcode assume-optional: $this->component fullpluginnames-mod
         if (get_string_manager()->string_exists('pluginname', $this->component)) {
             $this->displayname = get_string('pluginname', $this->component);
         } else {

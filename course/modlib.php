@@ -125,6 +125,7 @@ function add_moduleinfo($moduleinfo, $course, $mform = null) {
 
     $addinstancefunction    = $moduleinfo->modulename."_add_instance";
     try {
+        // Mdlcode uses-next-line: callback ['mod', 'PN_add_instance']
         $returnfromfunc = $addinstancefunction($moduleinfo, $mform);
     } catch (moodle_exception $e) {
         $returnfromfunc = $e;
@@ -157,6 +158,7 @@ function add_moduleinfo($moduleinfo, $course, $mform = null) {
         $moduleinfo->intro = file_save_draft_area_files($introeditor['itemid'], $modcontext->id,
                                                       'mod_'.$moduleinfo->modulename, 'intro', 0,
                                                       array('subdirs'=>true), $introeditor['text']);
+        // Mdlcode assume-next-line: $moduleinfo->modulename pluginnames-mod
         $DB->set_field($moduleinfo->modulename, 'intro', $moduleinfo->intro, array('id'=>$moduleinfo->instance));
     }
 
@@ -494,6 +496,7 @@ function can_update_moduleinfo($cm) {
     $module = $DB->get_record('modules', array('id'=>$cm->module), '*', MUST_EXIST);
 
     // Check the moduleinfo exists.
+    // Mdlcode assume-next-line: $module->name pluginnames-mod
     $data = $DB->get_record($module->name, array('id'=>$cm->instance), '*', MUST_EXIST);
 
     // Check the course section exists.
@@ -609,6 +612,7 @@ function update_moduleinfo($cm, $moduleinfo, $course, $mform = null) {
     }
 
     $updateinstancefunction = $moduleinfo->modulename."_update_instance";
+    // Mdlcode uses-next-line: callback ['mod', 'PN_update_instance']
     if (!$updateinstancefunction($moduleinfo, $mform)) {
         print_error('cannotupdatemod', '', course_get_url($course, $cm->section), $moduleinfo->modulename);
     }

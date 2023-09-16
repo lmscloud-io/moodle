@@ -189,6 +189,7 @@ class tablelog extends \table_sql implements \renderable {
         // Add headers for extra user fields.
         foreach ($extrafields as $field) {
             if (get_string_manager()->string_exists($field, 'moodle')) {
+                // Mdlcode assume-next-line: $field profilefields
                 $cols[$field] = get_string($field);
             } else {
                 $cols[$field] = $field;

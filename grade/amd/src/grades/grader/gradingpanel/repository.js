@@ -26,6 +26,7 @@ import {normaliseResult} from './normalise';
 
 export const fetchGrade = type => (component, contextid, itemname, gradeduserid) => {
     return fetchMany([{
+        // Mdlcode assume-next-line: type ['scale', 'point']
         methodname: `core_grades_grader_gradingpanel_${type}_fetch`,
         args: {
             component,
@@ -38,6 +39,7 @@ export const fetchGrade = type => (component, contextid, itemname, gradeduserid)
 
 export const saveGrade = type => async(component, contextid, itemname, gradeduserid, notifyUser, formdata) => {
     return normaliseResult(await fetchMany([{
+        // Mdlcode assume-next-line: type ['scale', 'point']
         methodname: `core_grades_grader_gradingpanel_${type}_store`,
         args: {
             component,

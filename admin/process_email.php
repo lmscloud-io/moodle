@@ -59,6 +59,7 @@ else {
 }
 $function = $modname.'_process_email';
 
+// Mdlcode callback: mod PN_process_email function_exists($function)
 if (!function_exists($function)) {
     die();
 }

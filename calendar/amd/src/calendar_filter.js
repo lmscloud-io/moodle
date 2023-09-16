@@ -63,8 +63,8 @@ function(
 
         // Toggle the hidden. We need to render the template before we change the value.
         data.hidden = !data.hidden;
-
         M.util.js_pending("core_calendar/calendar_filter:toggleFilter");
+        // Mdlcode assume-next-line: data.eventtype ['course', 'module', 'group', 'user', 'site', 'category', 'other']
         return Str.get_string('eventtype' + data.eventtype, 'calendar')
         .then(function(nameStr) {
             data.name = nameStr;

@@ -1395,10 +1395,13 @@ function grade_update_mod_grades($modinstance, $userid=0) {
     $updateitemfunc   = $modinstance->modname.'_grade_item_update';
     $updategradesfunc = $modinstance->modname.'_update_grades';
 
+    // Mdlcode callback: mod PN_update_grades function_exists($updategradesfunc)
+    // Mdlcode callback: mod PN_grade_item_update function_exists($updateitemfunc)
     if (function_exists($updategradesfunc) and function_exists($updateitemfunc)) {
         //new grading supported, force updating of grades
         $updateitemfunc($modinstance);
         $updategradesfunc($modinstance, $userid);
+    // Mdlcode callback-next-line: ignore
     } else if (function_exists($updategradesfunc) xor function_exists($updateitemfunc)) {
         // Module does not support grading?
         debugging("You have declared one of $updateitemfunc and $updategradesfunc but not both. " .

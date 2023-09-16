@@ -74,6 +74,7 @@ $strresponses = get_string('responses', 'feedback');
 $table = new html_table();
 
 if ($usesections) {
+    // Mdlcode assume-optional: $course->format pluginnames-format.
     $strsectionname = get_string('sectionname', 'format_'.$course->format);
     if (has_capability('mod/feedback:viewreports', $context)) {
         $table->head  = array ($strsectionname, $strname, $strresponses);

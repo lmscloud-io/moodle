@@ -53,7 +53,7 @@ class tool_monitor_privacy_testcase extends provider_testcase {
      * Assign a capability to $USER
      * The function creates a student $USER if $USER->id is empty
      *
-     * @param string $capability capability name
+     * @param string $capability {Mdlcode-variant-capability} capability name
      * @param int $contextid
      * @param int $roleid
      * @return int the role id - mainly returned for creation, so calling function can reuse it

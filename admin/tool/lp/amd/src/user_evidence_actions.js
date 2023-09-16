@@ -102,6 +102,7 @@ define(['jquery',
      */
     UserEvidenceActions.prototype._renderView = function(context) {
         var self = this;
+        // Mdlcode assume-next-line: self._template ['tool_lp/user_evidence_page','tool_lp/user_evidence_list_page']
         return templates.render(self._template, context)
             .then(function(newhtml, newjs) {
                 templates.replaceNode($(self._region), newhtml, newjs);
@@ -119,6 +120,7 @@ define(['jquery',
     UserEvidenceActions.prototype._callAndRefresh = function(calls, evidenceData) {
         var self = this;
         calls.push({
+            // Mdlcode assume-next-line: self._contextMethod ['tool_lp_data_for_user_evidence_page','tool_lp_data_for_user_evidence_list_page']
             methodname: self._contextMethod,
             args: self._getContextArgs(evidenceData)
         });

@@ -174,6 +174,7 @@ function groups_remove_member_allowed($grouporid, $userorid) {
 
     // It has a component value, so we need to call a plugin function (if it
     // exists); the default is to allow removal
+    // Mdlcode callback: *
     return component_callback($entry->component, 'allow_group_member_remove',
             array($entry->itemid, $entry->groupid, $entry->userid), true);
 }

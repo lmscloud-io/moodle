@@ -114,6 +114,7 @@ define(['jquery',
      */
     PlanActions.prototype._renderView = function(context) {
         var self = this;
+        // Mdlcode assume-next-line: self._template ['tool_lp/plan_page','tool_lp/plans_page']
         return templates.render(self._template, context)
             .then(function(newhtml, newjs) {
                 $(self._region).replaceWith(newhtml);
@@ -137,6 +138,7 @@ define(['jquery',
 
         var self = this;
         calls.push({
+            // Mdlcode assume-next-line: self._contextMethod ['tool_lp_data_for_plan_page','tool_lp_data_for_plans_page']
             methodname: self._contextMethod,
             args: self._getContextArgs(planData)
         });

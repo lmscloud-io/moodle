@@ -23,7 +23,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-
+// Mdlcode assume-optional: $this->plugin_name() fullpluginnames-qtype
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot . '/question/engine/lib.php');
@@ -74,6 +74,7 @@ class question_type {
      * You should not need to override this method, the default behaviour should be fine.
      */
     public function local_name() {
+        // Mdlcode assume: $this->plugin_name() fullpluginnames-qtype
         return get_string('pluginname', $this->plugin_name());
     }
 
@@ -476,6 +477,8 @@ class question_type {
      */
     public function save_question_options($question) {
         global $DB;
+        // Mdlcode assume: $question_extension_table ['qtype_randomsamatch_options', 'qtype_shortanswer_options']
+        // Mdlcode-todo there can be more options
         $extraquestionfields = $this->extra_question_fields();
 
         if (is_array($extraquestionfields)) {

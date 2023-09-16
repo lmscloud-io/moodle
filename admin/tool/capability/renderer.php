@@ -21,7 +21,7 @@
  * @copyright  2013 Sam Hemelryk
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
+// Mdlcode-disable cannot-parse-capability
 /**
  * The primary renderer for the capability tool.
  *
@@ -69,7 +69,7 @@ class tool_capability_renderer extends plugin_renderer_base {
     /**
      * Produces a table to visually compare roles and capabilities.
      *
-     * @param array $capabilities An array of capabilities to show comparison for.
+     * @param array $capabilities {Mdlcode-variant-capability} An array of capabilities to show comparison for.
      * @param int $contextid The context we are displaying for.
      * @param array $roles An array of roles to show comparison for.
      * @param bool $onlydiff show only different permissions

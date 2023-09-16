@@ -119,6 +119,7 @@ class api {
                         foreach ($langs as $langid => $langname) {
                             foreach ($addoninfo['lang'] as $stringinfo) {
                                 $lang[$langid][$stringinfo[0]] =
+                                    // Mdlcode-disable-next-line cannot-parse-string.
                                     $stringmanager->get_string($stringinfo[0], $stringinfo[1], null, $langid);
                             }
                         }
@@ -597,6 +598,7 @@ class api {
             // Check the certificate is not self-signed or has an untrusted-root.
             // This may be weak in some scenarios (when the curl SSL verifier is outdated).
             if (empty($info['certinfo'])) {
+                // Mdlcode uses-next-line: string ['selfsignedoruntrustedcertificatewarning', 'tool_mobile']
                 $warnings[] = ['selfsignedoruntrustedcertificatewarning', 'tool_mobile'];
             } else {
                 $timenow = time();
@@ -617,19 +619,23 @@ class api {
 
                     // Check if the signature algorithm is weak (Android won't work with SHA-1).
                     if ($signaturealgorithm == 'sha1WithRSAEncryption' || $signaturealgorithm == 'sha1WithRSA') {
+                        // Mdlcode uses-next-line: string ['insecurealgorithmwarning', 'tool_mobile']
                         $warnings[] = ['insecurealgorithmwarning', 'tool_mobile'];
                     }
                     // Check certificate start date.
                     if (strtotime($cert['Start date']) > $timenow) {
+                        // Mdlcode uses-next-line: string ['invalidcertificatestartdatewarning', 'tool_mobile']
                         $warnings[] = ['invalidcertificatestartdatewarning', 'tool_mobile'];
                     }
                     // Check certificate end date.
                     if (strtotime($cert['Expire date']) < $timenow) {
+                        // Mdlcode uses-next-line: string ['invalidcertificateexpiredatewarning', 'tool_mobile']
                         $warnings[] = ['invalidcertificateexpiredatewarning', 'tool_mobile'];
                     }
                     // Check the chain.
                     if ($expectedissuer !== null) {
                         if ($expectedissuer !== $cert['Subject'] || $cert['Subject'] === $cert['Issuer']) {
+                            // Mdlcode uses-next-line: string ['invalidcertificatechainwarning', 'tool_mobile']
                             $warnings[] = ['invalidcertificatechainwarning', 'tool_mobile'];
                         }
                     }
@@ -640,14 +646,17 @@ class api {
         // Now check typical configuration problems.
         if ((int) $CFG->userquota === PHP_INT_MAX) {
             // In old Moodle version was a text so was possible to have numeric values > PHP_INT_MAX.
+            // Mdlcode uses-next-line: string ['invaliduserquotawarning', 'tool_mobile']
             $warnings[] = ['invaliduserquotawarning', 'tool_mobile'];
         }
         // Check ADOdb debug enabled.
         if (get_config('auth_db', 'debugauthdb') || get_config('enrol_database', 'debugdb')) {
+            // Mdlcode uses-next-line: string ['adodbdebugwarning', 'tool_mobile']
             $warnings[] = ['adodbdebugwarning', 'tool_mobile'];
         }
         // Check display errors on.
         if (!empty($CFG->debugdisplay)) {
+            // Mdlcode uses-next-line: string ['displayerrorswarning', 'tool_mobile']
             $warnings[] = ['displayerrorswarning', 'tool_mobile'];
         }
         // Check mobile notifications.
@@ -659,6 +668,7 @@ class api {
             }
         }
         if (!$enabled) {
+            // Mdlcode uses-next-line: string ['mobilenotificationsdisabledwarning', 'tool_mobile']
             $warnings[] = ['mobilenotificationsdisabledwarning', 'tool_mobile'];
         }
 

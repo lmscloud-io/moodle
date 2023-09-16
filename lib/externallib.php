@@ -772,6 +772,7 @@ function external_generate_token($tokentype, $serviceorid, $userid, $contextorid
     } else {
         $context = $contextorid;
     }
+    // Mdlcode-disable cannot-parse-capability.
     if (empty($service->requiredcapability) || has_capability($service->requiredcapability, $context, $userid)) {
         $newtoken->externalserviceid = $service->id;
     } else {
@@ -1051,6 +1052,7 @@ function external_format_text($text, $textformat, $contextorid, $component = nul
  */
 function external_generate_token_for_current_user($service) {
     global $DB, $USER, $CFG;
+    // Mdlcode-disable cannot-parse-capability.
 
     core_user::require_active_user($USER, true, true);
 

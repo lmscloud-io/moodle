@@ -501,6 +501,8 @@ class memberships extends \mod_lti\local\ltiservice\service_base {
      * @param \MoodleQuickForm $mform
      */
     public function get_configuration_options(&$mform) {
+        // Mdlcode assume-optional: $this->get_component_id() fullpluginnames-ltiservice
+        // Mdlcode assume-optional: $element fullpluginnames-ltiservice
         $elementname = $this->get_component_id();
         $options = [
             get_string('notallow', $this->get_component_id()),

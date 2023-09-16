@@ -350,7 +350,7 @@ function message_send(\core\message\message $eventdata) {
  * Helper method containing the PHPUnit specific code, used to redirect and capture messages/notifications.
  *
  * @param \core\message\message $eventdata the message object
- * @param string $table the table to store the tabledata in, either messages or notifications.
+ * @param string $table {Mdlcode-variant-dbtable} the table to store the tabledata in, either messages or notifications.
  * @param stdClass $tabledata the data to be stored when creating the message/notification.
  * @return int the id of the stored message.
  */
@@ -574,6 +574,7 @@ function message_set_default_message_preference($component, $messagename, $filep
  */
 function message_get_providers_for_user($userid) {
     global $DB, $CFG;
+    // Mdlcode-disable cannot-parse-capability.
 
     $providers = get_message_providers();
 

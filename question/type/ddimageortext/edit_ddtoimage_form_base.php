@@ -23,6 +23,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+// Mdlcode assume: $this->qtype() ['ddimageortext', 'ddmarker']
 
 /**
  * Base class for drag-and-drop onto images editing form definition.
