@@ -58,7 +58,6 @@ $strentries  = get_string("entries", "glossary");
 $table = new html_table();
 
 if ($usesections) {
-    // Mdlcode assume: $course->format pluginnames-format.
     $strsectionname = get_string('sectionname', 'format_'.$course->format);
     $table->head  = array ($strsectionname, $strname, $strentries);
     $table->align = array ('center', 'left', 'center');
