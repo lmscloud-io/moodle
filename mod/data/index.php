@@ -71,7 +71,6 @@ $strnumnotapproved = get_string('numnotapproved', 'data');
 $table = new html_table();
 
 if ($usesections) {
-    // Mdlcode assume-optional: $course->format pluginnames-format.
     $strsectionname = get_string('sectionname', 'format_'.$course->format);
     $table->head  = array ($strsectionname, $strname, $strdescription, $strentries, $strnumnotapproved);
     $table->align = array ('center', 'center', 'center', 'center', 'center');
