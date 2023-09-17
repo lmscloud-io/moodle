@@ -267,7 +267,6 @@ if ($PAGE->user_is_editing()) {
 
 // If viewing a section, make the title more specific.
 if ($section && $section > 0 && course_format_uses_sections($course->format)) {
-    // Mdlcode assume-optional: $course->format pluginnames-format
     $sectionname = get_string('sectionname', "format_$course->format");
     $sectiontitle = get_section_name($course, $section);
     $PAGE->set_title(
