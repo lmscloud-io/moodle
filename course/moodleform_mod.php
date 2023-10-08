@@ -416,6 +416,7 @@ abstract class moodleform_mod extends moodleform {
                     $errors['completiongradeitemnumber'] = get_string(
                         'badcompletiongradeitemnumber',
                         'completion',
+                        // Mdlcode-disable-next-line cannot-parse-string.
                         get_string("grade_{$itemname}_name", $component)
                     );
                 }

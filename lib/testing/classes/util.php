@@ -22,6 +22,8 @@
  * @copyright  2012 Petr Skoda {@link http://skodak.org}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
+// Mdlcode-disable cannot-parse-db-tablename
 abstract class testing_util {
     /**
      * @var string dataroot (likely to be $CFG->dataroot).
@@ -29,7 +31,6 @@ abstract class testing_util {
     private static $dataroot = null;
 
     /**
-     * @var testing_data_generator
      */
     protected static $generator = null;
 

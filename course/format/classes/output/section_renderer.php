@@ -223,6 +223,7 @@ abstract class section_renderer extends core_course_renderer {
      * @deprecated since 4.0 - use core_course output components instead.
      */
     protected function section_left_content($section, $course, $onsectionpage) {
+        // Mdlcode assume-optional: $course->format pluginnames-format
 
         throw new coding_exception('section_left_content() can not be used anymore. Please use ' .
             'core_courseformat\\output\\local\\content\\section to render a section.');

@@ -60,6 +60,7 @@ $params = array('contextid' => $contextid,
                 'ratingarea' => $ratingarea,
                 'itemid' => $itemid,
                 'scaleid' => $scaleid);
+// Mdlcode callback: mod
 if (!has_capability('moodle/rating:view', $context) ||
         !component_callback($component, 'rating_can_see_item_ratings', array($params), true)) {
     throw new \moodle_exception('noviewrate', 'rating');

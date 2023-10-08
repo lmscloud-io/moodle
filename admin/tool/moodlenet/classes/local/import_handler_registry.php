@@ -128,6 +128,7 @@ class import_handler_registry {
         }, $sitedisabledmods);
 
         // Loop through all modules to find the registered handlers.
+        // Mdlcode callback-next-line: ignore
         $mods = get_plugin_list_with_function('mod', 'dndupload_register');
         foreach ($mods as $component => $funcname) {
             list($modtype, $modname) = \core_component::normalize_component($component);
@@ -138,6 +139,7 @@ class import_handler_registry {
                 continue; // User does not have permission to add this module to the course.
             }
 
+            // Mdlcode callback-next-line: mod
             if (!$resp = component_callback($component, 'dndupload_register')) {
                 continue;
             };

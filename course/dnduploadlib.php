@@ -167,6 +167,7 @@ class dndupload_handler {
                     $this->register_type_handler($type['identifier'], $modname, $type['message'], $noname);
                 }
             }
+            // Mdlcode assume-next-line: $modname pluginnames-mod
             $PAGE->requires->string_for_js('pluginname', $modname);
         }
     }

@@ -1181,6 +1181,7 @@ function enrol_course_delete($course, $userid = null) {
         // If the user id is present, include only course enrolment instances which allow manual unenrolment and
         // the given user have a capability to perform unenrolment.
         $instances = array_filter($instances, function($instance) use ($userid, $plugins, $context) {
+            // Mdlcode assume-optional: $instance->enrol pluginnames-enrol
             $unenrolcap = "enrol/{$instance->enrol}:unenrol";
             return $plugins[$instance->enrol]->allow_unenrol($instance) &&
                 has_capability($unenrolcap, $context, $userid);
@@ -1379,7 +1380,7 @@ function enrol_accessing_via_instance(stdClass $instance) {
  *
  * @param context $context
  * @param int|stdClass $user if null $USER is used, otherwise user object or id expected
- * @param string $withcapability extra capability name
+ * @param string $withcapability {Mdlcode-variant-capability} extra capability name
  * @param bool $onlyactive consider only active enrolments in enabled plugins and time restrictions
  * @return bool
  */
@@ -1473,7 +1474,7 @@ function is_enrolled(context $context, $user = null, $withcapability = '', $only
  *
  * @param context $context
  * @param string $prefix optional, a prefix to the user id column
- * @param string|array $capability optional, may include a capability name, or array of names.
+ * @param string|array $capability {Mdlcode-variant-capability} optional, may include a capability name, or array of names.
  *      If an array is provided then this is the equivalent of a logical 'OR',
  *      i.e. the user needs to have one of these capabilities.
  * @param int|array|null $groupids The groupids, 0 or [] means all groups and USERSWITHOUTGROUP no group
@@ -1527,7 +1528,7 @@ function get_enrolled_with_capabilities_join(context $context, $prefix = '', $ca
  * This function is using 'eu[0-9]+_' prefix for table names and parameters.
  *
  * @param context $context
- * @param string $withcapability
+ * @param string $withcapability {Mdlcode-variant-capability}
  * @param int|array|null $groupids The groupids, 0 or [] means all groups and USERSWITHOUTGROUP no group
  * @param bool $onlyactive consider only active enrolments in enabled plugins and time restrictions
  * @param bool $onlysuspended inverse of onlyactive, consider only suspended enrolments
@@ -1653,7 +1654,7 @@ function get_enrolled_join(context $context, $useridcolumn, $onlyactive = false,
  * Returns list of users enrolled into course.
  *
  * @param context $context
- * @param string $withcapability
+ * @param string $withcapability {Mdlcode-variant-capability}
  * @param int|array $groupids The groupids, 0 or [] means all groups and USERSWITHOUTGROUP no group
  * @param string $userfields requested user record fields
  * @param string $orderby
@@ -1687,7 +1688,7 @@ function get_enrolled_users(context $context, $withcapability = '', $groupids = 
  * Counts list of users enrolled into course (as per above function)
  *
  * @param context $context
- * @param string $withcapability
+ * @param array|string $withcapability {Mdlcode-variant-capability}
  * @param int|array $groupids The groupids, 0 or [] means all groups and USERSWITHOUTGROUP no group
  * @param bool $onlyactive consider only active enrolments in enabled plugins and time restrictions
  * @return int number of users enrolled into course
@@ -2421,6 +2422,7 @@ abstract class enrol_plugin {
      */
     public function can_edit_instance($instance) {
         $context = context_course::instance($instance->courseid);
+        // Mdlcode assume-optional: $instance->enrol pluginnames-enrol
 
         return has_capability('enrol/' . $instance->enrol . ':config', $context);
     }
@@ -2507,6 +2509,7 @@ abstract class enrol_plugin {
 
         $context = context_course::instance($instance->courseid, MUST_EXIST);
 
+        // Mdlcode assume-optional: $name pluginnames-enrol
         if (!has_capability("enrol/$name:unenrolself", $context)) {
             return NULL;
         }
@@ -2838,6 +2841,7 @@ abstract class enrol_plugin {
      * @return void
      */
     public function add_course_navigation($instancesnode, stdClass $instance) {
+        // Mdlcode assume-optional: $instance->enrol pluginnames-enrol
         if ($this->use_standard_editing_ui()) {
             $context = context_course::instance($instance->courseid);
             $cap = 'enrol/' . $instance->enrol . ':config';
@@ -2856,6 +2860,7 @@ abstract class enrol_plugin {
      */
     public function get_action_icons(stdClass $instance) {
         global $OUTPUT;
+        // Mdlcode assume-optional: $instance->enrol pluginnames-enrol
 
         $icons = array();
         if ($this->use_standard_editing_ui()) {
@@ -2947,6 +2952,7 @@ abstract class enrol_plugin {
         $actions = [];
         $context = $manager->get_context();
         $instance = $ue->enrolmentinstance;
+        // Mdlcode assume-optional: $instance->enrol pluginnames-enrol
         $params = $manager->get_moodlepage()->url->params();
         $params['ue'] = $ue->id;
 
@@ -3283,6 +3289,7 @@ abstract class enrol_plugin {
      */
     protected function notify_expiry_enrolled($user, $ue, progress_trace $trace) {
         global $CFG;
+        // Mdlcode assume-optional: $name pluginnames-enrol
 
         $name = $this->get_name();
 
@@ -3355,6 +3362,7 @@ abstract class enrol_plugin {
      */
     protected function notify_expiry_enroller($eid, $users, progress_trace $trace) {
         global $DB;
+        // Mdlcode assume-optional: $name pluginnames-enrol
 
         $name = $this->get_name();
 

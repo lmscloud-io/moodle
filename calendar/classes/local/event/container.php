@@ -295,6 +295,7 @@ class container {
             }
 
             // Any other event will not be displayed on the dashboard.
+            // Mdlcode callback: *
             $action = component_callback(
                 $event->get_component(),
                 'core_calendar_provide_event_action',
@@ -336,6 +337,7 @@ class container {
                 $legacyevent->userid = $requestinguserid;
             }
 
+            // Mdlcode callback: *
             $eventvisible = component_callback(
                 $event->get_component(),
                 'core_calendar_is_event_visible',

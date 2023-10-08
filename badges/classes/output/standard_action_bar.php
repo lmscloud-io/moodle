@@ -59,7 +59,7 @@ class standard_action_bar extends base_action_bar {
     /**
      * The template that this tertiary nav should use.
      *
-     * @return string
+     * @return string {Mdlcode-variant-template}
      */
     public function get_template(): string {
         return 'core_badges/manage_badges';

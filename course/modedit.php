@@ -23,6 +23,7 @@
 * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 */
 
+// Mdlcode assume: $module->name pluginnames-mod
 require_once("../config.php");
 require_once("lib.php");
 require_once($CFG->libdir.'/filelib.php');
@@ -230,6 +231,7 @@ if ($mform->is_cancelled()) {
     $PAGE->activityheader->disable();
 
     echo $OUTPUT->header();
+    // Mdlcode-disable-next-line unknown-string
     echo $OUTPUT->heading_with_help($pageheading, '', $module->name);
 
     $mform->display();

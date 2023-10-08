@@ -152,7 +152,7 @@ class filter {
      * Check whether the user has appropriate permissions on the supplied context. Determine the capability to check by the filters
      * that are set.
      * @param \context|null $context The context being viewed (e.g. system, course category, course).
-     * @param string $capability An optional capability to check.
+     * @param string $capability {Mdlcode-variant-capability} An optional capability to check.
      * @return bool
      * @throws \coding_exception
      * @throws \dml_exception
@@ -170,7 +170,7 @@ class filter {
 
     /**
      * Check the specified capability against the filter's context, or the specified context with the filter's information.
-     * @param string $capability
+     * @param string $capability {Mdlcode-variant-capability}
      * @param null $context
      * @return bool
      * @throws \coding_exception

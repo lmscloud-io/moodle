@@ -117,6 +117,9 @@ class course_settings_form extends moodleform {
 
 // add setting options for plugins
         $types = array('report', 'export', 'import');
+        // Mdlcode callback: gradereport grade_report_PN_settings_definition function_exists($functionname)
+        // Mdlcode callback: gradeexport grade_export_PN_settings_definition function_exists($functionname)
+        // Mdlcode callback: gradeimport grade_import_PN_settings_definition function_exists($functionname)
 
         foreach($types as $type) {
             foreach (core_component::get_plugin_list('grade'.$type) as $plugin => $plugindir) {

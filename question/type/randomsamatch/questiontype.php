@@ -176,6 +176,7 @@ class qtype_randomsamatch extends question_type {
      * @return an array with the table name (first) and then the column names (apart from id and questionid)
      */
     public function extra_question_fields() {
+        // Mdlcode uses-next-line: dbtable 'qtype_randomsamatch_options'
         return array('qtype_randomsamatch_options',
                      'choose',        // Number of shortanswer questions to choose.
                      'subcats',       // Questions can be choosen from subcategories.

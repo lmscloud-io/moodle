@@ -17,6 +17,7 @@
 require_once(__DIR__ . '/../config.php');
 require_once($CFG->dirroot . '/repository/lib.php');
 require_once($CFG->libdir . '/adminlib.php');
+// Mdlcode assume: $plugin pluginnames-repository
 
 $repository       = optional_param('repos', '', PARAM_ALPHANUMEXT);
 $action           = optional_param('action', '', PARAM_ALPHANUMEXT);

@@ -77,6 +77,7 @@ class module extends context {
      */
     public function get_context_name($withprefix = true, $short = false, $escape = true) {
         global $DB;
+        // Mdlcode assume: $cm->modname pluginnames-mod
 
         $name = '';
         if ($cm = $DB->get_record_sql("SELECT cm.*, md.name AS modname
@@ -185,6 +186,7 @@ class module extends context {
         if (file_exists($modfile)) {
             include_once($modfile);
             $modfunction = $module->name.'_get_extra_capabilities';
+            // Mdlcode callback-next-line: mod PN_get_extra_capabilities function_exists($modfunction)
             if (function_exists($modfunction)) {
                 $extracaps = $modfunction();
             }
