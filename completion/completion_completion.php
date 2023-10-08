@@ -39,6 +39,7 @@ require_once($CFG->dirroot.'/completion/data_object.php');
 class completion_completion extends data_object {
 
     /* @var string $table Database table name that stores completion information */
+    // Mdlcode uses-next-line: dbtable 'course_completions'
     public $table = 'course_completions';
 
     /* @var array $required_fields Array of required table fields, must start with 'id'. */

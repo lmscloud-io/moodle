@@ -70,6 +70,7 @@ final class before_standard_head_html_generation {
      * Legacy callback 'before_standard_html_head' is deprecated since Moodle 4.4
      */
     public function process_legacy_callbacks(): void {
+        // Mdlcode callback-next-line: *
         $pluginswithfunction = get_plugins_with_function('before_standard_html_head', 'lib.php', true, true);
         foreach ($pluginswithfunction as $plugins) {
             foreach ($plugins as $function) {

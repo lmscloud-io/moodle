@@ -476,7 +476,7 @@ class renderer {
      * Create a discussion list renderer which shows more information about the first post.
      *
      * @param forum_entity $forum The forum that the discussions belong to
-     * @param string $template The template to use
+     * @param string $template {Mdlcode-variant-template} The template to use
      * @return discussion_list_renderer
      */
     private function get_detailed_discussion_list_renderer(

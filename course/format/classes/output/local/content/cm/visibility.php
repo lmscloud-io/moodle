@@ -259,6 +259,7 @@ class visibility implements named_templatable, renderable {
      * @return array
      */
     private function get_option_data(string $name, string $action): array {
+        // Mdlcode assume: $name ['show', 'hide', 'stealth']
         return [
             'description' => get_string("availability_{$name}_help", 'core_courseformat'),
             'icon' => $this->get_icon($name),

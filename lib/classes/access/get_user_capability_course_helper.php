@@ -45,7 +45,7 @@ class get_user_capability_course_helper {
      * therefore, such information, if any, is absent from the results.
      *
      * @param int $userid User id
-     * @param string $capability Capability e.g. 'moodle/course:view'
+     * @param string $capability {Mdlcode-variant-capability} Capability e.g. 'moodle/course:view'
      * @return array Array of capability constants, indexed by context path and role id
      */
     protected static function get_capability_info_at_each_context($userid, $capability) {
@@ -327,7 +327,7 @@ class get_user_capability_course_helper {
      * 'allow' (true or false), and 'children' (an array of similar objects).
      *
      * @param int $userid User id
-     * @param string $capability Capability e.g. 'moodle/course:view'
+     * @param string $capability {Mdlcode-variant-capability} Capability e.g. 'moodle/course:view'
      * @return \stdClass Root node of tree
      */
     protected static function get_tree($userid, $capability) {
@@ -412,7 +412,7 @@ class get_user_capability_course_helper {
      * the query) then the two returned values will both be false.
      *
      * @param int $userid User id
-     * @param string $capability Capability e.g. 'moodle/course:view'
+     * @param string $capability {Mdlcode-variant-capability} Capability e.g. 'moodle/course:view'
      * @return array Two-element array of SQL (containing ? placeholders) and then a params array
      */
     public static function get_sql($userid, $capability) {

@@ -36,6 +36,7 @@ class cmactions extends baseactions {
         global $CFG, $DB;
         require_once($CFG->libdir . '/gradelib.php');
 
+        // Mdlcode assume: $cm->modname pluginnames-mod
         $paramcleaning = empty($CFG->formatstringstriptags) ? PARAM_CLEANHTML : PARAM_TEXT;
         $name = clean_param($name, $paramcleaning);
 

@@ -26,6 +26,7 @@ namespace core_question\local\bank;
  */
 class question_edit_contexts {
 
+    // Mdlcode-todo
     /**
      * @var \string[][] array of the capabilities.
      */
@@ -94,6 +95,7 @@ class question_edit_contexts {
      * @return \context[] parent contexts having capability, zero based index
      */
     public function having_cap($cap) {
+        // Mdlcode-disable cannot-parse-capability
         $contextswithcap = [];
         foreach ($this->allcontexts as $context) {
             if (has_capability($cap, $context)) {
@@ -106,10 +108,11 @@ class question_edit_contexts {
     /**
      * Get the contexts having at least one cap.
      *
-     * @param array $caps capabilities
+     * @param array $caps {Mdlcode-variant-capability} capabilities
      * @return \context[] parent contexts having at least one of $caps, zero based index
      */
     public function having_one_cap($caps) {
+        // Mdlcode-disable cannot-parse-capability
         $contextswithacap = [];
         foreach ($this->allcontexts as $context) {
             foreach ($caps as $cap) {
@@ -129,6 +132,7 @@ class question_edit_contexts {
      * @return \context[] parent contexts having at least one of $caps, zero based index
      */
     public function having_one_edit_tab_cap($tabname) {
+        // Mdlcode-disable cannot-parse-capability
         return $this->having_one_cap(self::$caps[$tabname]);
     }
 
