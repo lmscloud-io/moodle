@@ -600,6 +600,7 @@ class core_plugin_manager {
 
         if (get_string_manager()->string_exists('type_' . $type, 'core_plugin')) {
             // For most plugin types, their names are defined in core_plugin lang file.
+            // Mdlcode assume-optional-next-line: $type mainplugintypes
             return get_string('type_' . $type, 'core_plugin');
 
         } else if ($parent = $this->get_parent_of_subplugin($type)) {
@@ -629,6 +630,7 @@ class core_plugin_manager {
 
         if (get_string_manager()->string_exists('type_' . $type . '_plural', 'core_plugin')) {
             // For most plugin types, their names are defined in core_plugin lang file.
+            // Mdlcode assume-optional-next-line: $type mainplugintypes
             return get_string('type_' . $type . '_plural', 'core_plugin');
 
         } else if ($parent = $this->get_parent_of_subplugin($type)) {
