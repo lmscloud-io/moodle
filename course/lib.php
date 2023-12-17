@@ -4084,6 +4084,7 @@ function course_get_user_administration_options($course, $context) {
  * @return mixed False if everything alright, error codes otherwise.
  */
 function course_validate_dates($coursedata) {
+    // Mdlcode returns: string 'error'.
 
     // If both start and end dates are set end date should be later than the start date.
     if (!empty($coursedata['startdate']) && !empty($coursedata['enddate']) &&
