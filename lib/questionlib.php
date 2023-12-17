@@ -1824,7 +1824,7 @@ function question_get_question_capabilities() {
 }
 
 /**
- * @return array all the question bank capabilities.
+ * @return array {Mdlcode-variant-capability} all the question bank capabilities.
  */
 function question_get_all_capabilities() {
     $caps = question_get_question_capabilities();
