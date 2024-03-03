@@ -926,11 +926,13 @@ class core_badges_renderer extends plugin_renderer_base {
      * @return string $output HTML string to output
      */
     public function print_badge_criteria(badge $badge, $short = '') {
+        // Mdlcode assume: $short ['', 'short']
         $agg = $badge->get_aggregation_methods();
         if (empty($badge->criteria)) {
             return get_string('nocriteria', 'badges');
         }
 
+        // Mdlcode assume-optional: $c->criteriatype ['0','1','2','3','4','5','6','7','8','9']
         $overalldescr = '';
         $overall = $badge->criteria[BADGE_CRITERIA_TYPE_OVERALL];
         if (!$short && !empty($overall->description)) {
@@ -973,6 +975,7 @@ class core_badges_renderer extends plugin_renderer_base {
             }
         } else {
             foreach ($badge->criteria as $type => $c) {
+                // Mdlcode assume-optional: $type ['0','1','2','3','4','5','6','7','8','9']
                 $criteriadescr = '';
                 if (!$short && !empty($c->description)) {
                     $criteriadescr = $this->output->box(
@@ -1009,6 +1012,7 @@ class core_badges_renderer extends plugin_renderer_base {
 
             if (!empty($potential)) {
                 foreach ($potential as $p) {
+                    // Mdlcode assume-optional: $p ['0','1','2','3','4','5','6','7','8','9']
                     if ($p != 0) {
                         $select[$p] = get_string('criteria_' . $p, 'badges');
                     }
