@@ -241,6 +241,7 @@ class renderer_base {
             }
             $template = $component . '/' . $classname;
             $context = $widget->export_for_template($this);
+            // Mdlcode-disable-next-line cannot-parse-template
             return $this->render_from_template($template, $context);
         }
         throw new coding_exception('Can not render widget, renderer method ('.$rendermethod.') not found.');
