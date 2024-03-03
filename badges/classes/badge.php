@@ -888,6 +888,7 @@ class badge {
                 core_text::strtoupper($agg[$this->get_aggregation_method()]));
         }
         unset($this->criteria[BADGE_CRITERIA_TYPE_OVERALL]);
+        // Mdlcode assume: $c->criteriatype ['1','2','4','5','6','7','8','9']
         $items = array();
         // If only one criterion left, make sure its description goe to the top.
         if (count($this->criteria) == 1) {
@@ -905,6 +906,7 @@ class badge {
             }
         } else {
             foreach ($this->criteria as $type => $c) {
+                // Mdlcode assume: $type ['1','2','4','5','6','7','8','9']
                 $criteriadescr = '';
                 if (!empty($c->description)) {
                     $criteriadescr = $c->description;
