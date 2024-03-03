@@ -104,6 +104,7 @@ class core_grades_renderer extends plugin_renderer_base {
             'group',
             $activegroup
         );
+        // Mdlcode-disable-next-line cannot-parse-template
         return $this->render_from_template($groupdropdown->get_template(), $groupdropdown->export_for_template($this));
     }
 

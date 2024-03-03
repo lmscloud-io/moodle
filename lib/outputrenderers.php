@@ -260,6 +260,7 @@ class renderer_base {
             // Fetch the template name from the get_template_name function instead.
             // Note: This has higher priority than the guessed template name.
             return $this->render_from_template(
+                // Mdlcode-disable-next-line cannot-parse-template
                 $widget->get_template_name($this),
                 $widget->export_for_template($this)
             );
@@ -274,6 +275,7 @@ class renderer_base {
             }
             $template = $component . '/' . $classname;
             $context = $widget->export_for_template($this);
+            // Mdlcode-disable-next-line cannot-parse-template
             return $this->render_from_template($template, $context);
         }
         throw new coding_exception("Can not render widget, renderer method ('{$rendermethod}') not found.");
@@ -519,6 +521,7 @@ class plugin_renderer_base extends renderer_base {
             // Fetch the template name from the get_template_name function instead.
             // Note: This has higher priority than the deprecated method which is not overridable by themes anyway.
             return $this->render_from_template(
+                // Mdlcode-disable-next-line cannot-parse-template
                 $widget->get_template_name($this),
                 $widget->export_for_template($this)
             );
@@ -1844,6 +1847,7 @@ class core_renderer extends renderer_base {
      */
     protected function render_check_full_result(core\check\check $check, core\check\result $result, bool $includedetails): string {
         // Initially render just badge itself.
+        // Mdlcode-disable-next-line cannot-parse-template
         $renderedresult = $this->render_from_template($result->get_template_name(), $result->export_for_template($this));
 
         // Add summary.
