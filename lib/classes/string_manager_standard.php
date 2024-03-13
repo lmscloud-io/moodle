@@ -293,7 +293,7 @@ class core_string_manager_standard implements core_string_manager {
      */
     public function get_string($identifier, $component = '', $a = null, $lang = null) {
         global $CFG;
-        // Mdlcode call-subject: ^(get_string_manager\(\)|\$stringmanager)$
+        // Mdlcode call-subject: is-string-manager
 
         $this->countgetstring++;
         // There are very many uses of these time formatting strings without the 'langconfig' component,
