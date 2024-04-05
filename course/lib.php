@@ -3903,7 +3903,7 @@ function course_check_updates($course, $tocheck, $filter = array()) {
     $modulescallbacksupport = array();
     $modinfo = get_fast_modinfo($course);
 
-    $supportedplugins = get_plugin_list_with_function('mod', 'check_updates_since');
+    $supportedplugins = get_plugin_list_with_function('mod', 'check_updates_since'); // Mdlcode callback-line: mod
 
     // Check instances.
     foreach ($tocheck as $instance) {
