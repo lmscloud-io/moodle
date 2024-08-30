@@ -73,6 +73,7 @@ final class before_standard_footer_html_generation {
     public function process_legacy_callbacks(): void {
         // Give plugins an opportunity to add any footer elements.
         // The callback must always return a string containing valid html footer content.
+        // Mdlcode callback-next-line: *
         $pluginswithfunction = get_plugins_with_function(function: 'standard_footer_html', migratedtohook: true);
         foreach ($pluginswithfunction as $plugins) {
             foreach ($plugins as $function) {

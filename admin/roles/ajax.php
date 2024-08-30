@@ -26,6 +26,7 @@
 define('AJAX_SCRIPT', true);
 
 require(__DIR__ . '/../../config.php');
+// Mdlcode-disable cannot-parse-capability
 
 $contextid = required_param('contextid', PARAM_INT);
 $getroles = optional_param('getroles', 0, PARAM_BOOL);

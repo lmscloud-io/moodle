@@ -25,6 +25,7 @@
 
 require_once('../config.php');
 require_once("$CFG->libdir/resourcelib.php");
+// Mdlcode assume: $modname pluginnames-mod
 
 $id = required_param('id', PARAM_INT); // course id
 

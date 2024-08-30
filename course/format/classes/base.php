@@ -1057,6 +1057,8 @@ abstract class base {
      * @return string the get_string result
      */
     public function get_format_string(string $key, $data = null): string {
+        // Mdlcode assume-optional: $component pluginnames-format.
+        // Mdlcode assume: $key ['addsection', 'sectionsavailability', 'sectionsmove', 'sectionmove', 'sectiondelete', 'selectsection', 'bulkedit', 'section_highlight_feedback', 'bulkedit'].
         $component = 'format_' . $this->get_format();
         if (!get_string_manager()->string_exists($key, $component)) {
             $component = 'core_courseformat';

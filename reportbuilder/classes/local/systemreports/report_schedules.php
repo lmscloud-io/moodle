@@ -208,6 +208,7 @@ class report_schedules extends system_report {
             ->set_is_sortable(true)
             ->add_callback(static function(string $format): string {
                 if (get_string_manager()->string_exists('dataformat', 'dataformat_' . $format)) {
+                    // Mdlcode assume: $format pluginnames-dataformat.
                     return get_string('dataformat', 'dataformat_' . $format);
                 } else {
                     return $format;

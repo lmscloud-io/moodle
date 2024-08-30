@@ -81,6 +81,7 @@ class login_form extends \moodleform {
      * @return void
      */
     public function definition_after_data(): void {
+        // Mdlcode assume-optional: $factor->name pluginnames-factor
         $mform = $this->_form;
         $factor = $this->_customdata['factor'];
 

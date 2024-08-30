@@ -157,10 +157,12 @@ abstract class restore_search_base implements renderable {
 
     /**
      * Adds a required capability which all results will be checked against
-     * @param string $capability
+     * @param string $capability {Mdlcode-variant-capability}
      * @param int|null $user
      */
     final public function require_capability($capability, $user = null) {
+        // Mdlcode call-subject: ^\$this$
+        // Mdlcode call-special: same-file-call-only
         if (!is_int($user)) {
             $user = null;
         }
@@ -205,6 +207,7 @@ abstract class restore_search_base implements renderable {
                 $classname = context_helper::get_class_for_level($contextlevel);
                 $context = $classname::instance($result->id);
                 if (count($requiredcaps) > 0) {
+                    // Mdlcode-disable-next-line cannot-parse-capability
                     if (!has_all_capabilities($requiredcaps, $context, $userid)) {
                         continue;
                     }

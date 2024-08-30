@@ -102,8 +102,8 @@ class lang_string {
      * This function should do as little processing as possible to ensure the best
      * performance for strings that won't be used.
      *
-     * @param string $identifier The strings identifier
-     * @param string|null $component The strings component
+     * @param string $identifier {Mdlcode-variant-string} The strings identifier
+     * @param string|null $component {Mdlcode-variant-stringcomponent} The strings component
      * @param mixed $a Any arguments the string requires
      * @param string|null $lang The language to use when processing the string.
      * @throws coding_exception
@@ -180,6 +180,7 @@ class lang_string {
      * @throws coding_exception
      */
     protected function get_string(): string {
+        // Mdlcode-disable cannot-parse-string
         global $CFG;
 
         // Check if we need to process the string.
@@ -208,6 +209,7 @@ class lang_string {
      * @return string
      */
     public function out($lang = null): string {
+        // Mdlcode-disable cannot-parse-string
         if ($lang !== null && $lang != $this->lang && ($this->lang == null && $lang != current_language())) {
             if ($this->forcedstring) {
                 debugging('lang_string objects that have been used cannot be printed in another language. ('.$this->lang.' used)',
@@ -236,6 +238,7 @@ class lang_string {
      * @return self
      */
     public static function __set_state(array $array): self {
+        // Mdlcode-disable cannot-parse-string
         $tmp = new lang_string($array['identifier'], $array['component'], $array['a'], $array['lang']);
         $tmp->string = $array['string'];
         $tmp->forcedstring = $array['forcedstring'];

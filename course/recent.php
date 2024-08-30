@@ -159,6 +159,7 @@ foreach ($sections as $sectionnum => $section) {
             require_once($libfile);
             $get_recent_mod_activity = $cm->modname."_get_recent_mod_activity";
 
+            // Mdlcode callback: mod PN_get_recent_mod_activity function_exists($get_recent_mod_activity)
             if (function_exists($get_recent_mod_activity)) {
                 $activity = new stdClass();
                 $activity->type    = 'activity';
@@ -251,6 +252,7 @@ if (!empty($activities)) {
 
             $print_recent_mod_activity = $activity->type.'_print_recent_mod_activity';
 
+            // Mdlcode callback: mod PN_print_recent_mod_activity function_exists($print_recent_mod_activity)
             if (function_exists($print_recent_mod_activity)) {
                 echo html_writer::start_tag('li');
                 $print_recent_mod_activity($activity, $course->id, $detail, $modnames, $viewfullnames[$activity->cmid]);

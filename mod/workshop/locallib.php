@@ -3369,7 +3369,7 @@ class workshop {
      * The list is automatically restricted according to any availability restrictions
      * that apply to user lists (e.g. group, grouping restrictions).
      *
-     * @param array $capabilities array of capability names (If the user has ANY of them, it returns true for that user)
+     * @param array $capabilities {Mdlcode-variant-capability} array of capability names (If the user has ANY of them, it returns true for that user)
      * @param bool $musthavesubmission if true, return only users who have already submitted
      * @param int $groupid 0 means ignore groups, any other value limits the result by group id
      * @param int $limitfrom return a subset of records, starting at this point (optional, required if $limitnum is set)

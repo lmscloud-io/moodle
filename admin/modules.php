@@ -37,6 +37,7 @@ $action = optional_param('action', '', PARAM_ALPHA);
 // If data submitted, then process and store.
 if (!empty($action) && !empty($plugin) && confirm_sesskey()) {
     $manager = \core_plugin_manager::resolve_plugininfo_class('mod');
+    // Mdlcode assume-next-line: $plugin pluginnames-mod
     $pluginname = get_string('pluginname', $plugin);
 
     if ($action === 'disable' && $manager::enable_plugin($plugin, 0)) {

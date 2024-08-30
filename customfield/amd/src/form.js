@@ -48,6 +48,7 @@ const confirmDelete = (id, type, component, area, itemid) => {
 
     getStrings([
         {'key': 'confirm'},
+        // Mdlcode assume-next-line: type ['field', 'category']
         {'key': 'confirmdelete' + type, component: 'core_customfield'},
         {'key': 'yes'},
         {'key': 'no'},

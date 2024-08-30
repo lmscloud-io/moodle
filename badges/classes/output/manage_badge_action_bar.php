@@ -48,7 +48,7 @@ class manage_badge_action_bar extends base_action_bar {
     /**
      * The template that this tertiary nav should use.
      *
-     * @return string
+     * @return string {Mdlcode-variant-template}
      */
     public function get_template(): string {
         return 'core_badges/manage_badge';
@@ -90,38 +90,53 @@ class manage_badge_action_bar extends base_action_bar {
      */
     protected function get_badge_administration_mapping_construct(): array {
         return [
+            // Mdlcode uses-next-line: string ['boverview', 'badges']
             'boverview' => [
                 'url' => '/badges/overview.php',
                 'capability' => ''
             ],
+            // Mdlcode uses-next-line: string ['bdetails', 'badges']
             'bdetails' => [
                 'url' => '/badges/edit.php',
                 'additionalparams' => ['action' => 'badge'],
+                // Mdlcode uses-next-line: capability 'moodle/badges:configuredetails'
                 'capability' => 'moodle/badges:configuredetails'
             ],
+            // Mdlcode uses-next-line: string ['bcriteria', 'badges']
             'bcriteria' => [
                 'url' => '/badges/criteria.php',
+                // Mdlcode uses-next-line: capability 'moodle/badges:configurecriteria'
                 'capability' => 'moodle/badges:configurecriteria'
             ],
+            // Mdlcode uses-next-line: string ['bmessage', 'badges']
             'bmessage' => [
                 'url' => '/badges/edit.php',
                 'additionalparams' => ['action' => 'message'],
+                // Mdlcode uses-next-line: capability 'moodle/badges:configuremessages'
                 'capability' => 'moodle/badges:configuremessages'
             ],
+            // Mdlcode uses-next-line: string ['bawards', 'badges']
             'bawards' => [
                 'url' => '/badges/recipients.php',
+                // Mdlcode uses-next-line: capability 'moodle/badges:viewawarded'
                 'capability' => 'moodle/badges:viewawarded'
             ],
+            // Mdlcode uses-next-line: string ['bendorsement', 'badges']
             'bendorsement' => [
                 'url' => '/badges/endorsement.php',
+                // Mdlcode uses-next-line: capability 'moodle/badges:configuredetails'
                 'capability' => 'moodle/badges:configuredetails'
             ],
+            // Mdlcode uses-next-line: string ['brelated', 'badges']
             'brelated' => [
                 'url' => '/badges/related.php',
+                // Mdlcode uses-next-line: capability 'moodle/badges:configuredetails'
                 'capability' => 'moodle/badges:configuredetails'
             ],
+            // Mdlcode uses-next-line: string ['balignment', 'badges']
             'balignment' => [
                 'url' => '/badges/alignment.php',
+                // Mdlcode uses-next-line: capability 'moodle/badges:configuredetails'
                 'capability' => 'moodle/badges:configuredetails'
             ],
         ];
@@ -140,6 +155,7 @@ class manage_badge_action_bar extends base_action_bar {
         $options = [];
         $construct = $this->get_badge_administration_mapping_construct();
         foreach ($construct as $stringidentifier => $checks) {
+            // Mdlcode-disable-next-line cannot-parse-capability
             if ($checks['capability'] && !has_capability($checks['capability'], $this->page->context)) {
                 continue;
             }
@@ -170,6 +186,7 @@ class manage_badge_action_bar extends base_action_bar {
             }
 
             $url = new moodle_url($checks['url'], $params + ($checks['additionalparams'] ?? []));
+            // Mdlcode-disable-next-line cannot-parse-string
             $options[get_string($stringidentifier, 'core_badges', $content)] = $url->out(false);
         }
         if (count($options) <= 1) {

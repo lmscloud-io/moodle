@@ -42,8 +42,8 @@ abstract class helper_for_get_mods_by_courses {
      *
      * @param \stdClass $modinstance one of the objects returned from a call to {@see get_all_instances_in_courses()}.
      * @param string $component the plugin name, e.g. 'mod_book'.
-     * @param string $capabilityforgroups capability to check before including group/visible/section info in the results.
-     * @param string|null $capabilityforintro capability to check before including intro info in the results.
+     * @param string $capabilityforgroups {Mdlcode-variant-capability} capability to check before including group/visible/section info in the results.
+     * @param string|null $capabilityforintro {Mdlcode-variant-capability} capability to check before including intro info in the results.
      *      null means always include (the default).
      * @return array with the containing all the values declared in {@see standard_coursemodule_elements_returns()}.
      */

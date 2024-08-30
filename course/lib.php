@@ -408,6 +408,7 @@ function get_module_types_names($plural = false, $resetcache = false) {
         if ($allmods = $DB->get_records("modules")) {
             foreach ($allmods as $mod) {
                 if (file_exists("$CFG->dirroot/mod/$mod->name/lib.php") && $mod->visible) {
+                    // Mdlcode assume: $mod->name pluginnames-mod
                     $modnames[0][$mod->name] = get_string("modulename", "$mod->name", null, true);
                     $modnames[1][$mod->name] = get_string("modulenameplural", "$mod->name", null, true);
                 }
@@ -749,6 +750,7 @@ function course_delete_module($cmid, $async = false) {
     $deleteinstancefunction = $modulename . '_delete_instance';
 
     // Ensure the delete_instance function exists for this module.
+    // Mdlcode callback: mod PN_delete_instance function_exists($deleteinstancefunction)
     if (!function_exists($deleteinstancefunction)) {
         throw new moodle_exception('cannotdeletemodulemissingfunc', '', '', null,
             "Cannot delete this module as the function {$modulename}_delete_instance is missing in mod/$modulename/lib.php.");
@@ -882,6 +884,7 @@ function course_module_flag_for_async_deletion($cmid) {
     $deleteinstancefunction = $modulename . '_delete_instance';
 
     // Ensure the delete_instance function exists for this module.
+    // Mdlcode callback: mod PN_delete_instance function_exists($deleteinstancefunction)
     if (!function_exists($deleteinstancefunction)) {
         throw new \moodle_exception('cannotdeletemodulemissingfunc', '', '', null,
             "Cannot delete this module as the function {$modulename}_delete_instance is missing in mod/$modulename/lib.php.");
@@ -995,6 +998,7 @@ function delete_mod_from_section($modid, $sectionid) {
  */
 function course_module_update_calendar_events($modulename, $instance = null, $cm = null) {
     global $DB;
+    // Mdlcode assume: $modulename pluginnames-mod
 
     if (isset($instance) || isset($cm)) {
 
@@ -1022,6 +1026,7 @@ function course_module_update_calendar_events($modulename, $instance = null, $cm
  */
 function course_module_bulk_update_calendar_events($modulename, $courseid = 0) {
     global $DB;
+    // Mdlcode assume: $modulename pluginnames-mod
 
     $instances = null;
     if ($courseid) {
@@ -1053,6 +1058,7 @@ function course_module_calendar_event_update_process($instance, $cm) {
     // We need to call *_refresh_events() first because some modules delete 'old' events at the end of the code which
     // will remove the completion events.
     $refresheventsfunction = $cm->modname . '_refresh_events';
+    // Mdlcode callback: mod PN_refresh_events function_exists($refresheventsfunction)
     if (function_exists($refresheventsfunction)) {
         call_user_func($refresheventsfunction, $cm->course, $instance, $cm);
     }
@@ -1629,6 +1635,7 @@ function course_allowed_module($course, $modname, ?\stdClass $user = null) {
         throw new coding_exception('Function course_allowed_module no longer
                 supports numeric module ids. Please update your code to pass the module name.');
     }
+    // Mdlcode assume: $modname pluginnames-mod
 
     $capability = 'mod/' . $modname . ':addinstance';
     if (!get_capability_info($capability)) {
@@ -2790,6 +2797,8 @@ function course_ajax_enabled($course) {
  */
 function include_course_ajax($course, $usedmodules = array(), $enabledmodules = null, $config = null) {
     global $CFG, $PAGE, $SITE;
+    // Mdlcode assume-optional: $course->format pluginnames-format
+    // Mdlcode assume: $module pluginnames-mod
 
     // Init the course editor module to support UI components.
     $format = course_get_format($course);
@@ -3097,6 +3106,7 @@ function duplicate_module($course, $cm, ?int $sectionid = null, bool $changename
     require_once($CFG->dirroot . '/backup/util/includes/backup_includes.php');
     require_once($CFG->dirroot . '/backup/util/includes/restore_includes.php');
     require_once($CFG->libdir . '/filelib.php');
+    // Mdlcode assume: $cm->modname pluginnames-mod
 
     // Plugins with this feature flag set to false must ALWAYS be in section 0.
     if (!course_modinfo::is_mod_type_visible_on_course($cm->modname)) {
@@ -3722,6 +3732,7 @@ function course_get_user_navigation_options($context, $course = null) {
             if (is_array($reports) && count($reports) > 0) {  // Get all installed reports.
                 arsort($reports);   // User is last, we want to test it first.
                 foreach ($reports as $plugin => $plugindir) {
+                    // Mdlcode assume: $plugin pluginnames-gradereport
                     if (has_capability('gradereport/'.$plugin.':view', $context)) {
                         // Stop when the first visible plugin is found.
                         $grades = true;
@@ -3801,6 +3812,7 @@ function course_get_user_administration_options($course, $context) {
  * @return mixed False if everything alright, error codes otherwise.
  */
 function course_validate_dates($coursedata) {
+    // Mdlcode returns: string 'error'.
 
     // If both start and end dates are set end date should be later than the start date.
     if (!empty($coursedata['startdate']) && !empty($coursedata['enddate']) &&
@@ -3833,7 +3845,7 @@ function course_check_updates($course, $tocheck, $filter = array()) {
     $modulescallbacksupport = array();
     $modinfo = get_fast_modinfo($course);
 
-    $supportedplugins = get_plugin_list_with_function('mod', 'check_updates_since');
+    $supportedplugins = get_plugin_list_with_function('mod', 'check_updates_since'); // Mdlcode callback-line: mod
 
     // Check instances.
     foreach ($tocheck as $instance) {
@@ -4301,6 +4313,7 @@ function course_filter_courses_by_customfield(
  */
 function course_check_module_updates_since($cm, $from, $fileareas = array(), $filter = array()) {
     global $DB, $CFG, $USER;
+    // Mdlcode assume: $cm->modname pluginnames-mod
 
     $context = $cm->context;
     $mod = $DB->get_record($cm->modname, array('id' => $cm->instance), '*', MUST_EXIST);
@@ -4763,6 +4776,7 @@ function course_get_course_dates_for_user_id(stdClass $course, int $userid): arr
  * @return string $o Form HTML.
  */
 function course_output_fragment_new_base_form($args) {
+    // Mdlcode-disable cannot-parse-capability.
 
     $serialiseddata = json_decode($args['jsonformdata'], true);
     $formdata = [];

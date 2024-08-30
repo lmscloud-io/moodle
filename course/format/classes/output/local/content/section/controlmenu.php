@@ -88,6 +88,8 @@ class controlmenu extends basecontrolmenu {
      */
     public function section_control_items() {
         global $USER, $PAGE;
+        // Mdlcode assume-optional: $format->get_format() pluginnames-format
+        // Mdlcode assume-optional: $course->format pluginnames-format
 
         $format = $this->format;
         $section = $this->section;

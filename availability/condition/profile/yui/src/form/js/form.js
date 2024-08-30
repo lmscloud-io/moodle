@@ -51,6 +51,7 @@ M.availability_profile.form.getNode = function(json) {
     html += '</select></label> <label><span class="accesshide">' + M.util.get_string('label_operator', 'availability_profile') +
             ' </span><select name="op" title="' + M.util.get_string('label_operator', 'availability_profile') + '"' +
                      ' class="custom-select">';
+    // Mdlcode assume: operators[i] ['isequalto', 'contains', 'doesnotcontain', 'startswith', 'endswith', 'isempty', 'isnotempty']
     var operators = ['isequalto', 'contains', 'doesnotcontain', 'startswith', 'endswith',
             'isempty', 'isnotempty'];
     for (i = 0; i < operators.length; i++) {

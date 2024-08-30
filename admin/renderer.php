@@ -709,6 +709,7 @@ class core_admin_renderer extends plugin_renderer_base {
      * @return string HTML to output.
      */
     protected function maturity_warning($maturity) {
+        // Mdlcode assume: $maturity ['50','100','150','200']
         if ($maturity == MATURITY_STABLE) {
             return ''; // No worries.
         }
@@ -777,6 +778,7 @@ class core_admin_renderer extends plugin_renderer_base {
      * @return string HTML to output.
      */
     protected function maturity_info($maturity) {
+        // Mdlcode assume: $maturity ['50','100','150','200']
         if ($maturity == MATURITY_STABLE) {
             return ''; // No worries.
         }
@@ -967,6 +969,7 @@ class core_admin_renderer extends plugin_renderer_base {
      * @param \core\update\info $updateinfo information about the available Moodle core update
      */
     protected function moodle_available_update_info(\core\update\info $updateinfo) {
+        // Mdlcode assume: $updateinfo->maturity ['50','100','150','200']
 
         $boxclasses = 'moodleupdateinfo mb-2';
         $info = array();
@@ -1926,6 +1929,7 @@ class core_admin_renderer extends plugin_renderer_base {
      * @param \core\update\info $updateinfo information about the available update for the plugin
      */
     protected function plugin_available_update_info(core_plugin_manager $pluginman, \core\update\info $updateinfo) {
+        // Mdlcode assume: $updateinfo->maturity ['50','100','150','200']
 
         $boxclasses = 'pluginupdateinfo';
         $info = array();

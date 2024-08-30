@@ -39,6 +39,7 @@ $ue = $DB->get_record('user_enrolments', array('id' => $ueid), '*', MUST_EXIST);
 $user = $DB->get_record('user', array('id'=>$ue->userid), '*', MUST_EXIST);
 $instance = $DB->get_record('enrol', array('id'=>$ue->enrolid), '*', MUST_EXIST);
 $course = $DB->get_record('course', array('id'=>$instance->courseid), '*', MUST_EXIST);
+// Mdlcode assume-optional: $instance->enrol pluginnames-enrol
 
 // The URL of the enrolled users page for the course.
 $usersurl = new moodle_url('/user/index.php', array('id' => $course->id));

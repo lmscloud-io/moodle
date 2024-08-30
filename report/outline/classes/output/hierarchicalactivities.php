@@ -72,6 +72,7 @@ class hierarchicalactivities extends coursestructure {
     ): void {
         global $CFG, $DB;
 
+        // Mdlcode assume: $mod->modname pluginnames-mod
         $instance = $DB->get_record($mod->modname, ['id' => $mod->instance]);
         $libfile = "$CFG->dirroot/mod/$mod->modname/lib.php";
 
@@ -84,6 +85,7 @@ class hierarchicalactivities extends coursestructure {
         switch ($mode) {
             case "outline":
                 $useroutline = $mod->modname . "_user_outline";
+                // Mdlcode callback: mod PN_user_outline function_exists($useroutline)
                 if (function_exists($useroutline)) {
                     $toprint = $useroutline($course, $user, $mod, $instance);
                 } else {
@@ -104,6 +106,7 @@ class hierarchicalactivities extends coursestructure {
                 ob_start();
 
                 echo "<ul>";
+                // Mdlcode callback: mod PN_user_complete function_exists($usercomplete)
                 if (function_exists($usercomplete)) {
                     $usercomplete($course, $user, $mod, $instance);
                 } else {

@@ -83,6 +83,7 @@ class plugin_renderer_base extends renderer_base {
             // Fetch the template name from the get_template_name function instead.
             // Note: This has higher priority than the deprecated method which is not overridable by themes anyway.
             return $this->render_from_template(
+                // Mdlcode-disable-next-line cannot-parse-template
                 $widget->get_template_name($this),
                 $widget->export_for_template($this)
             );

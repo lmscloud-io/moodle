@@ -51,7 +51,7 @@ class posts {
      *
      * @param renderer_base $renderer Renderer base
      * @param exported_posts_builder $exportedpostsbuilder Builder for building exported posts
-     * @param string $template The template to render
+     * @param string $template {Mdlcode-variant-template} The template to render
      * @param callable $postprocessfortemplate Function to process exported posts before template rendering
      */
     public function __construct(
@@ -104,6 +104,7 @@ class posts {
         }
 
         return $this->renderer->render_from_template(
+            // Mdlcode-disable-next-line cannot-parse-template
             $this->template,
             ['posts' => array_values($exportedposts)]
         );
