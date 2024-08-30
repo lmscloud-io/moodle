@@ -143,10 +143,12 @@ class statistics_bulk_loader {
             return null;
         }
 
+        // Mdlcode callback-next-line: ignore
         if (!component_callback_exists($component, 'calculate_question_stats')) {
             return null;
         }
 
+        // Mdlcode callback-next-line: plugin
         return component_callback($component, 'calculate_question_stats', [$context]);
     }
 

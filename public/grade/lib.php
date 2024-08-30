@@ -3257,6 +3257,7 @@ abstract class grade_helper {
         $gradereports = array();
         $gradepreferences = array();
         foreach (core_component::get_plugin_list('gradereport') as $plugin => $plugindir) {
+            // Mdlcode assume: $plugin pluginnames-gradereport
             //some reports make no sense if we're not within a course
             if ($courseid==$SITE->id && ($plugin=='grader' || $plugin=='user')) {
                 continue;
@@ -3403,6 +3404,7 @@ abstract class grade_helper {
 
         if (has_capability('moodle/grade:import', $context)) {
             foreach (core_component::get_plugin_list('gradeimport') as $plugin => $plugindir) {
+                // Mdlcode assume: $plugin pluginnames-gradeimport
                 if (!has_capability('gradeimport/'.$plugin.':view', $context)) {
                     continue;
                 }
@@ -3443,6 +3445,7 @@ abstract class grade_helper {
         $canpublishgrades = 0;
         if (has_capability('moodle/grade:export', $context)) {
             foreach (core_component::get_plugin_list('gradeexport') as $plugin => $plugindir) {
+                // Mdlcode assume: $plugin pluginnames-gradeexport
                 if (!has_capability('gradeexport/'.$plugin.':view', $context)) {
                     continue;
                 }
@@ -3526,6 +3529,7 @@ abstract class grade_helper {
                 $obj = new stdClass();
                 $obj->customid  = 0;
                 $obj->shortname = $field;
+                // Mdlcode assume: $field profilefields.
                 $obj->fullname  = get_string($field);
                 $fields[] = $obj;
             }

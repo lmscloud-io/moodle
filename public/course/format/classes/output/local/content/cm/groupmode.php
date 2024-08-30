@@ -190,6 +190,7 @@ class groupmode implements named_templatable, renderable {
         );
 
         return [
+            // Mdlcode assume: $name ['groupsseparate', 'groupsvisible']
             'description' => ($name) ? get_string("groupmode_{$name}_help", 'group') : null,
             // The dropdown icons are decorative, so we don't need to provide alt text.
             'icon' => $this->get_action_icon($mutation),

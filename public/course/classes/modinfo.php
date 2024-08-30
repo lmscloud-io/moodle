@@ -1111,6 +1111,7 @@ class modinfo {
 
                         include_once("$CFG->dirroot/mod/$modname/lib.php");
 
+                        // Mdlcode callback: mod PN_get_coursemodule_info function_exists($functionname)
                         if ($hasfunction = function_exists($functionname)) {
                             if ($info = $functionname($rawmods[$cmid])) {
                                 if (!empty($info->icon)) {

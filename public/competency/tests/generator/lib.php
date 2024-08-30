@@ -435,6 +435,7 @@ class core_competency_generator extends component_generator_base {
             $record->contextid = context_system::instance()->id;
         }
         if (!isset($record->descidentifier)) {
+            // Mdlcode uses-next-line: string ['invalidevidencedesc', 'core_competency']
             $record->descidentifier = 'invalidevidencedesc';
         }
         if (!isset($record->desccomponent)) {

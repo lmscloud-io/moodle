@@ -275,6 +275,7 @@ class administration_display_helper extends \core_cache\administration_helper {
             $locks = [];
             foreach ($config->get_locks() as $lock => $conf) {
                 if (!empty($conf['default'])) {
+                    // Mdlcode assume: $lock ['cachelock_file_default']
                     $name = get_string($lock, 'cache');
                 } else {
                     $name = $lock;
@@ -330,6 +331,7 @@ class administration_display_helper extends \core_cache\administration_helper {
                 // Can't add an instance of this plugin.
                 continue;
             }
+            // Mdlcode-disable-next-line cannot-parse-string.
             $options[substr($plugin, $len)] = get_string('pluginname', $plugin);
         }
         return $options;

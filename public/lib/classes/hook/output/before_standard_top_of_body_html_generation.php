@@ -88,6 +88,7 @@ final class before_standard_top_of_body_html_generation {
 
         // Give plugins an opportunity to inject extra html content. The callback
         // must always return a string containing valid html.
+        // Mdlcode callback-next-line: *
         $pluginswithfunction = get_plugins_with_function(
             function: 'before_standard_top_of_body_html',
             migratedtohook: true,

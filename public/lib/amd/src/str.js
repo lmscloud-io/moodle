@@ -153,6 +153,7 @@ const getRequestedStrings = (requests) => {
         // Check if we can serve the string straight from M.str.
         if (component in M.str && key in M.str[component]) {
             return buildReturn(new Promise((resolve) => {
+                // Mdlcode-disable-next-line cannot-parse-string
                 resolve(M.util.get_string(key, component, param));
             }));
         }
@@ -169,6 +170,7 @@ const getRequestedStrings = (requests) => {
         // Check if we've already loaded this string from the server.
         if (cacheKey in promiseCache) {
             return buildReturn(promiseCache[cacheKey]).then(() => {
+                // Mdlcode-disable-next-line cannot-parse-string
                 return M.util.get_string(key, component, param);
             });
         } else {
@@ -189,6 +191,7 @@ const getRequestedStrings = (requests) => {
                         // local storage before resolving this promise.
                         M.str[component] = {...M.str[component], [key]: str};
                         LocalStorage.set(cacheKey, str);
+                        // Mdlcode-disable-next-line cannot-parse-string
                         resolve(M.util.get_string(key, component, param));
                     },
                     fail: reject

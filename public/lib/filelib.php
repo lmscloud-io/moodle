@@ -5252,6 +5252,7 @@ function file_pluginfile($relativepath, $forcedownload, $preview = null, $offlin
         \core\session\manager::write_close(); // Unlock session during file serving.
 
         $contenttype = $DB->get_field('contentbank_content', 'contenttype', ['id' => $itemid]);
+        // Mdlcode-todo this is also callback
         if (component_class_callback("\\{$contenttype}\\contenttype", 'pluginfile',
                 [$course, null, $context, $filearea, $componentargs, $forcedownload, $sendfileoptions], false) === false) {
 
@@ -5308,9 +5309,11 @@ function file_pluginfile($relativepath, $forcedownload, $preview = null, $offlin
 
         $filefunction = $component.'_pluginfile';
         $filefunctionold = $modname.'_pluginfile';
+        // Mdlcode callback-next-line: mod PREFIX_pluginfile function_exists($filefunction)
         if (function_exists($filefunction)) {
             // if the function exists, it must send the file and terminate. Whatever it returns leads to "not found"
             $filefunction($course, $cm, $context, $filearea, $args, $forcedownload, $sendfileoptions);
+        // Mdlcode callback-next-line: ignore
         } else if (function_exists($filefunctionold)) {
             // if the function exists, it must send the file and terminate. Whatever it returns leads to "not found"
             $filefunctionold($course, $cm, $context, $filearea, $args, $forcedownload, $sendfileoptions);
@@ -5352,6 +5355,7 @@ function file_pluginfile($relativepath, $forcedownload, $preview = null, $offlin
         }
 
         $filefunction = $component.'_pluginfile';
+        // Mdlcode callback-next-line: block PREFIX_pluginfile function_exists($filefunction)
         if (function_exists($filefunction)) {
             // if the function exists, it must send the file and terminate. Whatever it returns leads to "not found"
             $filefunction($course, $birecord, $context, $filearea, $args, $forcedownload, $sendfileoptions);
@@ -5373,6 +5377,7 @@ function file_pluginfile($relativepath, $forcedownload, $preview = null, $offlin
         include_once("$dir/lib.php");
 
         $filefunction = $component.'_pluginfile';
+        // Mdlcode callback-next-line: *,!mod,!block PFN_pluginfile function_exists($filefunction)
         if (function_exists($filefunction)) {
             // if the function exists, it must send the file and terminate. Whatever it returns leads to "not found"
             $filefunction($course, $cm, $context, $filearea, $args, $forcedownload, $sendfileoptions);

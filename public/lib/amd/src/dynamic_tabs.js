@@ -159,6 +159,7 @@ const loadTab = (tabName) => {
     })
     .then(response => Promise.all([
         processCollectedJavascript(response.javascript),
+        // Mdlcode-disable-next-line cannot-parse-template
         Templates.renderForPromise(response.template, JSON.parse(response.content)),
     ]))
     .then(([responseJs, {html, js}]) => Templates.replaceNodeContents(tab, html, js + responseJs))

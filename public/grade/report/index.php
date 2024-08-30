@@ -39,6 +39,7 @@ $context = context_course::instance($course->id);
 $reports = core_component::get_plugin_list('gradereport');     // Get all installed reports
 
 foreach ($reports as $plugin => $plugindir) {                      // Remove ones we can't see
+    // Mdlcode assume: $plugin pluginnames-gradereport
     if (!has_capability('gradereport/'.$plugin.':view', $context)) {
         unset($reports[$plugin]);
     }

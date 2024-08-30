@@ -128,6 +128,7 @@ final class external_externallib_test extends \core_external\tests\externallib_t
         $returnedstrings = external_api::clean_returnvalue(\core_external::get_strings_returns(), $returnedstrings);
 
         foreach($returnedstrings as $returnedstring) {
+            // Mdlcode-disable cannot-parse-string.
             $corestring = $stringmanager->get_string($returnedstring['stringid'],
                                                      $returnedstring['component'],
                                                      $service,

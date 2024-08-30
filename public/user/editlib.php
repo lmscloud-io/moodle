@@ -250,6 +250,7 @@ function useredit_shared_definition(&$mform, $editoroptions, $filemanageroptions
     $strrequired = get_string('required');
     $stringman = get_string_manager();
 
+    // Mdlcode assume-optional: $fullname namefields
     // Add the necessary names.
     foreach (useredit_get_required_name_fields() as $fullname) {
         $purpose = user_edit_map_field_purpose($user->id, $fullname);
@@ -262,6 +263,7 @@ function useredit_shared_definition(&$mform, $editoroptions, $filemanageroptions
         $mform->addRule($fullname, $strmissingfield, 'required', null, 'client');
         $mform->setType($fullname, PARAM_NOTAGS);
     }
+    // Mdlcode assume: $addname namefields
 
     $enabledusernamefields = useredit_get_enabled_name_fields();
     // Add the enabled additional name fields.
@@ -367,6 +369,7 @@ function useredit_shared_definition(&$mform, $editoroptions, $filemanageroptions
 
     }
 
+    // Mdlcode assume: $allname namefields
     // Display user name fields that are not currenlty enabled here if there are any.
     $disabledusernamefields = useredit_get_disabled_name_fields($enabledusernamefields);
     if (count($disabledusernamefields) > 0) {
