@@ -146,6 +146,7 @@ define([
                     var params = {
                         'requestid': requestId
                     };
+                    // Mdlcode uses-next-line: webservice 'tool_dataprivacy_mark_complete'
                     handleSave('tool_dataprivacy_mark_complete', params);
                 });
 
@@ -266,6 +267,7 @@ define([
      */
     function approveEventWsData(requestId) {
         return {
+            // Mdlcode uses-next-line: webservice 'tool_dataprivacy_approve_data_request'
             'wsfunction': 'tool_dataprivacy_approve_data_request',
             'wsparams': {'requestid': requestId}
         };
@@ -279,6 +281,7 @@ define([
      */
     function bulkApproveEventWsData(requestIds) {
         return {
+            // Mdlcode uses-next-line: webservice 'tool_dataprivacy_bulk_approve_data_requests'
             'wsfunction': 'tool_dataprivacy_bulk_approve_data_requests',
             'wsparams': {'requestids': requestIds}
         };
@@ -292,6 +295,7 @@ define([
      */
     function denyEventWsData(requestId) {
         return {
+            // Mdlcode uses-next-line: webservice 'tool_dataprivacy_deny_data_request'
             'wsfunction': 'tool_dataprivacy_deny_data_request',
             'wsparams': {'requestid': requestId}
         };
@@ -305,6 +309,7 @@ define([
      */
     function bulkDenyEventWsData(requestIds) {
         return {
+            // Mdlcode uses-next-line: webservice 'tool_dataprivacy_bulk_deny_data_requests'
             'wsfunction': 'tool_dataprivacy_bulk_deny_data_requests',
             'wsparams': {'requestids': requestIds}
         };
@@ -318,6 +323,7 @@ define([
      */
     function completeEventWsData(requestId) {
         return {
+            // Mdlcode uses-next-line: webservice 'tool_dataprivacy_mark_complete'
             'wsfunction': 'tool_dataprivacy_mark_complete',
             'wsparams': {'requestid': requestId}
         };
@@ -434,6 +440,7 @@ define([
     function handleSave(wsfunction, params) {
         // Confirm the request.
         var request = {
+            // Mdlcode-disable-next-line cannot-parse-webservice
             methodname: wsfunction,
             args: params
         };

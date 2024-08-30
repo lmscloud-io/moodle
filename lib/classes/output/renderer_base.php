@@ -158,11 +158,12 @@ class renderer_base {
      * Simple types are array,stdClass,bool,int,float,string
      *
      * @since 2.9
-     * @param string $templatename The template to render
+     * @param string $templatename {Mdlcode-variant-template} The template to render
      * @param array|stdClass $context Context containing data for the template.
      * @return string|boolean
      */
     public function render_from_template($templatename, $context) {
+        // Mdlcode call-subject: ^.*$
         $mustache = $this->get_mustache();
 
         if ($mustache->hasHelper('uniqid')) {
@@ -248,6 +249,7 @@ class renderer_base {
             // Fetch the template name from the get_template_name function instead.
             // Note: This has higher priority than the guessed template name.
             return $this->render_from_template(
+                // Mdlcode-disable-next-line cannot-parse-template
                 $widget->get_template_name($this),
                 $widget->export_for_template($this)
             );
@@ -262,6 +264,7 @@ class renderer_base {
             }
             $template = $component . '/' . $classname;
             $context = $widget->export_for_template($this);
+            // Mdlcode-disable-next-line cannot-parse-template
             return $this->render_from_template($template, $context);
         }
 

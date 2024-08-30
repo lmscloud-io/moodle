@@ -906,6 +906,7 @@ function glossary_get_available_formats() {
         if (file_exists($CFG->dirroot.'/mod/glossary/formats/'.$format.'/'.$format.'_format.php')) {
             include_once($CFG->dirroot.'/mod/glossary/formats/'.$format.'/'.$format.'_format.php');
             //If the function exists
+            // Mdlcode callback-next-line: ignore
             if (function_exists('glossary_show_entry_'.$format)) {
                 // Acummulate it as a valid format.
                 $pluginformats[] = $format;
@@ -1082,6 +1083,7 @@ function glossary_print_entry(
 
         if (file_exists($formatfile)) {
             include_once($formatfile);
+            // Mdlcode callback-next-line: ignore
             if (function_exists($functionname)) {
                 $return = $functionname(
                     $course,

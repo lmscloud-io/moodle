@@ -44,6 +44,7 @@ class before_http_headers {
      * Process legacy callbacks.
      */
     public function process_legacy_callbacks(): void {
+        // Mdlcode callback-next-line: *
         $pluginswithfunction = get_plugins_with_function(function: 'before_http_headers', migratedtohook: true);
         foreach ($pluginswithfunction as $plugins) {
             foreach ($plugins as $function) {

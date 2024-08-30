@@ -205,6 +205,7 @@ class core_backup_renderer extends plugin_renderer_base {
                         $table->attributes = ['class' => 'activitytable table generaltable'];
                         $table->data = array();
                     }
+                    // Mdlcode assume-next-line: $this->modulename pluginnames-mod
                     $name = get_string('pluginname', $activity->modulename);
                     $icon = activity_icon::from_modname($activity->modulename)
                         ->set_icon_size(iconsize::SIZE4)

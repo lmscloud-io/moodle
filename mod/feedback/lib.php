@@ -1506,6 +1506,7 @@ function feedback_load_feedback_items_options() {
         return array();
     }
 
+    // Mdlcode assume: $fn ['captcha', 'info', 'label', 'multichoice', 'multichoicerated', 'numeric', 'textarea', 'textfield']
     foreach ($feedback_names as $fn) {
         $feedback_options[$fn] = get_string($fn, 'feedback');
     }

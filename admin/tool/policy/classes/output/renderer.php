@@ -58,6 +58,7 @@ class renderer extends plugin_renderer_base {
         }
 
         $interfaces = class_implements($namespacedclassname);
+        // Mdlcode assume-optional: $plainclassname ['acceptances', 'acceptances_filter', 'guestconsent', 'page_agreedocs', 'page_managedocs_list', 'page_nopermission', 'page_viewalldoc', 'page_viewdoc', 'user_agreement']
 
         if (isset($interfaces['templatable'])) {
             // Default implementation of template-based rendering.

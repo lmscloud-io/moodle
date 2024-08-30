@@ -270,6 +270,7 @@ class visibility implements named_templatable, renderable {
             returnurl: $format->get_view_url($format->get_sectionnum(), ['navigation' => true]),
         );
 
+        // Mdlcode assume: $name ['show', 'hide', 'stealth']
         return [
             'description' => get_string("availability_{$name}_help", 'core_courseformat'),
             'icon' => $this->get_icon($name),

@@ -34,6 +34,7 @@ if (isguestuser()) {
 $action = optional_param('action', '', PARAM_ALPHANUMEXT);
 $factor = optional_param('factor', '', PARAM_ALPHANUMEXT);
 $factorid = optional_param('factorid', '', PARAM_INT);
+// Mdlcode assume-optional: $action ['setup','revoke','enable','revoke','disable','up','down']
 
 $params = ['action' => $action, 'factor' => $factor, 'factorid' => $factorid];
 $currenturl = new moodle_url('/admin/tool/mfa/action.php', $params);
@@ -69,6 +70,7 @@ if ($node = $PAGE->settingsnav->find('usercurrentsettings', null)) {
 }
 $PAGE->navbar->add(get_string('preferences:header', 'tool_mfa'), new \moodle_url('/admin/tool/mfa/user_preferences.php'));
 
+// Mdlcode assume-optional: $factor pluginnames-factor
 switch ($action) {
     case 'setup':
         if (!$factorobject || !$factorobject->has_setup()) {

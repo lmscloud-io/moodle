@@ -26,6 +26,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+// Mdlcode-disable unknown-db-tablename
 
 use core_question\local\bank\question_version_status;
 use core_question\versions;
@@ -1404,6 +1405,7 @@ class restore_groups_members_structure_step extends restore_structure_step {
                 } else {
                     $dir = core_component::get_component_directory($data->component);
                     if ($dir and is_dir($dir)) {
+                        // Mdlcode callback-next-line: *
                         if (component_callback($data->component, 'restore_group_member', array($this, $data), true)) {
                             return;
                         }
@@ -2177,6 +2179,7 @@ class restore_course_structure_step extends restore_structure_step {
             }
 
             foreach (core_component::get_plugin_list('mod') as $modname => $notused) {
+                // Mdlcode assume-optional: $modname pluginnames-mod
                 if (isset($this->legacyallowedmodules[$modname])) {
                     // Module is allowed, no worries.
                     continue;
@@ -2300,6 +2303,7 @@ class restore_ras_and_caps_structure_step extends restore_structure_step {
             $data->contextid = $contextid;
             $dir = core_component::get_component_directory($data->component);
             if ($dir and is_dir($dir)) {
+                // Mdlcode callback-next-line: *
                 if (component_callback($data->component, 'restore_role_assignment', array($this, $data), true)) {
                     return;
                 }
@@ -2320,6 +2324,7 @@ class restore_ras_and_caps_structure_step extends restore_structure_step {
 
         // If newroleid and context are valid assign it via API (it handles dupes and so on)
         if ($newroleid && $this->task->get_contextid()) {
+            // Mdlcode-disable-next-line cannot-parse-capability
             if (!$capability = get_capability_info($data->capability)) {
                 $this->log("Capability '{$data->capability}' was not found!", backup::LOG_WARNING);
             } else {
@@ -2333,6 +2338,7 @@ class restore_ras_and_caps_structure_step extends restore_structure_step {
                     (has_capability('moodle/role:override', $context, $userid) ||
                             ($safecapability && has_capability('moodle/role:safeoverride', $context, $userid)))
                 ) {
+                    // Mdlcode-disable-next-line cannot-parse-capability
                     assign_capability($data->capability, $data->permission, $newroleid, $this->task->get_contextid());
                 } else {
                     $this->log("Insufficient capability to assign capability '{$data->capability}' to role!", backup::LOG_WARNING);

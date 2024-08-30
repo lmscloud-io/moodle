@@ -60,6 +60,11 @@ class mock_info extends info {
         return \context_course::instance($this->get_course()->id);
     }
 
+    /**
+     * Returns the cappability used to ignore access restrictions.
+     *
+     * @return string Name of capability used to view hidden items of this type
+     */
     protected function get_view_hidden_capability() {
         return 'moodle/course:ignoreavailabilityrestrictions';
     }
