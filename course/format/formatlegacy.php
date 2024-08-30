@@ -44,6 +44,7 @@ class format_legacy extends core_courseformat\base {
         global $CFG;
         // Note that lib.php in course format folder is already included by now
         $featurefunction = 'callback_'.$this->format.'_uses_sections';
+        // Mdlcode callback: format callback_PN_uses_sections function_exists($featurefunction)
         if (function_exists($featurefunction)) {
             return $featurefunction();
         }
@@ -61,6 +62,7 @@ class format_legacy extends core_courseformat\base {
     public function get_section_name($section) {
         // Use course formatter callback if it exists
         $namingfunction = 'callback_'.$this->format.'_get_section_name';
+        // Mdlcode callback: format callback_PN_get_section_name function_exists($namingfunction)
         if (function_exists($namingfunction) && ($course = $this->get_course())) {
             return $namingfunction($course, $this->get_section($section));
         }
@@ -84,6 +86,7 @@ class format_legacy extends core_courseformat\base {
     public function get_view_url($section, $options = array()) {
         // Use course formatter callback if it exists
         $featurefunction = 'callback_'.$this->format.'_get_section_url';
+        // Mdlcode callback: format callback_PN_get_section_url function_exists($featurefunction)
         if (function_exists($featurefunction) && ($course = $this->get_course())) {
             if (is_object($section)) {
                 $sectionnum = $section->section;
@@ -156,6 +159,7 @@ class format_legacy extends core_courseformat\base {
 
         // get the information from the course format library
         $featurefunction = 'callback_'.$this->format.'_ajax_support';
+        // Mdlcode callback: format callback_PN_ajax_support function_exists($featurefunction)
         if (function_exists($featurefunction)) {
             $formatsupport = $featurefunction();
             if (isset($formatsupport->capable)) {
@@ -194,10 +198,12 @@ class format_legacy extends core_courseformat\base {
 
         // check if there are callbacks to extend course navigation
         $displayfunc = 'callback_'.$this->format.'_display_content';
+        // Mdlcode callback: format callback_PN_display_content function_exists($displayfunc)
         if (function_exists($displayfunc) && !$displayfunc()) {
             return;
         }
         $featurefunction = 'callback_'.$this->format.'_load_content';
+        // Mdlcode callback: format callback_PN_load_content function_exists($featurefunction)
         if (function_exists($featurefunction) && ($course = $this->get_course())) {
             $featurefunction($navigation, $course, $node);
         } else {
@@ -216,6 +222,7 @@ class format_legacy extends core_courseformat\base {
      */
     function ajax_section_move() {
         $featurefunction = 'callback_'.$this->format.'_ajax_section_move';
+        // Mdlcode callback: format callback_PN_ajax_section_move function_exists($featurefunction)
         if (function_exists($featurefunction) && ($course = $this->get_course())) {
             return $featurefunction($course);
         } else {

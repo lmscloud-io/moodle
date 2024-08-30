@@ -358,6 +358,7 @@ class schedule {
         $dataformats = dataformat::get_enabled_plugins();
 
         return array_map(static function(string $pluginname): string {
+            // Mdlcode assume: $pluginname pluginnames-dataformat.
             return get_string('dataformat', 'dataformat_' . $pluginname);
         }, $dataformats);
     }

@@ -30,7 +30,7 @@ class required_capability_exception extends moodle_exception {
      * Constructor.
      *
      * @param \core\context $context The context used for the capability check
-     * @param string $capability The required capability
+     * @param string $capability {Mdlcode-variant-capability} The required capability
      * @param string $errormessage The error message to show the user
      * @param string $stringfile
      */

@@ -78,6 +78,7 @@ final class before_html_attributes {
         // Legacy callback 'add_htmlattributes' is deprecated since Moodle 4.4.
 
         // This function should return an array of html attribute names => values.
+        // Mdlcode callback-next-line: *
         $pluginswithfunction = get_plugins_with_function(
             function: 'add_htmlattributes',
             migratedtohook: true,

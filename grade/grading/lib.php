@@ -306,11 +306,13 @@ class grading_manager {
 
         } else if ($plugintype === 'mod') {
             $callbackfunction = "grading_areas_list";
+            // Mdlcode callback-next-line: ignore
             if (component_callback_exists($component, $callbackfunction)) {
                 debugging(
                     "Components supporting advanced grading should be updated to implement the component_gradeitems class",
                     DEBUG_DEVELOPER
                 );
+                // Mdlcode callback-next-line: mod
                 return component_callback($component, $callbackfunction, [], []);
             }
         } else {

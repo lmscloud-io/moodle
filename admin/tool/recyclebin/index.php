@@ -24,6 +24,7 @@
 
 require_once(__DIR__ . '/../../../config.php');
 require_once($CFG->libdir . '/tablelib.php');
+// Mdlcode assume: $mod->name pluginnames-mod
 
 $contextid = required_param('contextid', PARAM_INT);
 $action = optional_param('action', null, PARAM_ALPHA);

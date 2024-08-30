@@ -104,6 +104,7 @@ class template_plans_table extends table_sql {
         // Add headers for extra user fields.
         foreach ($extrafields as $field) {
             if (get_string_manager()->string_exists($field, 'moodle')) {
+                // Mdlcode assume: $field profilefields
                 $cols[$field] = get_string($field);
             } else {
                 $cols[$field] = $field;

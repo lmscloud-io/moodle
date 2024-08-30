@@ -1321,6 +1321,7 @@ class flexible_table {
                                 $this->headers[$index] = '';
                                 foreach ($requirednames as $name) {
                                     $sortname = $this->sort_link(
+                                        // Mdlcode assume-next-line: $name profilefields
                                         get_string($name),
                                         $name,
                                         $primarysortcolumn === $name,

@@ -29,10 +29,11 @@ trait courseformat_named_templatable {
      * Get the name of the template to use for this templatable.
      *
      * @param \renderer_base $renderer The renderer requesting the template name
-     * @return string
+     * @return string {Mdlcode-variant-template}
      */
     public function get_template_name(\renderer_base $renderer): string {
         $fullpath = str_replace('\\', '/', get_class($this));
+        // Mdlcode assume: $matches['template'] ['content', 'content/addsection', 'content/cm', 'content/frontpagesection', 'content/section', 'content/sectionnavigation', 'content/sectionselector', 'content/cm/cmname', 'content/cm/controlmenu', 'content/section/availability', 'content/section/cmitem', 'content/section/cmlist', 'content/section/cmsummary', 'content/section/controlmenu', 'content/section/header', 'content/section/summary']
 
         $specialrenderers = '@^.*/output/(local|courseformat)/(?<template>.+)$@';
         $matches = null;

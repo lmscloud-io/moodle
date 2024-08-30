@@ -2553,6 +2553,7 @@ class global_navigation extends navigation_node {
      * @return navigation_node or null if not accessible
      */
     protected function load_stealth_activity(navigation_node $coursenode, $modinfo) {
+        // Mdlcode assume: $cm->modname pluginnames-mod
         if (empty($modinfo->cms[$this->page->cm->id])) {
             return null;
         }
@@ -2596,6 +2597,7 @@ class global_navigation extends navigation_node {
      */
     protected function load_activity($cm, stdClass $course, navigation_node $activity) {
         global $CFG, $DB;
+        // Mdlcode assume: $cm->modname pluginnames-mod
 
         // make sure we have a $cm from get_fast_modinfo as this contains activity access details
         if (!($cm instanceof cm_info)) {
@@ -2609,6 +2611,7 @@ class global_navigation extends navigation_node {
 
         if (file_exists($file)) {
             require_once($file);
+            // Mdlcode callback: mod PN_extend_navigation function_exists($function)
             if (function_exists($function)) {
                 $activtyrecord = $DB->get_record($cm->modname, array('id' => $cm->instance), '*', MUST_EXIST);
                 $function($activity, $course, $activtyrecord, $cm);
@@ -2617,6 +2620,7 @@ class global_navigation extends navigation_node {
 
         // Allow the active advanced grading method plugin to append module navigation
         $featuresfunc = $cm->modname.'_supports';
+        // Mdlcode callback: mod PN_supports function_exists($featuresfunc)
         if (function_exists($featuresfunc) && $featuresfunc(FEATURE_ADVANCED_GRADING)) {
             require_once($CFG->dirroot.'/grade/grading/lib.php');
             $gradingman = get_grading_manager($cm->context,  'mod_'.$cm->modname);
@@ -2837,6 +2841,7 @@ class global_navigation extends navigation_node {
                     $gradeavailable = has_capability('moodle/grade:view', $usercoursecontext);
                     if (!$gradeavailable && !empty($usercourse->showgrades) && is_array($reports) && !empty($reports)) {
                         foreach ($reports as $plugin => $plugindir) {
+                            // Mdlcode assume: $plugin pluginnames-gradereport
                             if (has_capability('gradereport/'.$plugin.':view', $usercoursecontext)) {
                                 // Stop when the first visible plugin is found.
                                 $gradeavailable = true;
@@ -2904,6 +2909,7 @@ class global_navigation extends navigation_node {
             if (file_exists($file)) {
                 $function = $modname.'_extend_navigation';
                 require_once($file);
+                // Mdlcode callback: mod PN_extend_navigation function_exists($function)
                 $extendingmodules[$modname] = (function_exists($function));
             }
         }
@@ -4875,6 +4881,7 @@ class settings_navigation extends navigation_node {
                 if (file_exists($libfile)) {
                     require_once($libfile);
                     $reportfunction = $report.'_report_extend_navigation';
+                    // Mdlcode callback-next-line: coursereport PN_report_extend_navigation function_exists($report.'_report_extend_navigation')
                     if (function_exists($report.'_report_extend_navigation')) {
                         $reportfunction($reportnav, $course, $coursecontext);
                     }
@@ -4943,6 +4950,7 @@ class settings_navigation extends navigation_node {
         }
 
         // Let plugins hook into course navigation.
+        // Mdlcode callback-next-line: plugin,!report
         $pluginsfunction = get_plugins_with_function('extend_navigation_course', 'lib.php');
         foreach ($pluginsfunction as $plugintype => $plugins) {
             // Ignore the report plugin as it was already loaded above.
@@ -5040,6 +5048,7 @@ class settings_navigation extends navigation_node {
      */
     protected function load_module_settings() {
         global $CFG, $USER;
+        // Mdlcode assume: $this->page->activityname pluginnames-mod
 
         if (!$this->page->cm && $this->context->contextlevel == CONTEXT_MODULE && $this->context->instanceid) {
             $cm = get_coursemodule_from_id(false, $this->context->instanceid, 0, false, MUST_EXIST);
@@ -5095,6 +5104,7 @@ class settings_navigation extends navigation_node {
         }
         // Add a backup link
         $featuresfunc = $this->page->activityname.'_supports';
+        // Mdlcode callback: mod PN_supports function_exists($featuresfunc)
         if (function_exists($featuresfunc) && $featuresfunc(FEATURE_BACKUP_MOODLE2) && has_capability('moodle/backup:backupactivity', $this->page->cm->context)) {
             $url = new moodle_url('/backup/backup.php', array('id'=>$this->page->cm->course, 'cm'=>$this->page->cm->id));
             $modulenode->add(get_string('backup'), $url, self::TYPE_SETTING, null, 'backup', new pix_icon('i/backup', ''));
@@ -5116,6 +5126,7 @@ class settings_navigation extends navigation_node {
         }
 
         $function = $this->page->activityname.'_extend_settings_navigation';
+        // Mdlcode callback: mod PN_extend_settings_navigation function_exists($function)
         if (function_exists($function)) {
             $function($this, $modulenode);
         }
@@ -5881,6 +5892,7 @@ class settings_navigation extends navigation_node {
                 if (file_exists($libfile)) {
                     require_once($libfile);
                     $reportfunction = $report.'_report_extend_navigation';
+                    // Mdlcode callback: report PN_report_extend_navigation
                     if (function_exists($report.'_report_extend_navigation')) {
                         $reportfunction($frontpagenav, $course, $coursecontext);
                     }

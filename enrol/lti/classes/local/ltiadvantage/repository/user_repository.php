@@ -16,6 +16,8 @@
 
 namespace enrol_lti\local\ltiadvantage\repository;
 use enrol_lti\local\ltiadvantage\entity\user;
+// Mdlcode assume: $this->ltiuserstable 'enrol_lti_users'
+// Mdlcode assume: $this->userresourcelinkidtable 'enrol_lti_user_resource_link'
 
 /**
  * Class user_repository.

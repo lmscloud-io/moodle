@@ -64,7 +64,7 @@ class capability_checker {
      * More fields are not necessary because this code is only used to filter
      * users from an existing list.
      *
-     * @param string $capability Required capability
+     * @param string $capability {Mdlcode-variant-capability} Required capability
      * @return array Associative array of user id => objects containing only id
      */
     public function get_users_by_capability($capability) {

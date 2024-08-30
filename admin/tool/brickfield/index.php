@@ -37,6 +37,8 @@ use tool_brickfield\task\process_analysis_requests;
 require('../../../config.php');
 require_once($CFG->libdir.'/adminlib.php');
 
+// Mdlcode-disable cannot-parse-capability
+
 // If this feature has been disabled, do nothing.
 accessibility::require_accessibility_enabled();
 

@@ -22,6 +22,7 @@ use core\event\contentbank_content_viewed;
 use stored_file;
 use moodle_url;
 
+// Mdlcode assume: $this->get_plugin_name() pluginnames-contenttype
 /**
  * Content type manager class
  *
