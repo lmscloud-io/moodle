@@ -342,6 +342,7 @@ class behat_course extends behat_base {
      * @param int $sectionnumber The section number
      */
     public function i_delete_section($sectionnumber) {
+        // Mdlcode assume-optional: $courseformat pluginnames-format
         // Ensures the section exists.
         $xpath = $this->section_exists($sectionnumber);
 
@@ -449,6 +450,7 @@ class behat_course extends behat_base {
      * @param int|string $section
      */
     public function i_hide_section($section) {
+        // Mdlcode assume-optional: $courseformat pluginnames-format
         // Ensures the section exists.
         $xpath = $this->section_exists($section);
         // We need to know the course format as the text strings depends on them.
@@ -482,6 +484,7 @@ class behat_course extends behat_base {
      * @param int $sectionnumber
      */
     public function i_edit_the_section($sectionnumber) {
+        // Mdlcode assume-optional: $courseformat pluginnames-format
         // If javascript is on, link is inside a menu.
         if ($this->running_javascript()) {
             $this->i_open_section_edit_menu($sectionnumber);
@@ -1361,6 +1364,7 @@ class behat_course extends behat_base {
      * @return NodeElement
      */
     protected function show_section_link_exists($section) {
+        // Mdlcode assume-optional: $courseformat pluginnames-format
 
         // Gets the section xpath and ensure it exists.
         $xpath = $this->section_exists($section);
@@ -1386,6 +1390,7 @@ class behat_course extends behat_base {
      * @return NodeElement
      */
     protected function hide_section_link_exists($section) {
+        // Mdlcode assume-optional: $courseformat pluginnames-format
 
         // Gets the section xpath and ensure it exists.
         $xpath = $this->section_exists($section);

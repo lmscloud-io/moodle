@@ -15,6 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace core;
+// Mdlcode-disable cannot-parse-db-tablename
 
 use coding_exception;
 use invalid_parameter_exception;

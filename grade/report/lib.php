@@ -317,12 +317,14 @@ abstract class grade_report {
         if (!$otherplugins) {
             $component = 'gradereport_' . $gpr->plugin;
             $params = [$context, $courseid, $element, $gpr, $mode, $templatecontext];
+            // Mdlcode callback-next-line: gradereport PREFIX_get_report_link
             return component_callback($component, 'get_report_link', $params);
         } else {
             // Loop through all installed grade reports.
             foreach (core_component::get_plugin_list('gradereport') as $plugin => $plugindir) {
                 $params = [$context, $courseid, $element, $gpr, $mode, $templatecontext];
                 $component = 'gradereport_' . $plugin;
+                // Mdlcode callback-next-line: gradereport PREFIX_get_report_link
                 $templatecontextupdated = component_callback($component, 'get_report_link', $params);
                 if ($templatecontextupdated) {
                     $templatecontext = $templatecontextupdated;

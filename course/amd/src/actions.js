@@ -507,6 +507,7 @@ define(
             var modtypename = mainelement.attr('class').match(/modtype_([^\s]*)/)[1];
             var modulename = getModuleName(mainelement);
 
+            // Mdlcode assume-next-line: modtypename pluginnames-mod
             str.get_string('pluginname', modtypename).done(function(pluginname) {
                 var plugindata = {
                     type: pluginname,
@@ -554,6 +555,8 @@ define(
         var replaceActionItem = function(actionitem, image, stringname,
                                            stringcomponent, newaction) {
 
+            // Mdlcode assume-optional: stringname ['hidefromothers', 'showfromothers']
+            // Mdlcode assume-optional-next-line: stringcomponent fullpluginnames-format
             var stringRequests = [{key: stringname, component: stringcomponent}];
             // Do not provide an icon with duplicate, different text to the menu item.
 

@@ -1074,6 +1074,7 @@ class core_renderer extends renderer_base {
      */
     public function course_content_header($onlyifnotcalledbefore = false) {
         global $CFG;
+        // Mdlcode-disable cannot-parse-template.
         static $functioncalled = false;
         if ($functioncalled && $onlyifnotcalledbefore) {
             // we have already output the content header
@@ -1329,6 +1330,7 @@ class core_renderer extends renderer_base {
      */
     protected function render_check_full_result(check_check $check, check_result $result, bool $includedetails): string {
         // Initially render just badge itself.
+        // Mdlcode-disable-next-line cannot-parse-template
         $renderedresult = $this->render_from_template($result->get_template_name(), $result->export_for_template($this));
 
         // Add summary.
@@ -1381,6 +1383,7 @@ class core_renderer extends renderer_base {
      * @return string HTML fragment
      */
     protected function render_check_result(check_result $result) {
+        // Mdlcode-disable cannot-parse-template
         return $this->render_from_template($result->get_template_name(), $result->export_for_template($this));
     }
 
@@ -1886,6 +1889,7 @@ class core_renderer extends renderer_base {
             if ($format->is_enabled()) {
                 $options[] = [
                     'value' => $format->name,
+                    // Mdlcode assume: $format->component fullpluginnames-dataformat.
                     'label' => get_string('dataformat', $format->component),
                 ];
             }
@@ -2151,8 +2155,8 @@ class core_renderer extends renderer_base {
      * and optional icon attached.
      *
      * @param string $text A heading text
-     * @param string $helpidentifier The keyword that defines a help page
-     * @param string $component component name
+     * @param string $helpidentifier {Mdlcode-variant-string} The keyword that defines a help page
+     * @param string $component {Mdlcode-variant-stringcomponent} component name
      * @param string|moodle_url $icon
      * @param string $iconalt icon alt text
      * @param int $level The level of importance of the heading. Defaulting to 2
@@ -2160,6 +2164,8 @@ class core_renderer extends renderer_base {
      * @return string HTML fragment
      */
     public function heading_with_help($text, $helpidentifier, $component = 'moodle', $icon = '', $iconalt = '', $level = 2, $classnames = null) {
+        // Mdlcode call-special: is-help
+        // Mdlcode call-subject: (\$OUTPUT|output|renderer)$
         $image = '';
         if ($icon) {
             $image = $this->pix_icon($icon, $iconalt, $component);
@@ -2167,6 +2173,7 @@ class core_renderer extends renderer_base {
 
         $help = '';
         if ($helpidentifier) {
+            // Mdlcode-disable cannot-parse-string.
             $help = $this->help_icon($helpidentifier, $component);
         }
 
@@ -2188,14 +2195,16 @@ class core_renderer extends renderer_base {
      * Theme developers: DO NOT OVERRIDE! Please override function
      * {@see core_renderer::render_help_icon()} instead.
      *
-     * @param string $identifier The keyword that defines a help page
-     * @param string $component component name
+     * @param string $identifier {Mdlcode-variant-string} The keyword that defines a help page
+     * @param string $component {Mdlcode-variant-stringcomponent} component name
      * @param string|bool $linktext true means use $title as link text, string means link text value
      * @param string|object|array|int $a An object, string or number that can be used
      *      within translation strings
      * @return string HTML fragment
      */
     public function help_icon($identifier, $component = 'moodle', $linktext = '', $a = null) {
+        // Mdlcode call-subject: (output|OUTPUT|get_renderer\(\)|\$this)$
+        // Mdlcode call-special: is-help
         $icon = new help_icon($identifier, $component, $a);
         $icon->diag_strings();
         if ($linktext === true) {
@@ -2773,6 +2782,7 @@ EOD;
         }
 
         // Return the rendered template.
+        // Mdlcode-disable cannot-parse-template
         return $this->render_from_template($notification->get_template_name(), $notification->export_for_template($this));
     }
 
@@ -2816,6 +2826,7 @@ EOD;
      * @return string the HTML to output.
      */
     protected function render_notification(notification $notification) {
+        // Mdlcode-disable cannot-parse-template
         return $this->render_from_template($notification->get_template_name(), $notification->export_for_template($this));
     }
 
@@ -3125,6 +3136,7 @@ EOD;
         // must always return a string containing valid html.
         foreach (\core_component::get_core_subsystems() as $name => $path) {
             if ($path) {
+                // Mdlcode callback-next-line: core
                 $output .= component_callback($name, 'render_navbar_output', [$this], '');
             }
         }
@@ -4827,6 +4839,7 @@ EOD;
      * @return string
      */
     public function render_checkbox_toggleall(checkbox_toggleall $element) {
+        // Mdlcode-disable cannot-parse-template
         return $this->render_from_template($element->get_template(), $element->export_for_template($this));
     }
 

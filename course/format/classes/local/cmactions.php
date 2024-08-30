@@ -73,6 +73,7 @@ class cmactions extends baseactions {
         global $CFG, $DB;
         require_once($CFG->libdir . '/gradelib.php');
 
+        // Mdlcode assume: $cm->modname pluginnames-mod
         $paramcleaning = empty($CFG->formatstringstriptags) ? PARAM_CLEANHTML : PARAM_TEXT;
         $name = clean_param($name, $paramcleaning);
 
@@ -156,6 +157,7 @@ class cmactions extends baseactions {
         if (!$modulename = $DB->get_field('modules', 'name', ['id' => $cm->module])) {
             return false;
         }
+        // Mdlcode assume: $modulename pluginnames-mod
 
         // Updating visible and visibleold to keep them in sync. Only changing a section visibility will
         // affect visibleold to allow for an original visibility restore. See set_section_visible().
@@ -167,6 +169,7 @@ class cmactions extends baseactions {
         ];
 
         $DB->update_record('course_modules', $cminfo);
+        // Mdlcode assume: $cm->modname pluginnames-mod
         $DB->update_record(
             $cm->modname,
             (object)[
