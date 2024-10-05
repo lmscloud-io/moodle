@@ -2456,6 +2456,7 @@ class global_navigation extends navigation_node {
         stdClass $activitydata,
     ): navigation_node {
         global $SITE, $CFG;
+        // Mdlcode assume: $activitydata->modname pluginnames-mod
 
         $showactivities = ($activitydata->course != $SITE->id || !empty($CFG->navshowfrontpagemods));
 
