@@ -160,7 +160,9 @@ class provider extends \core_ai\provider {
             // Add the model setting.
             $settings[] = new \admin_setting_configtext(
                 "aiprovider_openai/action_{$actionname}_model",
+                // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
                 new \lang_string("action:{$actionname}:model", 'aiprovider_openai'),
+                // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
                 new \lang_string("action:{$actionname}:model_desc", 'aiprovider_openai'),
                 'gpt-4o',
                 PARAM_TEXT,
@@ -168,6 +170,7 @@ class provider extends \core_ai\provider {
             // Add API endpoint.
             $settings[] = new \admin_setting_configtext(
                 "aiprovider_openai/action_{$actionname}_endpoint",
+                // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
                 new \lang_string("action:{$actionname}:endpoint", 'aiprovider_openai'),
                 '',
                 'https://api.openai.com/v1/chat/completions',
@@ -176,7 +179,9 @@ class provider extends \core_ai\provider {
             // Add system instruction settings.
             $settings[] = new \admin_setting_configtextarea(
                 "aiprovider_openai/action_{$actionname}_systeminstruction",
+                // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
                 new \lang_string("action:{$actionname}:systeminstruction", 'aiprovider_openai'),
+                // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
                 new \lang_string("action:{$actionname}:systeminstruction_desc", 'aiprovider_openai'),
                 $action::get_system_instruction(),
                 PARAM_TEXT
@@ -185,7 +190,9 @@ class provider extends \core_ai\provider {
             // Add the model setting.
             $settings[] = new \admin_setting_configtext(
                 "aiprovider_openai/action_{$actionname}_model",
+                // Mdlcode assume-next-line: $actionname ['generate_image']
                 new \lang_string("action:{$actionname}:model", 'aiprovider_openai'),
+                // Mdlcode assume-next-line: $actionname ['generate_image']
                 new \lang_string("action:{$actionname}:model_desc", 'aiprovider_openai'),
                 'dall-e-3',
                 PARAM_TEXT,
@@ -193,6 +200,7 @@ class provider extends \core_ai\provider {
             // Add API endpoint.
             $settings[] = new \admin_setting_configtext(
                 "aiprovider_openai/action_{$actionname}_endpoint",
+                // Mdlcode assume-next-line: $actionname ['generate_image']
                 new \lang_string("action:{$actionname}:endpoint", 'aiprovider_openai'),
                 '',
                 'https://api.openai.com/v1/images/generations',
