@@ -2939,7 +2939,7 @@ abstract class moodle_database {
     /**
      * Retrieve records with a select query and count the total number of records.
      *
-     * @param string $sql The query string.
+     * @param string $sql {Mdlcode-variant-dbselect} The query string.
      * @param string $fullcountcolumn The column name used for counting total records.
      * @param string $sort (Optional) Sorting criteria for the records.
      *                      The reason to separate $sort from $sql are:
@@ -2972,7 +2972,7 @@ abstract class moodle_database {
     /**
      * Retrieve a recordset with a select query and count the total number of records.
      *
-     * @param string $sql The query string.
+     * @param string $sql {Mdlcode-variant-dbselect} The query string.
      * @param string $fullcountcolumn The column name used for counting total records.
      * @param string $sort (Optional) Sorting criteria for the records.
      *                      The reason to separate $sort from $sql are:
