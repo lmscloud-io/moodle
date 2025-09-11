@@ -69,6 +69,7 @@ class renderer extends \plugin_renderer_base {
      * @return string
      */
     public function available_factors(): string {
+        // Mdlcode assume-optional: $factor->name pluginnames-factor
         global $USER;
         $factors = factor::get_enabled_factors();
         $data = [];
@@ -638,6 +639,8 @@ class renderer extends \plugin_renderer_base {
      * @throws \moodle_exception
      */
     public function verification_form(object_factor $factor, login_form $form): string {
+        // Mdlcode assume-optional: $loginfactor->name pluginnames-factor
+        // Mdlcode assume-optional: $factor->name pluginnames-factor
         $allloginfactors = factor::get_all_user_login_factors();
         $additionalfactors = [];
         $disabledfactors = [];

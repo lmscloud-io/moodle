@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// Mdlcode assume-optional: $this->name pluginnames-factor
 
 namespace tool_mfa\local\factor;
 
@@ -155,7 +156,6 @@ abstract class object_factor_base implements object_factor {
      * @throws \coding_exception
      */
     public function get_info(): string {
-        // Mdlcode assume-optional: $this->name pluginnames-factor
         return get_string('info', 'factor_'.$this->name);
     }
 
@@ -579,7 +579,6 @@ abstract class object_factor_base implements object_factor {
      * @return string
      */
     public function get_summary_condition(): string {
-        // Mdlcode assume: $this->name pluginnames-factor
         return get_string('summarycondition', 'factor_'.$this->name);
     }
 
