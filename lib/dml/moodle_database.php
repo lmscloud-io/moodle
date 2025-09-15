@@ -1765,7 +1765,7 @@ abstract class moodle_database {
     /**
      * Selects records and return values of chosen field as an array where all the given conditions met.
      *
-     * @param string $table the table to query.
+     * @param string $table {Mdlcode-variant-dbtable} the table to query.
      * @param string $return the field we are intered in
      * @param array|null $conditions optional array $fieldname=>requestedvalue with AND in between
      * @return array of values
