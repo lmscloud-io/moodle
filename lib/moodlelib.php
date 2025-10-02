@@ -5663,7 +5663,7 @@ function reset_course_userdata($data) {
                     continue; // Skip mods with no instances.
                 }
                 include_once($modfile);
-                // Mdlcode callback: mod PN_reset_userdata function_exists($moddeleteuserdata)
+                // Mdlcode callback-next-line: mod PN_reset_userdata function_exists($moddeleteuserdata)
                 if (function_exists($moddeleteuserdata)) {
                     $modstatus = $moddeleteuserdata($data);
                     if (is_array($modstatus)) {
