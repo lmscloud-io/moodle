@@ -4706,7 +4706,7 @@ class settings_navigation extends navigation_node {
         }
 
         $function = $this->page->activityname.'_extend_settings_navigation';
-        // Mdlcode callback: mod PN_extend_settings_navigation function_exists($function)
+        // Mdlcode callback-next-line: mod PN_extend_settings_navigation function_exists($function)
         if (function_exists($function)) {
             $function($this, $modulenode);
         }
@@ -5445,7 +5445,7 @@ class settings_navigation extends navigation_node {
                 if (file_exists($libfile)) {
                     require_once($libfile);
                     $reportfunction = $report.'_report_extend_navigation';
-                    // Mdlcode callback: report PN_report_extend_navigation
+                    // Mdlcode callback-next-line: report PN_report_extend_navigation
                     if (function_exists($report.'_report_extend_navigation')) {
                         $reportfunction($frontpagenav, $course, $coursecontext);
                     }
