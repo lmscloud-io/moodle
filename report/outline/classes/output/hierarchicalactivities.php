@@ -106,7 +106,7 @@ class hierarchicalactivities extends coursestructure {
                 ob_start();
 
                 echo "<ul>";
-                // Mdlcode callback: mod PN_user_complete function_exists($usercomplete)
+                // Mdlcode callback-next-line: mod PN_user_complete function_exists($usercomplete)
                 if (function_exists($usercomplete)) {
                     $usercomplete($course, $user, $mod, $instance);
                 } else {
