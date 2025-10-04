@@ -44,6 +44,7 @@ class qbank_chooser_item extends \core\output\chooser_item {
      * @param context $context The relevant context.
      */
     public function __construct($qtype, $context) {
+        // Mdlcode assume-optional: $qtype->plugin_name() fullpluginnames-qtype
         $icon = new pix_icon('icon', $qtype->local_name(), $qtype->plugin_name(), [
             'class' => 'icon',
             'title' => $qtype->local_name()

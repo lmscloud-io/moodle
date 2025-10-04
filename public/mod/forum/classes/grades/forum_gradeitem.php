@@ -25,6 +25,7 @@
 declare(strict_types = 1);
 
 namespace mod_forum\grades;
+// Mdlcode assume: $this->get_table_name() 'forum_grades'
 
 use coding_exception;
 use context;

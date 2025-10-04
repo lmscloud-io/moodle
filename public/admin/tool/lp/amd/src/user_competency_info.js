@@ -71,6 +71,7 @@ define(['jquery', 'core/notification', 'core/ajax', 'core/templates'], function(
         }
 
         promises = ajax.call([{
+            // Mdlcode assume-next-line: this._methodName ['core_competency_grade_competency_in_plan','core_competency_grade_competency_in_course','core_competency_grade_competency']
             methodname: this._methodName,
             args: this._args
         }]);
@@ -80,6 +81,7 @@ define(['jquery', 'core/notification', 'core/ajax', 'core/templates'], function(
             if (self._displayuser) {
                 context.displayuser = true;
             }
+            // Mdlcode assume-next-line: self._templateName ['tool_lp/user_competency_summary_in_plan','tool_lp/user_competency_summary_in_course','tool_lp/user_competency_summary']
             templates.render(self._templateName, context).done(function(html, js) {
                 templates.replaceNode(self._rootElement, html, js);
             }).fail(notification.exception);

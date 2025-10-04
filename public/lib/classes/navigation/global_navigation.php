@@ -1261,6 +1261,7 @@ class global_navigation extends navigation_node {
         stdClass $activitydata,
     ): navigation_node {
         global $SITE, $CFG;
+        // Mdlcode assume: $activitydata->modname pluginnames-mod
 
         $showactivities = ($activitydata->course != $SITE->id || !empty($CFG->navshowfrontpagemods));
 
@@ -1358,6 +1359,7 @@ class global_navigation extends navigation_node {
      * @return navigation_node or null if not accessible
      */
     protected function load_stealth_activity(navigation_node $coursenode, $modinfo) {
+        // Mdlcode assume: $cm->modname pluginnames-mod
         if (empty($modinfo->cms[$this->page->cm->id])) {
             return null;
         }
@@ -1401,6 +1403,7 @@ class global_navigation extends navigation_node {
      */
     protected function load_activity($cm, stdClass $course, navigation_node $activity) {
         global $CFG, $DB;
+        // Mdlcode assume: $cm->modname pluginnames-mod
 
         // Make sure we have a $cm from get_fast_modinfo as this contains activity access details.
         if (!($cm instanceof cm_info)) {
@@ -1414,6 +1417,7 @@ class global_navigation extends navigation_node {
 
         if (file_exists($file)) {
             require_once($file);
+            // Mdlcode callback: mod PN_extend_navigation function_exists($function)
             if (function_exists($function)) {
                 $activtyrecord = $DB->get_record($cm->modname, ['id' => $cm->instance], '*', MUST_EXIST);
                 $function($activity, $course, $activtyrecord, $cm);
@@ -1422,6 +1426,7 @@ class global_navigation extends navigation_node {
 
         // Allow the active advanced grading method plugin to append module navigation.
         $featuresfunc = $cm->modname . '_supports';
+        // Mdlcode callback: mod PN_supports function_exists($featuresfunc)
         if (function_exists($featuresfunc) && $featuresfunc(FEATURE_ADVANCED_GRADING)) {
             require_once($CFG->dirroot . '/grade/grading/lib.php');
             $gradingman = get_grading_manager($cm->context, 'mod_' . $cm->modname);
@@ -1653,6 +1658,7 @@ class global_navigation extends navigation_node {
                     $gradeavailable = has_capability('moodle/grade:view', $usercoursecontext);
                     if (!$gradeavailable && !empty($usercourse->showgrades) && is_array($reports) && !empty($reports)) {
                         foreach ($reports as $plugin => $plugindir) {
+                            // Mdlcode assume: $plugin pluginnames-gradereport
                             if (has_capability('gradereport/' . $plugin . ':view', $usercoursecontext)) {
                                 // Stop when the first visible plugin is found.
                                 $gradeavailable = true;
@@ -1730,6 +1736,7 @@ class global_navigation extends navigation_node {
             if (file_exists($file)) {
                 $function = $modname . '_extend_navigation';
                 require_once($file);
+                // Mdlcode callback: mod PN_extend_navigation function_exists($function)
                 $extendingmodules[$modname] = (function_exists($function));
             }
         }

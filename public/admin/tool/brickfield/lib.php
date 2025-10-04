@@ -37,6 +37,7 @@ use tool_brickfield\registration;
  * @throws moodle_exception
  */
 function tool_brickfield_extend_navigation_course(\navigation_node $navigation, \stdClass $course, \context $context) {
+    // Mdlcode-disable cannot-parse-capability
     if (!accessibility::is_accessibility_enabled()) {
         // The feature has been explicitly disabled.
         return;

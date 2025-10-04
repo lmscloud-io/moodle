@@ -77,6 +77,7 @@ class cmactions extends baseactions {
         global $CFG, $DB;
         require_once($CFG->libdir . '/gradelib.php');
 
+        // Mdlcode assume: $cm->modname pluginnames-mod
         $paramcleaning = empty($CFG->formatstringstriptags) ? PARAM_CLEANHTML : PARAM_TEXT;
         $name = clean_param($name, $paramcleaning);
 
@@ -159,6 +160,7 @@ class cmactions extends baseactions {
         if (!$modulename = $DB->get_field('modules', 'name', ['id' => $cm->module])) {
             return false;
         }
+        // Mdlcode assume: $modulename pluginnames-mod
 
         // Updating visible and visibleold to keep them in sync. Only changing a section visibility will
         // affect visibleold to allow for an original visibility restore. See sectionactions::set_visibility().
@@ -170,6 +172,7 @@ class cmactions extends baseactions {
         ];
 
         $DB->update_record('course_modules', $cminfo);
+        // Mdlcode assume: $cm->modname pluginnames-mod
         $DB->update_record(
             $cm->modname,
             (object)[
@@ -304,6 +307,7 @@ class cmactions extends baseactions {
         }
 
         // Call the delete_instance function, if it returns false throw an exception.
+        // Mdlcode callback-next-line: mod PN_delete_instance
         $deleteinstancefunction = $modulename . '_delete_instance';
         if (!$deleteinstancefunction($cm->instance)) {
             throw new moodle_exception(
@@ -415,6 +419,7 @@ class cmactions extends baseactions {
         require_once($CFG->dirroot . '/backup/util/includes/backup_includes.php');
         require_once($CFG->dirroot . '/backup/util/includes/restore_includes.php');
         require_once($CFG->libdir . '/filelib.php');
+        // Mdlcode assume: $cm->modname pluginnames-mod
 
         $modinfo = get_fast_modinfo($this->course);
         $cm = $modinfo->get_cm($cmid);

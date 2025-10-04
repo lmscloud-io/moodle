@@ -64,6 +64,7 @@ class mustache_string_helper {
         } else {
             $a = (string) $helper->render($next);
         }
+        // Mdlcode-disable-next-line cannot-parse-string.
         return get_string($key, $component, $a);
     }
 }

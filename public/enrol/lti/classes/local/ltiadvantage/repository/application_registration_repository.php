@@ -16,6 +16,7 @@
 
 namespace enrol_lti\local\ltiadvantage\repository;
 use enrol_lti\local\ltiadvantage\entity\application_registration;
+// Mdlcode assume: $this->applicationregistrationtable 'enrol_lti_app_registration'
 
 /**
  * Class application_registration_repository.

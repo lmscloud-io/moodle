@@ -681,6 +681,7 @@ abstract class info {
      */
     public function get_user_list_sql($onlyactive) {
         global $CFG;
+        // Mdlcode-disable cannot-parse-capability.
         if (is_null($this->availability) || !$CFG->enableavailability) {
             return array('', array());
         }

@@ -498,6 +498,7 @@ class settings_navigation extends navigation_node {
                 if (file_exists($libfile)) {
                     require_once($libfile);
                     $reportfunction = $report . '_report_extend_navigation';
+                    // Mdlcode callback-next-line: coursereport PN_report_extend_navigation function_exists($report.'_report_extend_navigation')
                     if (function_exists($report . '_report_extend_navigation')) {
                         $reportfunction($reportnav, $course, $coursecontext);
                     }
@@ -596,6 +597,7 @@ class settings_navigation extends navigation_node {
         }
 
         // Let plugins hook into course navigation.
+        // Mdlcode callback-next-line: plugin,!report
         $pluginsfunction = get_plugins_with_function('extend_navigation_course', 'lib.php');
         foreach ($pluginsfunction as $plugintype => $plugins) {
             // Ignore the report and gradepenalty plugins as they were already loaded above.
@@ -704,6 +706,7 @@ class settings_navigation extends navigation_node {
      */
     protected function load_module_settings() {
         global $CFG, $USER;
+        // Mdlcode assume: $this->page->activityname pluginnames-mod
 
         if (!$this->page->cm && $this->context->contextlevel == CONTEXT_MODULE && $this->context->instanceid) {
             $cm = get_coursemodule_from_id(false, $this->context->instanceid, 0, false, MUST_EXIST);
@@ -807,6 +810,7 @@ class settings_navigation extends navigation_node {
         // Add a backup link.
         $featuresfunc = $this->page->activityname . '_supports';
         if (
+            // Mdlcode callback: mod PN_supports function_exists($featuresfunc)
             function_exists($featuresfunc)
             && $featuresfunc(FEATURE_BACKUP_MOODLE2)
             && has_capability('moodle/backup:backupactivity', $this->page->cm->context)
@@ -839,6 +843,7 @@ class settings_navigation extends navigation_node {
         }
 
         $function = $this->page->activityname . '_extend_settings_navigation';
+        // Mdlcode callback-next-line: mod PN_extend_settings_navigation function_exists($function)
         if (function_exists($function)) {
             $function($this, $modulenode);
         }
@@ -1758,6 +1763,7 @@ class settings_navigation extends navigation_node {
                 if (file_exists($libfile)) {
                     require_once($libfile);
                     $reportfunction = $report . '_report_extend_navigation';
+                    // Mdlcode callback-next-line: report PN_report_extend_navigation
                     if (function_exists($report . '_report_extend_navigation')) {
                         $reportfunction($frontpagenav, $course, $coursecontext);
                     }

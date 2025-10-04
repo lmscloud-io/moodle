@@ -13,6 +13,7 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// Mdlcode assume-optional: $this->name pluginnames-factor
 
 namespace tool_mfa\local\factor;
 

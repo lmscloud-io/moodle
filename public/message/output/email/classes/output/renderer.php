@@ -44,6 +44,7 @@ class renderer extends plugin_renderer_base {
      * @return string
      */
     public function render_email_digest(email_digest $emaildigest) {
+        // Mdlcode assume: $this->get_template_name() 'email_digest_html'
         $data = $emaildigest->export_for_template($this);
         return $this->render_from_template('message_email/' . $this->get_template_name(), $data);
     }

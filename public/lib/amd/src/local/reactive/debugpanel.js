@@ -168,6 +168,7 @@ class GlobalDebugPanel extends BaseComponent {
         try {
             const target = this.getElement(this.selectors.SUBPANEL);
             const data = {...instance};
+            // Mdlcode uses-next-line: template 'core/local/reactive/debuginstancepanel'.
             await this.renderComponent(target, 'core/local/reactive/debuginstancepanel', data);
         } catch (error) {
             log.error('Cannot load reactive debug subpanel');

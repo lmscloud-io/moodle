@@ -98,6 +98,7 @@ class format_singleactivity extends core_courseformat\base implements core_cours
                 $testcontext = context_system::instance();
             }
             foreach (array_keys($availabletypes) as $activity) {
+                // Mdlcode assume: $activity pluginnames-mod
                 $capability = "mod/{$activity}:addinstance";
                 if (!has_capability($capability, $testcontext)) {
                     if (!$this->categoryid) {

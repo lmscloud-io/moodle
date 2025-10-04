@@ -226,6 +226,7 @@ class manager {
         $this->template .= html_writer::end_tag('div'); // End .comment-message.
 
         if (!empty($this->plugintype)) {
+            // Mdlcode callback: *
             $this->template = plugin_callback(
                 $this->plugintype,
                 $this->pluginname,
@@ -315,6 +316,7 @@ class manager {
         $this->postcap = has_capability('moodle/comment:post', $this->context);
         $this->viewcap = has_capability('moodle/comment:view', $this->context);
         if (!empty($this->plugintype)) {
+            // Mdlcode callback: *
             $permissions = plugin_callback(
                 $this->plugintype,
                 $this->pluginname,
@@ -637,6 +639,7 @@ class manager {
 
         if (!empty($this->plugintype)) {
             // Moodle module will filter comments.
+            // Mdlcode callback: *
             $comments = plugin_callback(
                 $this->plugintype,
                 $this->pluginname,
@@ -753,6 +756,7 @@ class manager {
         ];
 
         // This callback allow module to modify the content of comment, such as filter or replacement.
+        // Mdlcode callback: *
         plugin_callback($this->plugintype, $this->pluginname, 'comment', 'add', [&$newcmt, $this->commentparams]);
 
         $cmtid = $DB->insert_record('comments', $newcmt);
@@ -1011,6 +1015,7 @@ class manager {
         foreach ($params as $key => $value) {
             $this->commentparams->$key = $value;
         }
+        // Mdlcode callback: *
         $validation = plugin_callback(
             $this->plugintype,
             $this->pluginname,
