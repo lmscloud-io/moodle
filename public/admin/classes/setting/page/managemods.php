@@ -57,6 +57,7 @@ class managemods extends \core_admin\setting\tree\externalpage {
                     $found = true;
                     break;
                 }
+                // Mdlcode assume-next-line: $module->name fullpluginnames-mod
                 $strmodulename = get_string('modulename', $module->name);
                 if (strpos(\core_text::strtolower($strmodulename), $query) !== false) {
                     $type = admin_search::SEARCH_MATCH_SETTING_DISPLAY_NAME;

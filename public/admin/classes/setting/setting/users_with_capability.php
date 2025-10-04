@@ -45,7 +45,7 @@ class users_with_capability extends \core_admin\setting\setting\configmultiselec
      * @param string $visiblename localised name
      * @param string $description localised long description
      * @param array $defaultsetting array of usernames
-     * @param string $capability string capability name.
+     * @param string $capability {Mdlcode-variant-capability} string capability name.
      * @param bool $includeadmins include administrators
      */
     public function __construct($name, $visiblename, $description, $defaultsetting, $capability, $includeadmins = true) {
@@ -60,6 +60,7 @@ class users_with_capability extends \core_admin\setting\setting\configmultiselec
      * @return bool Always returns true
      */
     public function load_choices() {
+        // Mdlcode-disable cannot-parse-capability
         if (is_array($this->choices)) {
             return true;
         }

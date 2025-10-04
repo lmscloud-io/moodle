@@ -76,6 +76,7 @@ class renderer extends \plugin_renderer_base {
             $modes = [];
             foreach ($storesummary['modes'] as $mode => $enabled) {
                 if ($enabled) {
+                    // Mdlcode assume-next-line: $mode ['1','2','4']
                     $modes[] = get_string('mode_' . $mode, 'cache');
                 }
             }
@@ -83,6 +84,7 @@ class renderer extends \plugin_renderer_base {
             $supports = [];
             foreach ($storesummary['supports'] as $support => $enabled) {
                 if ($enabled) {
+                    // Mdlcode assume-next-line: $support ['multipleidentifiers','dataguarantee','nativettl','nativelocking','keyawareness','searchable']
                     $supports[] = get_string('supports_' . $support, 'cache');
                 }
             }
@@ -100,6 +102,7 @@ class renderer extends \plugin_renderer_base {
 
             $storename = $storesummary['name'];
             if (!empty($storesummary['default'])) {
+                // Mdlcode assume: $storesummary['name'] ['default_application', 'default_session', 'default_request']
                 $storename = get_string('store_' . $storesummary['name'], 'cache');
             }
             if (!$isready && (int)$storesummary['mappings'] > 0) {
@@ -109,6 +112,7 @@ class renderer extends \plugin_renderer_base {
 
             $lock = $storesummary['lock']['name'];
             if (!empty($storesummary['lock']['default'])) {
+                // Mdlcode assume: $storesummary['lock']['name'] ['cachelock_file_default']
                 $lock = get_string($storesummary['lock']['name'], 'cache');
             }
 
@@ -169,6 +173,7 @@ class renderer extends \plugin_renderer_base {
             $modes = [];
             foreach ($plugin['modes'] as $mode => $enabled) {
                 if ($enabled) {
+                    // Mdlcode assume-next-line: $mode ['1','2','4']
                     $modes[] = get_string('mode_' . $mode, 'cache');
                 }
             }
@@ -176,6 +181,7 @@ class renderer extends \plugin_renderer_base {
             $supports = [];
             foreach ($plugin['supports'] as $support => $enabled) {
                 if ($enabled) {
+                    // Mdlcode assume-next-line: $support ['multipleidentifiers','dataguarantee','nativettl','nativelocking','keyawareness','searchable']
                     $supports[] = get_string('supports_' . $support, 'cache');
                 }
             }
@@ -253,6 +259,7 @@ class renderer extends \plugin_renderer_base {
 
             $row = new html_table_row([
                 $definition['name'],
+                // Mdlcode assume-next-line: $definition['mode'] ['1','2','4']
                 get_string('mode_' . $definition['mode'], 'cache'),
                 $definition['component'],
                 $definition['area'],

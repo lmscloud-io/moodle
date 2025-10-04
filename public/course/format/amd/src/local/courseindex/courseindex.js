@@ -281,6 +281,7 @@ export default class Component extends BaseComponent {
      * @return {Promise<BaseComponent>} the new object
      */
     _renderCm(fakeelement, data) {
+        // Mdlcode uses-next-line: template 'core_courseformat/local/courseindex/cm'.
         return this.renderComponent(fakeelement, 'core_courseformat/local/courseindex/cm', data);
     }
 

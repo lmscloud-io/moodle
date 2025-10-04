@@ -211,7 +211,7 @@ class notification implements renderable, templatable {
     /**
      * Get the name of the template to use for this templatable.
      *
-     * @return string
+     * @return string {Mdlcode-variant-template}
      */
     public function get_template_name() {
         $templatemappings = [

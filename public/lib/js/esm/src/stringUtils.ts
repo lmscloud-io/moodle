@@ -100,6 +100,7 @@ export const getRequestedStrings = (requests: StringRequest[]): Promise<string>[
 
         // 1. Check M.str in-memory cache.
         if (M.str[component]?.[key] !== undefined) {
+            // Mdlcode-disable-next-line cannot-parse-string
             const promise = Promise.resolve(M.util.get_string(key, component, param));
             promiseCache.set(cacheKey, promise);
             stringPromises[i] = promise;
@@ -113,6 +114,7 @@ export const getRequestedStrings = (requests: StringRequest[]): Promise<string>[
                 M.str[component] = {};
             }
             M.str[component][key] = cached;
+            // Mdlcode-disable-next-line cannot-parse-string
             const promise = Promise.resolve(M.util.get_string(key, component, param));
             promiseCache.set(cacheKey, promise);
             stringPromises[i] = promise;
@@ -148,6 +150,7 @@ export const getRequestedStrings = (requests: StringRequest[]): Promise<string>[
             }
             M.str[component][key] = str;
             localStore.set(cacheKey, str);
+            // Mdlcode-disable-next-line cannot-parse-string
             return M.util.get_string(key, component, param);
         });
     }

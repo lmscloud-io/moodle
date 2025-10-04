@@ -54,6 +54,7 @@ class accesscallback extends \core_admin\setting\tree\externalpage {
     ) {
         $this->accesscheckcallback = $accesscheckcallback;
 
+        // Mdlcode-disable-next-line cannot-parse-capability
         parent::__construct($name, $visiblename, $url, [], $hidden);
     }
 

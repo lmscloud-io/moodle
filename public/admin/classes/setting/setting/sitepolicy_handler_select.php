@@ -54,6 +54,7 @@ class sitepolicy_handler_select extends \core_admin\setting\setting\configselect
             $this->choices[$pname] = new \lang_string(
                 'sitepolicyhandlerplugin',
                 'core_admin',
+                // Mdlcode-disable-next-line cannot-parse-string.
                 ['name' => new \lang_string('pluginname', $pname), 'component' => $pname]
             );
         }

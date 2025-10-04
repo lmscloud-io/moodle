@@ -39,18 +39,21 @@ class action_generate_text_form extends action_settings_form {
         $mform->addElement(
             'text',
             'deployment',
+            // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
             get_string("action:{$actionname}:deployment", 'aiprovider_azureai'),
             'maxlength="255" size="20"',
         );
         $mform->setType('deployment', PARAM_TEXT);
         $mform->addRule('deployment', null, 'required', null, 'client');
         $mform->setDefault('deployment', $actionconfig['deployment'] ?? '');
+        // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
         $mform->addHelpButton('deployment', "action:{$actionname}:deployment", 'aiprovider_azureai');
 
         // Add API version.
         $mform->addElement(
             'text',
             'apiversion',
+            // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
             get_string("action:{$actionname}:apiversion", 'aiprovider_azureai'),
             'maxlength="255" size="30"',
         );
@@ -62,11 +65,13 @@ class action_generate_text_form extends action_settings_form {
         $mform->addElement(
             'textarea',
             'systeminstruction',
+            // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
             get_string("action:{$actionname}:systeminstruction", 'aiprovider_azureai'),
             'wrap="virtual" rows="5" cols="20"',
         );
         $mform->setType('systeminstruction', PARAM_TEXT);
         $mform->setDefault('systeminstruction', $actionconfig['systeminstruction'] ?? $action::get_system_instruction());
+        // Mdlcode assume-next-line: $actionname ['generate_text','summarise_text']
         $mform->addHelpButton('systeminstruction', "action:{$actionname}:systeminstruction", 'aiprovider_azureai');
 
         if ($returnurl) {

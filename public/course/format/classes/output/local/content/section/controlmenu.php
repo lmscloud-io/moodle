@@ -462,8 +462,9 @@ class controlmenu extends basecontrolmenu {
     )]
     protected function section_control_items_legacy(): array {
         global $USER, $PAGE;
+        // Mdlcode assume-optional: $format->get_format() pluginnames-format
+        // Mdlcode assume-optional: $course->format pluginnames-format
         \core\deprecation::emit_deprecation([self::class, __FUNCTION__]);
-
         $format = $this->format;
         $section = $this->section;
         $course = $format->get_course();

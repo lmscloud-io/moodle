@@ -68,6 +68,7 @@ final class after_standard_main_region_html_generation {
      * Process legacy callbacks.
      */
     public function process_legacy_callbacks(): void {
+        // Mdlcode callback-next-line: *
         $pluginswithfunction = get_plugins_with_function(function: 'standard_after_main_region_html', migratedtohook: true);
         foreach ($pluginswithfunction as $plugins) {
             foreach ($plugins as $function) {

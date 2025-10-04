@@ -83,6 +83,7 @@ class enablemobileservice extends \core_admin\setting\setting\configcheckbox {
         if ((string)$data === $this->yes) {
             $notifications = \tool_mobile\api::get_potential_config_issues(); // Safe to call, plugin available if we reach here.
             foreach ($notifications as $notification) {
+                // Mdlcode-disable-next-line cannot-parse-string.
                 $message = get_string($notification[0], $notification[1]);
                 $html .= $OUTPUT->notification($message, \core\output\notification::NOTIFY_WARNING);
             }

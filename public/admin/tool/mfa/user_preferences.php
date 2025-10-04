@@ -46,6 +46,7 @@ $PAGE->navbar->add(get_string('preferences:header', 'tool_mfa'), new \moodle_url
 $OUTPUT = $PAGE->get_renderer('tool_mfa');
 
 echo $OUTPUT->header();
+// Mdlcode assume-optional: $action ['setup','revoke','enable','revoke','disable','up','down']
 if (!empty($action)) {
     if ($factorid != 0) {
         $instance = \tool_mfa\plugininfo\factor::get_instance_from_id($factorid);

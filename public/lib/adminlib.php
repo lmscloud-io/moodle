@@ -142,6 +142,7 @@ function uninstall_plugin($type, $name) {
     if ($type === 'mod') {
         $pluginname = $name;  // eg. 'forum'
         if (get_string_manager()->string_exists('modulename', $component)) {
+            // Mdlcode assume-optional-next-line: $component fullpluginnames-mod
             $strpluginname = get_string('modulename', $component);
         } else {
             $strpluginname = $component;
@@ -150,6 +151,7 @@ function uninstall_plugin($type, $name) {
     } else {
         $pluginname = $component;
         if (get_string_manager()->string_exists('pluginname', $component)) {
+            // Mdlcode assume-optional-next-line: $component fullpluginnames-/^(?!mod$)/
             $strpluginname = get_string('pluginname', $component);
         } else {
             $strpluginname = $component;
@@ -167,6 +169,7 @@ function uninstall_plugin($type, $name) {
     if (file_exists($uninstalllib)) {
         require_once($uninstalllib);
         $uninstallfunction = 'xmldb_' . $pluginname . '_uninstall';    // eg. 'xmldb_workshop_uninstall()'
+        // Mdlcode callback: ignore
         if (function_exists($uninstallfunction)) {
             // Do not verify result, let plugin complain if necessary.
             $uninstallfunction();
@@ -368,6 +371,7 @@ function drop_plugin_tables($name, $file, $feedback=true) {
 
         // found orphan table --> delete it
         if ($DB->get_manager()->table_exists($table)) {
+            // Mdlcode-disable-next-line cannot-parse-db-tablename
             $xmldb_table = new xmldb_table($table);
             $DB->get_manager()->drop_table($xmldb_table);
         }
@@ -1299,12 +1303,14 @@ function db_replace($search, $replace, $additionalskiptables = '') {
             continue;
         }
 
+        // Mdlcode-disable-next-line cannot-parse-db-tablename
         if ($columns = $DB->get_columns($table)) {
             $DB->set_debug(true);
             foreach ($columns as $column) {
                 if (!db_should_replace($table, $column->name)) {
                     continue;
                 }
+                // Mdlcode-disable-next-line cannot-parse-db-tablename
                 $DB->replace_all_text($table, $column, $search, $replace);
             }
             $DB->set_debug(false);
@@ -1327,6 +1333,7 @@ function db_replace($search, $replace, $additionalskiptables = '') {
 
         $function = 'block_'.$blockname.'_global_db_replace';
         include_once($fullblock.'/lib.php');
+        // Mdlcode callback: block PFN_global_db_replace function_exists($function)
         if (!function_exists($function)) {
             continue;
         }

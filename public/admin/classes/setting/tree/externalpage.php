@@ -62,7 +62,7 @@ class externalpage implements \core_admin\setting\tree\part_of_admin_tree, linka
      * @param string $name The internal name for this external page. Must be unique amongst ALL part_of_admin_tree objects.
      * @param string $visiblename The displayed name for this external page. Usually obtained through get_string().
      * @param string $url The external URL that we should link to when someone requests this external page.
-     * @param string|string[] $requiredcapability The role capability/permission a user must have to access this external page.
+     * @param string|string[] $requiredcapability {Mdlcode-variant-capability} The role capability/permission a user must have to access this external page.
      *      Defaults to 'moodle/site:config'.
      * @param boolean $hidden Is this external page hidden in admin tree block? Default false.
      * @param \stdClass $context The context the page relates to. Not sure what happens
@@ -159,6 +159,7 @@ class externalpage implements \core_admin\setting\tree\part_of_admin_tree, linka
      * @return bool True if user has access, false otherwise.
      */
     public function check_access() {
+        // Mdlcode-disable cannot-parse-capability
         $context = empty($this->context) ? \context_system::instance() : $this->context;
         foreach ($this->req_capability as $cap) {
             if (has_capability($cap, $context)) {

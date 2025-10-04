@@ -159,6 +159,7 @@ class configstoredfile extends \core_admin\setting {
         $this->oldhashes = null;
 
         $callbackfunction = $this->updatedcallback;
+        // Mdlcode callback-next-line: ignore
         if (!empty($callbackfunction) && function_exists($callbackfunction)) {
             $callbackfunction($this->get_full_name());
         }

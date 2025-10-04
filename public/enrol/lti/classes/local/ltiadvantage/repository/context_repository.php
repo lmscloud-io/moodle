@@ -16,6 +16,7 @@
 
 namespace enrol_lti\local\ltiadvantage\repository;
 use enrol_lti\local\ltiadvantage\entity\context;
+// Mdlcode assume: $this->contexttable 'enrol_lti_context'
 
 /**
  * Class context_repository.

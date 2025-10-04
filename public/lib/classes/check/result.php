@@ -176,7 +176,7 @@ class result implements \renderable {
     /**
      * Which mustache template?
      *
-     * @return string path to mustache template
+     * @return string {Mdlcode-variant-template} path to mustache template
      */
     public function get_template_name(): string {
         return 'core/check/result';

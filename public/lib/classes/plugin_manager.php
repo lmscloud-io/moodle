@@ -640,6 +640,7 @@ class plugin_manager {
             // If this is a subplugin, try to ask the parent plugin for the name.
             return $this->plugin_name($parent) . ' / ' . get_string('subplugintype_' . $type, $parent);
         } else {
+            // Mdlcode assume-optional-next-line: $type mainplugintypes
             return get_string('type_' . $type, 'core_plugin');
         }
     }
@@ -658,6 +659,7 @@ class plugin_manager {
             // If this is a subplugin, try to ask the parent plugin for the name.
             return $this->plugin_name($parent) . ' / ' . get_string('subplugintype_' . $type . '_plural', $parent);
         } else {
+            // Mdlcode assume-optional-next-line: $type mainplugintypes
             return get_string('type_' . $type . '_plural', 'core_plugin');
         }
     }

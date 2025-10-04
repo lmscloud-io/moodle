@@ -424,7 +424,7 @@ class user {
      * Gets an SQL query that lists all enrolled user ids on any course where the current
      * user has the specified capability. Helper function used for searching users.
      *
-     * @param string $capability Required capability
+     * @param string $capability {Mdlcode-variant-capability} Required capability
      * @return array Array containing SQL and params, or two nulls if there are no courses
      */
     protected static function get_enrolled_sql_on_courses_with_capability($capability) {
@@ -2428,6 +2428,7 @@ class user {
             if (count($namebits) == 2) {
                 $namebits[1] = $namebits[1] ?: 'core';
                 if (clean_param($namebits[0], PARAM_STRINGID) !== '' && clean_param($namebits[1], PARAM_COMPONENT) !== '') {
+                    // Mdlcode-disable cannot-parse-string
                     $child->title = get_string($namebits[0], $namebits[1]);
                     $child->titleidentifier = implode(',', $namebits);
                 }

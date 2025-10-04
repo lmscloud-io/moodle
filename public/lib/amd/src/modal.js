@@ -185,7 +185,7 @@ export default class Modal {
         this.register(
             this.TYPE,
             this,
-            this.TEMPLATE,
+            this.TEMPLATE, // Mdlcode-disable-line cannot-parse-template
         );
     }
 
@@ -232,7 +232,7 @@ export default class Modal {
 
         const templateName = this._getTemplateName(modalConfig);
         const templateContext = modalConfig.templateContext || {};
-        const {html, js} = await Templates.renderForPromise(templateName, templateContext);
+        const {html, js} = await Templates.renderForPromise(templateName, templateContext); // Mdlcode-disable-line cannot-parse-template
 
         const modal = new this(html);
         if (js) {

@@ -49,6 +49,9 @@ class bulk_delete_action extends \core_question\local\bank\bulk_action_base {
         return 'text-danger';
     }
 
+    /**
+     * @return array|null
+     */
     public function get_bulk_action_capabilities(): ?array {
         return [
             'moodle/question:editall',

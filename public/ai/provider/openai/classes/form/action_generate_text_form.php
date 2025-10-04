@@ -37,6 +37,7 @@ class action_generate_text_form extends action_form {
         $mform->addElement(
             'text',
             'endpoint',
+            // Mdlcode assume-next-line: $this->actionname ['generate_text','summarise_text']
             get_string("action:{$this->actionname}:endpoint", 'aiprovider_openai'),
             'maxlength="255" size="30"',
         );
@@ -48,11 +49,13 @@ class action_generate_text_form extends action_form {
         $mform->addElement(
             'textarea',
             'systeminstruction',
+            // Mdlcode assume-next-line: $this->actionname ['generate_text','summarise_text']
             get_string("action:{$this->actionname}:systeminstruction", 'aiprovider_openai'),
             'wrap="virtual" rows="5" cols="20"',
         );
         $mform->setType('systeminstruction', PARAM_TEXT);
         $mform->setDefault('systeminstruction', $actionconfig['systeminstruction'] ?? $this->action::get_system_instruction());
+        // Mdlcode assume-next-line: $this->actionname ['generate_text','summarise_text']
         $mform->addHelpButton('systeminstruction', "action:{$this->actionname}:systeminstruction", 'aiprovider_openai');
 
         if ($this->returnurl) {

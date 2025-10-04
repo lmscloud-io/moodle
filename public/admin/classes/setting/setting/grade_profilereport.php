@@ -55,6 +55,7 @@ class grade_profilereport extends \core_admin\setting\setting\configselect {
             if (file_exists($plugindir . '/lib.php')) {
                 require_once($plugindir . '/lib.php');
                 $functionname = 'grade_report_' . $plugin . '_profilereport';
+                // Mdlcode callback: gradereport grade_report_PN_profilereport function_exists($functionname)
                 if (function_exists($functionname)) {
                     $this->choices[$plugin] = get_string('pluginname', 'gradereport_' . $plugin);
                 }

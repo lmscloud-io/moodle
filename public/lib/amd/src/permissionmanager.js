@@ -167,6 +167,7 @@ define(['jquery', 'core/config', 'core/notification', 'core/templates', 'core/yu
                     cap: row.data('humanname'),
                     context: contextname
                 };
+                // Mdlcode assume-next-line: action ['allow', 'prohibit']
                 var message = M.util.get_string('role' + action + 'info', 'core_role', confirmationDetails);
                 if (panel === null) {
                     panel = new M.core.dialogue({
@@ -176,6 +177,7 @@ define(['jquery', 'core/config', 'core/notification', 'core/templates', 'core/yu
                         width: '450px'
                     });
                 }
+                // Mdlcode assume-next-line: action ['allow', 'prohibit']
                 panel.set('headerContent', M.util.get_string('role' + action + 'header', 'core_role'));
 
                 var i, existingrolelinks;
@@ -236,6 +238,7 @@ define(['jquery', 'core/config', 'core/notification', 'core/templates', 'core/yu
             };
 
             notification.confirm(M.util.get_string('confirmunassigntitle', 'core_role'),
+                // Mdlcode assume-next-line: action ['prevent', 'unprohibit']
                 M.util.get_string('confirmrole' + action, 'core_role', questionDetails),
                 M.util.get_string('confirmunassignyes', 'core_role'),
                 M.util.get_string('confirmunassignno', 'core_role'),
