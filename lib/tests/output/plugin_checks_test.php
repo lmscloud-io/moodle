@@ -39,6 +39,7 @@ final class plugin_checks_test extends \core\tests\plugin_checks_testcase {
      * @param string $dir
      */
     public function test_get_fontawesome_icon_map(string $component, string $plugintype, string $pluginname, string $dir): void {
+        // Mdlcode callback-next-line: *
         $iconmap = component_callback($component, 'get_fontawesome_icon_map');
         if (!$iconmap) {
             $this->expectNotToPerformAssertions();
