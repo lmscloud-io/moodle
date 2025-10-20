@@ -451,6 +451,7 @@ class icon_system_fontawesome extends icon_system_font {
                 $this->map = $this->get_core_icon_map();
                 $callback = 'get_fontawesome_icon_map';
 
+                // Mdlcode callback-next-line: plugin PREFIX_get_fontawesome_icon_map get_plugins_with_function($callback)
                 if ($pluginsfunction = get_plugins_with_function($callback)) {
                     foreach ($pluginsfunction as $plugintype => $plugins) {
                         foreach ($plugins as $pluginfunction) {
