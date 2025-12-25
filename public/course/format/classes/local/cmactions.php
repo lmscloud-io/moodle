@@ -631,6 +631,7 @@ class cmactions extends baseactions {
 
         // Ensure the delete_instance function exists for this module.
         $deleteinstancefunction = $modulename . '_delete_instance';
+        // Mdlcode callback-next-line: mod PN_delete_instance function_exists($deleteinstancefunction)
         if (!function_exists($deleteinstancefunction)) {
             throw new \moodle_exception(
                 errorcode: 'cannotdeletemodulemissingfunc',
