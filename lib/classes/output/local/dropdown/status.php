@@ -100,7 +100,7 @@ class status extends dialog {
      * Get the name of the template to use for this templatable.
      *
      * @param \renderer_base $renderer The renderer requesting the template name
-     * @return string the template name
+     * @return string {Mdlcode-variant-template} the template name
      */
     public function get_template_name(\renderer_base $renderer): string {
         return 'core/local/dropdown/status';
